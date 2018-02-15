@@ -19,6 +19,8 @@
 		49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapViewModel.swift */; };
 		49B00FE22035FF1C00028812 /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE12035FF1C00028812 /* MapDelegate.swift */; };
 		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
+		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
+		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		49B00FDF2035FF0A00028812 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		49B00FE12035FF1C00028812 /* MapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
 		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
+		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +110,12 @@
 				49B00FDF2035FF0A00028812 /* MapViewModel.swift */,
 				49B00FDD2035FEFC00028812 /* StationManager.swift */,
 				49B00FDB2035FEF500028812 /* NetworkManager.swift */,
+				49B00FE720360B5500028812 /* MockAPI.swift */,
 				49AD20512035FA7400661B0D /* MapView.storyboard */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
 				49AD20592035FA7400661B0D /* Info.plist */,
+				49B00FE520360B2200028812 /* Sample Data */,
 			);
 			path = "Mo-Bikes";
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 				49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */,
 				49AD20552035FA7400661B0D /* Assets.xcassets in Resources */,
 				49AD20532035FA7400661B0D /* MapView.storyboard in Resources */,
+				49B00FE620360B2200028812 /* Sample Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +381,7 @@
 				49B00FDE2035FEFC00028812 /* StationManager.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
 				49B00FDC2035FEF500028812 /* NetworkManager.swift in Sources */,
+				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
 				49B00FE22035FF1C00028812 /* MapDelegate.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
 				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,

@@ -23,15 +23,18 @@ class MapViewController: UIViewController {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
+        self.mapView.showsPointsOfInterest = false
+        self.zoomToCurrent()
+    }
+    
+    func zoomToCurrent() {
         guard let currentLocation = self.locationManager.location else {
             print("Can't get current location")
             return
         }
         self.mapView.region = MKCoordinateRegionMake(currentLocation.coordinate,
                                                      MKCoordinateSpanMake(0.007, 0.007))
-        self.mapView.showsUserLocation = true
-        self.mapView.showsPointsOfInterest = false
     }
-    
 }
 
