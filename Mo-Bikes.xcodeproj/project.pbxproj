@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
+		49AD20502035FA7400661B0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* ViewController.swift */; };
+		49AD20532035FA7400661B0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* Main.storyboard */; };
+		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
+		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
+		49AD20632035FA7400661B0D /* Mo_BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD20622035FA7400661B0D /* Mo_BikesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49AD205F2035FA7400661B0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49AD20422035FA7400661B0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49AD20492035FA7400661B0D;
+			remoteInfo = "Mo-Bikes";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49AD204F2035FA7400661B0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49AD20522035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49AD20542035FA7400661B0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49AD20572035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49AD20592035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mo-BikesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AD20622035FA7400661B0D /* Mo_BikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mo_BikesTests.swift; sourceTree = "<group>"; };
+		49AD20642035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49AD20472035FA7400661B0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49AD205B2035FA7400661B0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49AD20412035FA7400661B0D = {
+			isa = PBXGroup;
+			children = (
+				49AD204C2035FA7400661B0D /* Mo-Bikes */,
+				49AD20612035FA7400661B0D /* Mo-BikesTests */,
+				49AD204B2035FA7400661B0D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49AD204B2035FA7400661B0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49AD204A2035FA7400661B0D /* Mo-Bikes.app */,
+				49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49AD204C2035FA7400661B0D /* Mo-Bikes */ = {
+			isa = PBXGroup;
+			children = (
+				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
+				49AD204F2035FA7400661B0D /* ViewController.swift */,
+				49AD20512035FA7400661B0D /* Main.storyboard */,
+				49AD20542035FA7400661B0D /* Assets.xcassets */,
+				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
+				49AD20592035FA7400661B0D /* Info.plist */,
+			);
+			path = "Mo-Bikes";
+			sourceTree = "<group>";
+		};
+		49AD20612035FA7400661B0D /* Mo-BikesTests */ = {
+			isa = PBXGroup;
+			children = (
+				49AD20622035FA7400661B0D /* Mo_BikesTests.swift */,
+				49AD20642035FA7400661B0D /* Info.plist */,
+			);
+			path = "Mo-BikesTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49AD20492035FA7400661B0D /* Mo-Bikes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49AD20672035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-Bikes" */;
+			buildPhases = (
+				49AD20462035FA7400661B0D /* Sources */,
+				49AD20472035FA7400661B0D /* Frameworks */,
+				49AD20482035FA7400661B0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mo-Bikes";
+			productName = "Mo-Bikes";
+			productReference = 49AD204A2035FA7400661B0D /* Mo-Bikes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		49AD205D2035FA7400661B0D /* Mo-BikesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49AD206A2035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-BikesTests" */;
+			buildPhases = (
+				49AD205A2035FA7400661B0D /* Sources */,
+				49AD205B2035FA7400661B0D /* Frameworks */,
+				49AD205C2035FA7400661B0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49AD20602035FA7400661B0D /* PBXTargetDependency */,
+			);
+			name = "Mo-BikesTests";
+			productName = "Mo-BikesTests";
+			productReference = 49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49AD20422035FA7400661B0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = hearthedge;
+				TargetAttributes = {
+					49AD20492035FA7400661B0D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					49AD205D2035FA7400661B0D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 49AD20492035FA7400661B0D;
+					};
+				};
+			};
+			buildConfigurationList = 49AD20452035FA7400661B0D /* Build configuration list for PBXProject "Mo-Bikes" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49AD20412035FA7400661B0D;
+			productRefGroup = 49AD204B2035FA7400661B0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49AD20492035FA7400661B0D /* Mo-Bikes */,
+				49AD205D2035FA7400661B0D /* Mo-BikesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49AD20482035FA7400661B0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */,
+				49AD20552035FA7400661B0D /* Assets.xcassets in Resources */,
+				49AD20532035FA7400661B0D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49AD205C2035FA7400661B0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49AD20462035FA7400661B0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49AD20502035FA7400661B0D /* ViewController.swift in Sources */,
+				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49AD205A2035FA7400661B0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49AD20632035FA7400661B0D /* Mo_BikesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49AD20602035FA7400661B0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49AD20492035FA7400661B0D /* Mo-Bikes */;
+			targetProxy = 49AD205F2035FA7400661B0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49AD20512035FA7400661B0D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49AD20522035FA7400661B0D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49AD20562035FA7400661B0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49AD20572035FA7400661B0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49AD20652035FA7400661B0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49AD20662035FA7400661B0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49AD20682035FA7400661B0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
+				INFOPLIST_FILE = "Mo-Bikes/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49AD20692035FA7400661B0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
+				INFOPLIST_FILE = "Mo-Bikes/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		49AD206B2035FA7400661B0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
+				INFOPLIST_FILE = "Mo-BikesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-BikesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mo-Bikes.app/Mo-Bikes";
+			};
+			name = Debug;
+		};
+		49AD206C2035FA7400661B0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5E8L2XP69;
+				INFOPLIST_FILE = "Mo-BikesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-BikesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mo-Bikes.app/Mo-Bikes";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49AD20452035FA7400661B0D /* Build configuration list for PBXProject "Mo-Bikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49AD20652035FA7400661B0D /* Debug */,
+				49AD20662035FA7400661B0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49AD20672035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-Bikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49AD20682035FA7400661B0D /* Debug */,
+				49AD20692035FA7400661B0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49AD206A2035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-BikesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49AD206B2035FA7400661B0D /* Debug */,
+				49AD206C2035FA7400661B0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49AD20422035FA7400661B0D /* Project object */;
+}
