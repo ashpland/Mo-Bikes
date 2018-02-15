@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
 		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
 		49AD20502035FA7400661B0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* ViewController.swift */; };
 		49AD20532035FA7400661B0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* Main.storyboard */; };
 		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
 		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
 		49AD20632035FA7400661B0D /* Mo_BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD20622035FA7400661B0D /* Mo_BikesTests.swift */; };
+		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mo_Bikes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mo_BikesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
+		38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.release.xcconfig"; sourceTree = "<group>"; };
 		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49AD204F2035FA7400661B0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				49AD204C2035FA7400661B0D /* Mo-Bikes */,
 				49AD20612035FA7400661B0D /* Mo-BikesTests */,
 				49AD204B2035FA7400661B0D /* Products */,
+				C1B7AAA8B861A357FBA2E50A /* Pods */,
+				655ECDB840C28B867813189B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = "Mo-BikesTests";
 			sourceTree = "<group>";
 		};
+		655ECDB840C28B867813189B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */,
+				2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1B7AAA8B861A357FBA2E50A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */,
+				46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */,
+				38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */,
+				117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AD20672035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-Bikes" */;
 			buildPhases = (
+				E4BB11CE32559936CACE43B7 /* [CP] Check Pods Manifest.lock */,
 				49AD20462035FA7400661B0D /* Sources */,
 				49AD20472035FA7400661B0D /* Frameworks */,
 				49AD20482035FA7400661B0D /* Resources */,
+				5D0FD5D6D4914CE878690F32 /* [CP] Embed Pods Frameworks */,
+				E3B8F72024781284CACA60BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AD206A2035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-BikesTests" */;
 			buildPhases = (
+				735275EBFB2C023A6F9928CD /* [CP] Check Pods Manifest.lock */,
 				49AD205A2035FA7400661B0D /* Sources */,
 				49AD205B2035FA7400661B0D /* Frameworks */,
 				49AD205C2035FA7400661B0D /* Resources */,
+				9FD2BD0D728666D13C76F88F /* [CP] Embed Pods Frameworks */,
+				D1BC16D6D957515EA651DB85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +231,119 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D0FD5D6D4914CE878690F32 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		735275EBFB2C023A6F9928CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mo-BikesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FD2BD0D728666D13C76F88F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1BC16D6D957515EA651DB85 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3B8F72024781284CACA60BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4BB11CE32559936CACE43B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mo-Bikes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49AD20462035FA7400661B0D /* Sources */ = {
@@ -351,6 +502,7 @@
 		};
 		49AD20682035FA7400661B0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,12 +512,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		49AD20692035FA7400661B0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,12 +528,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		49AD206B2035FA7400661B0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -398,6 +552,7 @@
 		};
 		49AD206C2035FA7400661B0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

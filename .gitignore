@@ -1,0 +1,6 @@
+.DS_Store
+Pods/*
+Podfile.lock
+Mo-Bikes.xcodeproj/project.xcworkspace/xcuserdata*
+Mo-Bikes.xcodeproj/xcuserdata*
+Mo-Bikes.xcworkspace/xcuserdata*
