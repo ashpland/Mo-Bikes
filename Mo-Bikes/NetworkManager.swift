@@ -12,19 +12,17 @@ import Alamofire
 class NetworkManager {
     static let sharedInstance = NetworkManager()
     
-    func updateStationData() {
+    func updateStationData(_ completion: @escaping ([Station]) -> Void) {
         Alamofire.request("https://vancouver-ca.smoove.pro/api-public/stations",
                           method: .get)
             .responseObject { (response: DataResponse<ResultContainer>) in
                 debugPrint(response)
                 
                 if let results = response.result.value {
-                    print("Stations:")
-                    print(results.stationsArray)
+                    completion(results.stationsArray)
                 }
         }
     }
-    
 }
 
 class ResultContainer: ResponseObjectSerializable {
@@ -39,20 +37,6 @@ class ResultContainer: ResponseObjectSerializable {
     }
 }
 
-
-//self.comments = Comment.collection(response:response, representation: representation.valueForKeyPath("comments")!)!
-
-
-/*
- Alamofire.request("https://example.com/users").responseCollection { (response: DataResponse<[User]>) in
- debugPrint(response)
- 
- if let users = response.result.value {
- users.forEach { print("- \($0)") }
- }
- }
- 
- */
 
 
 protocol ResponseObjectSerializable {

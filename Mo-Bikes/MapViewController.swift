@@ -17,7 +17,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
-        NetworkManager.sharedInstance.updateStationData()
+        NetworkManager.sharedInstance.updateStationData { (stations) in
+            print("Stations: ")
+            print(stations)
+        }
     }
 
     func setupLocation() {
