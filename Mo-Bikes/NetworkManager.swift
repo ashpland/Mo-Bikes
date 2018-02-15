@@ -12,7 +12,7 @@ import Alamofire
 class NetworkManager {
     static let sharedInstance = NetworkManager()
     
-    func getPage() {
+    func updateStationData() {
         Alamofire.request("https://vancouver-ca.smoove.pro/api-public/stations",
                           method: .get)
             .responseJSON { (response) in
