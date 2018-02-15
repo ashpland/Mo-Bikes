@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
+        NetworkManager.sharedInstance.getPage()
     }
 
     func setupLocation() {
