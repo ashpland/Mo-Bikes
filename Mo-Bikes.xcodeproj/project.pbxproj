@@ -18,6 +18,7 @@
 		49B00FDE2035FEFC00028812 /* StationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* StationManager.swift */; };
 		49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapViewModel.swift */; };
 		49B00FE22035FF1C00028812 /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE12035FF1C00028812 /* MapDelegate.swift */; };
+		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		49B00FDD2035FEFC00028812 /* StationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManager.swift; sourceTree = "<group>"; };
 		49B00FDF2035FF0A00028812 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		49B00FE12035FF1C00028812 /* MapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
+		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B00FE42036092000028812 /* MapKit.framework in Frameworks */,
 				DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +126,7 @@
 		655ECDB840C28B867813189B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49B00FE32036092000028812 /* MapKit.framework */,
 				076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */,
 				2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */,
 			);
@@ -197,6 +201,11 @@
 					49AD20492035FA7400661B0D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					49AD205D2035FA7400661B0D = {
 						CreatedOnToolsVersion = 9.2;

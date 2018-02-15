@@ -26,6 +26,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MapView</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is used to help find the nearest station</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
