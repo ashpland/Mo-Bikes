@@ -13,11 +13,11 @@ class NetworkManager {
     static let sharedInstance = NetworkManager()
     
     func updateStationData(_ completion: @escaping ([Station]) -> Void) {
-        Alamofire.request("https://vancouver-ca.smoove.pro/api-public/stations",
+        let _ = Alamofire.request("https://vancouver-ca.smoove.pro/api-public/stations",
                           method: .get)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
             .responseObject { (response: DataResponse<ResultContainer>) in
-                debugPrint(response)
-                
                 if let results = response.result.value {
                     completion(results.stationsArray)
                 }

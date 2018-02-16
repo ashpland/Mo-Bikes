@@ -10,16 +10,16 @@ import Foundation
 import MapKit
 import Alamofire
 
-final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, ResponseCollectionSerializable {
+final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
     
     let name: String
-    let coordinate: CLLocationCoordinate2D
+    let coordinate: (lat: Double, lon: Double)
     let totalSlots: Int
     let freeSlots: Int
     let availableBikes: Int
     let operative: Bool
     
-    init(name: String, coordinate: CLLocationCoordinate2D, totalSlots: Int, freeSlots: Int, availableBikes: Int, operative: Bool) {
+    init(name: String, coordinate: (lat: Double, lon: Double), totalSlots: Int, freeSlots: Int, availableBikes: Int, operative: Bool) {
         self.name = name
         self.coordinate = coordinate
         self.totalSlots = totalSlots
@@ -43,7 +43,7 @@ final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, Respons
         else { return nil }
         
         self.name = name
-        self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        self.coordinate = (lat, lon)
         self.totalSlots = totalSlots
         self.freeSlots = freeSlots
         self.availableBikes = availableBikes
