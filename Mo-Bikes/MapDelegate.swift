@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import MapKit
+
+class MapDelgate: NSObject, MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is StationAnnotation {
+            
+        }
+        
+        
+        return nil
+    }
+}

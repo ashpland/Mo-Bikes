@@ -9,22 +9,40 @@
 import Foundation
 import MapKit
 import RxSwift
+import RxCocoa
 
-class StationView: NSObject, MKAnnotation {
-    let name: String
+class MapViewModel {
+    static let sharedInstance = MapViewModel()
+    var bikesOrSlots: BikesOrSlots = .bikes
+}
+
+class StationAnnotation: NSObject, MKAnnotation {
+    let title: String?
     let coordinate: CLLocationCoordinate2D
-    let bikes: BehaviorSubject<Int>
+    let number: BehaviorSubject<String>
     
     init(_ station: Station) {
-        self.name = station.name
+        self.title = station.name
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
-        self.bikes = BehaviorSubject<Int>(value: station.totalSlots)
+        
+        let number: String
+        switch MapViewModel.sharedInstance.bikesOrSlots {
+        case .bikes:
+            number = String(station.availableBikes)
+        case .slots:
+            number = String(station.freeSlots)
+        }
+        
+        self.number = BehaviorSubject<String>(value: number)
     }
-    
+}
+
+class StationMarker: MKMarkerAnnotationView {
     
 }
 
-enum BikesOrSlots {
+enum BikesOrSlots  {
     case bikes
     case slots
 }
+
