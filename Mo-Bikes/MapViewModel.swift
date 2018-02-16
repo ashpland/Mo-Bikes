@@ -29,16 +29,7 @@ class StationAnnotation: NSObject, MKAnnotation {
     
     init(_ station: Station) {
         self.station = station
-        self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
-//
-//        let number: Int
-//        switch MapViewModel.sharedInstance.bikesOrSlots {
-//        case .bikes:
-//            number = station.availableBikes
-//        case .slots:
-//            number = station.freeSlots
-//        }
-        
+        self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)        
         self.number = BehaviorSubject(value: 0)
         
         super.init()
@@ -88,14 +79,12 @@ class StationMarker: MKMarkerAnnotationView {
         
         numberSub.subscribe(onNext: { (number) in
             self.glyphText = String(number)
-            
             switch number {
             case ..<2:
                 self.glyphTintColor = StationMarker.color.low
             default:
                 self.glyphTintColor = StationMarker.color.normal
             }
-            
         }).disposed(by: disposeBag)
         
     }
