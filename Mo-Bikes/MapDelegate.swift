@@ -13,7 +13,8 @@ class MapDelgate: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is StationAnnotation {
-            
+            let station = annotation as! StationAnnotation
+            return station.marker()
         }
         
         
