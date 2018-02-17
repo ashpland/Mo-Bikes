@@ -35,12 +35,14 @@ class MapViewModel {
 class StationAnnotation: NSObject, MKAnnotation {
     let station: Station
     let coordinate: CLLocationCoordinate2D
-    var number: BehaviorSubject<Int> = BehaviorSubject<Int>(value: 5)
+    var number: BehaviorSubject<Int>
     
     init(_ station: Station) {
         self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
-
+        self.number = station.availableBikes
+        
+        
         super.init()
     }
 }

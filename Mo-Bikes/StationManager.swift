@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 import Alamofire
+import RxSwift
 
 class StationManager {
     static let sharedInstance = StationManager()
@@ -29,16 +30,16 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     let name: String
     let coordinate: (lat: Double, lon: Double)
     let totalSlots: Int
-    let freeSlots: Int
-    let availableBikes: Int
+    let freeSlots: BehaviorSubject<Int>
+    let availableBikes: BehaviorSubject<Int>
     let operative: Bool
     
     init(name: String, coordinate: (lat: Double, lon: Double), totalSlots: Int, freeSlots: Int, availableBikes: Int, operative: Bool) {
         self.name = name
         self.coordinate = coordinate
         self.totalSlots = totalSlots
-        self.freeSlots = freeSlots
-        self.availableBikes = availableBikes
+        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
+        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
         self.operative = operative
         
         super.init()
@@ -59,8 +60,8 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
         self.name = name
         self.coordinate = (lat, lon)
         self.totalSlots = totalSlots
-        self.freeSlots = freeSlots
-        self.availableBikes = availableBikes
+        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
+        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
         self.operative = operative
         
         super.init()
