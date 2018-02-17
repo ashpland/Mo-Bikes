@@ -11,6 +11,11 @@ import MapKit
 import UIKit
 import RxSwift
 
+enum BikesOrSlots  {
+    case bikes
+    case slots
+}
+
 class MapViewModel {
     static let sharedInstance = MapViewModel()
     var mapView: MKMapView?
@@ -30,25 +35,13 @@ class MapViewModel {
 class StationAnnotation: NSObject, MKAnnotation {
     let station: Station
     let coordinate: CLLocationCoordinate2D
-    var number: Observable<Int>
+    var number: BehaviorSubject<Int> = BehaviorSubject<Int>(value: 5)
     
     init(_ station: Station) {
         self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
-        self.number = BehaviorSubject(value: 0)
-        
+
         super.init()
-        
-        // TODO: probably need to change the returns below to a stream as opposed to a static variable
-        
-        self.number = MapViewModel.sharedInstance.bikesOrSlots.flatMap({ (bikesOrSlots) -> Observable<Int> in
-            switch bikesOrSlots {
-            case .bikes:
-                return BehaviorSubject(value: self.station.availableBikes)
-            case .slots:
-                return BehaviorSubject(value: self.station.freeSlots)
-            }
-        })
     }
 }
 
@@ -64,13 +57,6 @@ extension Array where Element == Station {
     }
 }
 
-extension StationAnnotation {
-    func marker() -> StationMarker {
-        return StationMarker(station: self,
-                             numberSub: self.number,
-                             stateSub: MapViewModel.sharedInstance.bikesOrSlots)
-    }
-}
 
 class StationMarker: MKMarkerAnnotationView {
     
@@ -81,30 +67,31 @@ class StationMarker: MKMarkerAnnotationView {
     let disposeBag = DisposeBag()
     
     init(station: StationAnnotation,
-         numberSub: Observable<Int>,
+         numberSub: BehaviorSubject<Int>,
          stateSub: BehaviorSubject<BikesOrSlots>) {
-
-        super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
         
-//        stateSub.subscribe(onNext: { (bikesOrSlots) in
-//            switch bikesOrSlots {
-//            case .bikes:
-//                self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
-//            case .slots:
-//                self.glyphImage = UIImage(named: StationMarker.glyph.docks)
-//            }
-//        }).disposed(by: disposeBag)
+        super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
+
+        //        stateSub.subscribe(onNext: { (bikesOrSlots) in
+        //            switch bikesOrSlots {
+        //            case .bikes:
+        //                self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
+        //            case .slots:
+        //                self.glyphImage = UIImage(named: StationMarker.glyph.docks)
+        //            }
+        //        }).disposed(by: disposeBag)
         
         numberSub.subscribe(onNext: { (number) in
-            self.glyphText = String(number)
             switch number {
             case ..<2:
-                self.glyphTintColor = StationMarker.color.low
+                self.markerTintColor = StationMarker.color.low
             default:
-                self.glyphTintColor = StationMarker.color.normal
+                self.markerTintColor = StationMarker.color.normal
             }
         }).disposed(by: disposeBag)
         
+        
+
     }
     
     
@@ -113,8 +100,13 @@ class StationMarker: MKMarkerAnnotationView {
     }
 }
 
-enum BikesOrSlots  {
-    case bikes
-    case slots
+extension StationAnnotation {
+    func marker() -> StationMarker {
+        return StationMarker(station: self,
+                             numberSub: self.number,
+                             stateSub: MapViewModel.sharedInstance.bikesOrSlots)
+    }
 }
+
+
 

@@ -13,10 +13,13 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager: CLLocationManager = CLLocationManager()
+    let mapDelegate = MapDelgate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
+        
+        self.mapView.delegate = self.mapDelegate
         
         MapViewModel.sharedInstance.mapView = self.mapView
         let _ = StationManager.sharedInstance
