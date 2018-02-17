@@ -28,11 +28,8 @@ class MapDelgate: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view is StationMarker {
             let marker = view as! StationMarker
-            if marker.annotation is StationAnnotation {
-                let station = marker.annotation as! StationAnnotation
-                station.numAvailable.subscribe(onNext: {marker.glyphText = String($0)})
-                .disposed(by: self.disposeBag)
-            }
+            marker.currentNumber.subscribe(onNext: { marker.glyphText = $0 })
+            .disposed(by: disposeBag)
         }
     }
     

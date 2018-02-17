@@ -35,7 +35,7 @@ class MapViewModel {
 class StationAnnotation: NSObject, MKAnnotation {
     let station: Station
     let coordinate: CLLocationCoordinate2D
-    var numAvailable: BehaviorSubject<(bikes: Int, slots: Int)>
+    var numAvailable: Observable<(bikes: Int, slots: Int)>
     
     init(_ station: Station) {
         self.station = station
@@ -43,9 +43,6 @@ class StationAnnotation: NSObject, MKAnnotation {
         self.numAvailable = Observable.combineLatest(station.availableBikes,
                                                   station.freeSlots,
                                                   resultSelector: {(bikes: $0, slots: $1)})
-            as! BehaviorSubject<(bikes: Int, slots: Int)>
-        
-        
         super.init()
     }
 }
@@ -69,10 +66,13 @@ class StationMarker: MKMarkerAnnotationView {
     static let color = (normal: UIColor.blue, low: UIColor.cyan)
     static let glyph = (bikes: "bikeIcon", docks: "dockIcon")
     
+    
+    let currentNumber = BehaviorSubject<String>(value: "0")
+    
     let disposeBag = DisposeBag()
     
     init(station: StationAnnotation,
-         numAvailable: BehaviorSubject<(bikes: Int, slots: Int)>,
+         numAvailable: Observable<(bikes: Int, slots: Int)>,
          stateSub: BehaviorSubject<BikesOrSlots>) {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
@@ -91,8 +91,10 @@ class StationMarker: MKMarkerAnnotationView {
                 switch try stateSub.value() {
                 case .bikes:
                     self.updateMarkerColor(number.bikes)
+                    self.currentNumber.onNext(String(number.bikes))
                 case .slots:
                     self.updateMarkerColor(number.slots)
+                    self.currentNumber.onNext(String(number.slots))
                 }
             }
                 
