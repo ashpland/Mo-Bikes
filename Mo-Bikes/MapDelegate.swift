@@ -30,7 +30,7 @@ class MapDelgate: NSObject, MKMapViewDelegate {
             let marker = view as! StationMarker
             if marker.annotation is StationAnnotation {
                 let station = marker.annotation as! StationAnnotation
-                station.number.subscribe(onNext: {marker.glyphText = String($0)})
+                station.numAvailable.subscribe(onNext: {marker.glyphText = String($0)})
                 .disposed(by: self.disposeBag)
             }
         }

@@ -35,12 +35,15 @@ class MapViewModel {
 class StationAnnotation: NSObject, MKAnnotation {
     let station: Station
     let coordinate: CLLocationCoordinate2D
-    var number: BehaviorSubject<Int>
+    var numAvailable: BehaviorSubject<(bikes: Int, slots: Int)>
     
     init(_ station: Station) {
         self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
-        self.number = station.availableBikes
+        self.numAvailable = Observable.combineLatest(station.availableBikes,
+                                                  station.freeSlots,
+                                                  resultSelector: {(bikes: $0, slots: $1)})
+            as! BehaviorSubject<(bikes: Int, slots: Int)>
         
         
         super.init()
@@ -69,11 +72,11 @@ class StationMarker: MKMarkerAnnotationView {
     let disposeBag = DisposeBag()
     
     init(station: StationAnnotation,
-         numberSub: BehaviorSubject<Int>,
+         numAvailable: BehaviorSubject<(bikes: Int, slots: Int)>,
          stateSub: BehaviorSubject<BikesOrSlots>) {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
-
+        
         //        stateSub.subscribe(onNext: { (bikesOrSlots) in
         //            switch bikesOrSlots {
         //            case .bikes:
@@ -83,18 +86,33 @@ class StationMarker: MKMarkerAnnotationView {
         //            }
         //        }).disposed(by: disposeBag)
         
-        numberSub.subscribe(onNext: { (number) in
-            switch number {
-            case ..<2:
-                self.markerTintColor = StationMarker.color.low
-            default:
-                self.markerTintColor = StationMarker.color.normal
+        numAvailable.subscribe(onNext: { (number) in
+            do {
+                switch try stateSub.value() {
+                case .bikes:
+                    self.updateMarkerColor(number.bikes)
+                case .slots:
+                    self.updateMarkerColor(number.slots)
+                }
+            }
+                
+            catch {
+                print("No value in BikesOrSlots")
             }
         }).disposed(by: disposeBag)
         
-        
-
     }
+    
+    func updateMarkerColor(_ numAvailable: Int) {
+        switch numAvailable {
+        case ..<2:
+            self.markerTintColor = StationMarker.color.low
+        default:
+            self.markerTintColor = StationMarker.color.normal
+        }
+    }
+    
+    
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -105,7 +123,7 @@ class StationMarker: MKMarkerAnnotationView {
 extension StationAnnotation {
     func marker() -> StationMarker {
         return StationMarker(station: self,
-                             numberSub: self.number,
+                             numAvailable: self.numAvailable,
                              stateSub: MapViewModel.sharedInstance.bikesOrSlots)
     }
 }
