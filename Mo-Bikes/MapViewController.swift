@@ -17,10 +17,12 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
-        NetworkManager.sharedInstance.updateStationData { (stations) in
-            print("Stations: ")
-            print(stations)
-        }
+        
+        MapViewModel.sharedInstance.mapView = self.mapView
+        let _ = StationManager.sharedInstance
+        
+        
+        
     }
 
     func setupLocation() {

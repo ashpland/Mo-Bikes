@@ -10,6 +10,20 @@ import Foundation
 import MapKit
 import Alamofire
 
+class StationManager {
+    static let sharedInstance = StationManager()
+    
+    var stations = [Station]()
+    
+    init() {
+        NetworkManager.sharedInstance.updateStationData { (stations) in
+            self.stations = stations
+            MapViewModel.sharedInstance.display(stations)
+        }
+    }
+}
+
+
 final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
     
     let name: String

@@ -11,14 +11,19 @@ import MapKit
 import UIKit
 import RxSwift
 
-let test = UIColor.blue
-
 class MapViewModel {
     static let sharedInstance = MapViewModel()
+    var mapView: MKMapView?
     let bikesOrSlots: BehaviorSubject<BikesOrSlots>
     
     init() {
         self.bikesOrSlots = BehaviorSubject<BikesOrSlots>(value: .bikes)
+    }
+    
+    func display(_ stations: [Station]) {
+        if let mapView = self.mapView {
+            mapView.addAnnotations(stations.annotations())
+        }
     }
 }
 
@@ -29,7 +34,7 @@ class StationAnnotation: NSObject, MKAnnotation {
     
     init(_ station: Station) {
         self.station = station
-        self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)        
+        self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
         self.number = BehaviorSubject(value: 0)
         
         super.init()
@@ -45,9 +50,22 @@ class StationAnnotation: NSObject, MKAnnotation {
             }
         })
     }
-    
+}
+
+extension Station {
+    func annotation() -> StationAnnotation {
+        return StationAnnotation(self)
+    }
+}
+
+extension Array where Element == Station {
+    func annotations() -> [StationAnnotation] {
+        return self.map{station in station.annotation()}
+    }
+}
+
+extension StationAnnotation {
     func marker() -> StationMarker {
-        
         return StationMarker(station: self,
                              numberSub: self.number,
                              stateSub: MapViewModel.sharedInstance.bikesOrSlots)
@@ -68,14 +86,14 @@ class StationMarker: MKMarkerAnnotationView {
 
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
         
-        stateSub.subscribe(onNext: { (bikesOrSlots) in
-            switch bikesOrSlots {
-            case .bikes:
-                self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
-            case .slots:
-                self.glyphImage = UIImage(named: StationMarker.glyph.docks)
-            }
-        }).disposed(by: disposeBag)
+//        stateSub.subscribe(onNext: { (bikesOrSlots) in
+//            switch bikesOrSlots {
+//            case .bikes:
+//                self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
+//            case .slots:
+//                self.glyphImage = UIImage(named: StationMarker.glyph.docks)
+//            }
+//        }).disposed(by: disposeBag)
         
         numberSub.subscribe(onNext: { (number) in
             self.glyphText = String(number)
