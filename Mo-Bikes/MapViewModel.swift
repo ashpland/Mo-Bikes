@@ -106,10 +106,10 @@ class StationMarker: MKMarkerAnnotationView {
                 switch latest.state {
                 case .bikes:
                     self.updateNumber(latest.available.bikes)
-//                    self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
+                    self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
                 case .slots:
                     self.updateNumber(latest.available.slots)
-//                    self.glyphImage = UIImage(named: StationMarker.glyph.docks)
+                    self.glyphImage = UIImage(named: StationMarker.glyph.docks)
                 }
             }).disposed(by: disposeBag)
     }
