@@ -20,9 +20,28 @@ class MapViewModel {
     static let sharedInstance = MapViewModel()
     var mapView: MKMapView?
     let bikesOrSlots: BehaviorSubject<BikesOrSlots>
+    let disposeBag = DisposeBag()
+    var mapViewController: MapViewController? {
+        didSet {
+            if let mapViewController = mapViewController {
+                mapViewController.bikesDocksControl.rx.selectedSegmentIndex.subscribe(onNext: { (segmentIndex) in
+                    switch segmentIndex {
+                    case 0:
+                        self.bikesOrSlots.onNext(.bikes)
+                    case 1:
+                        self.bikesOrSlots.onNext(.slots)
+                    default:
+                        return
+                    }
+                }).disposed(by: disposeBag)                
+            }
+            
+        }
+    }
     
     init() {
         self.bikesOrSlots = BehaviorSubject<BikesOrSlots>(value: .bikes)
+        
     }
     
     func display(_ stations: [Station]) {

@@ -8,10 +8,14 @@
 
 import UIKit
 import MapKit
+import RxCocoa
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var bikesDocksControl: UISegmentedControl!
+    
     let locationManager: CLLocationManager = CLLocationManager()
     let mapDelegate = MapDelgate()
     
@@ -22,8 +26,8 @@ class MapViewController: UIViewController {
         self.mapView.delegate = self.mapDelegate
         
         MapViewModel.sharedInstance.mapView = self.mapView
+        MapViewModel.sharedInstance.mapViewController = self
         let _ = StationManager.sharedInstance
-        
         
         
     }
