@@ -92,6 +92,7 @@ class StationMarker: MKMarkerAnnotationView {
     
     let currentNumber = BehaviorSubject<String>(value: "0")
     
+    let unsubscribeNumber = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     
     init(station: StationAnnotation,
@@ -99,7 +100,7 @@ class StationMarker: MKMarkerAnnotationView {
          stateSub: BehaviorSubject<BikesOrSlots>) {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
-        
+                
         Observable.combineLatest(stateSub, numAvailable){(state: $0, available: $1)}
             .subscribe(onNext: { (latest) in
                 switch latest.state {

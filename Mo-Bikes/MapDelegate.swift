@@ -28,7 +28,8 @@ class MapDelgate: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view is StationMarker {
             let marker = view as! StationMarker
-            marker.currentNumber.subscribe(onNext: { marker.glyphText = $0 })
+            marker.currentNumber.takeUntil(marker.unsubscribeNumber)
+                .subscribe(onNext: { marker.glyphText = $0 })
             .disposed(by: disposeBag)
         }
     }
@@ -36,6 +37,7 @@ class MapDelgate: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view is StationMarker {
             let marker = view as! StationMarker
+            marker.unsubscribeNumber.onNext(()) // "()" passes Void
             marker.glyphText = nil
         }
     }
