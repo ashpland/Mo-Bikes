@@ -35,13 +35,11 @@ class MapViewModel {
                     }
                 }).disposed(by: disposeBag)                
             }
-            
         }
     }
     
     init() {
         self.bikesOrSlots = BehaviorSubject<BikesOrSlots>(value: .bikes)
-        
     }
     
     func display(_ stations: [Station]) {
@@ -60,9 +58,17 @@ class StationAnnotation: NSObject, MKAnnotation {
         self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
         self.numAvailable = Observable.combineLatest(station.availableBikes,
-                                                  station.freeSlots,
-                                                  resultSelector: {(bikes: $0, slots: $1)})
+                                                     station.freeSlots,
+                                                     resultSelector: {(bikes: $0, slots: $1)})
         super.init()
+    }
+}
+
+extension StationAnnotation {
+    func marker() -> StationMarker {
+        return StationMarker(station: self,
+                             numAvailable: self.numAvailable,
+                             stateSub: MapViewModel.sharedInstance.bikesOrSlots)
     }
 }
 
@@ -94,31 +100,22 @@ class StationMarker: MKMarkerAnnotationView {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
         
-        //        stateSub.subscribe(onNext: { (bikesOrSlots) in
-        //            switch bikesOrSlots {
-        //            case .bikes:
-        //                self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
-        //            case .slots:
-        //                self.glyphImage = UIImage(named: StationMarker.glyph.docks)
-        //            }
-        //        }).disposed(by: disposeBag)
-        
-        numAvailable.subscribe(onNext: { (number) in
-            do {
-                switch try stateSub.value() {
+        Observable.combineLatest(stateSub, numAvailable){(state: $0, available: $1)}
+            .subscribe(onNext: { (latest) in
+                switch latest.state {
                 case .bikes:
-                    self.updateMarkerColor(number.bikes)
-                    self.currentNumber.onNext(String(number.bikes))
+                    self.updateNumber(latest.available.bikes)
+//                    self.glyphImage = UIImage(named: StationMarker.glyph.bikes)
                 case .slots:
-                    self.updateMarkerColor(number.slots)
-                    self.currentNumber.onNext(String(number.slots))
+                    self.updateNumber(latest.available.slots)
+//                    self.glyphImage = UIImage(named: StationMarker.glyph.docks)
                 }
-            }
-                
-            catch {
-                print("No value in BikesOrSlots")
-            }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+    }
+    
+    func updateNumber(_ numAvailable: Int) {
+        self.updateMarkerColor(numAvailable)
+        self.currentNumber.onNext(String(numAvailable))
     }
     
     func updateMarkerColor(_ numAvailable: Int) {
@@ -129,19 +126,10 @@ class StationMarker: MKMarkerAnnotationView {
             self.markerTintColor = StationMarker.color.normal
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }
-
-extension StationAnnotation {
-    func marker() -> StationMarker {
-        return StationMarker(station: self,
-                             numAvailable: self.numAvailable,
-                             stateSub: MapViewModel.sharedInstance.bikesOrSlots)
-    }
-}
-
 
 
