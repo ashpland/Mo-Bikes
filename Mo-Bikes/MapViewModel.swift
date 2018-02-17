@@ -59,13 +59,11 @@ extension Array where Element == Station {
     }
 }
 
-
 class StationMarker: MKMarkerAnnotationView {
     
     static let reuseID = "StationAnnotationView"
     static let color = (normal: UIColor.blue, low: UIColor.cyan)
     static let glyph = (bikes: "bikeIcon", docks: "dockIcon")
-    
     
     let currentNumber = BehaviorSubject<String>(value: "0")
     
@@ -102,7 +100,6 @@ class StationMarker: MKMarkerAnnotationView {
                 print("No value in BikesOrSlots")
             }
         }).disposed(by: disposeBag)
-        
     }
     
     func updateMarkerColor(_ numAvailable: Int) {
@@ -113,10 +110,7 @@ class StationMarker: MKMarkerAnnotationView {
             self.markerTintColor = StationMarker.color.normal
         }
     }
-    
-    
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

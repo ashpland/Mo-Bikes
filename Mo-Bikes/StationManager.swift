@@ -24,7 +24,6 @@ class StationManager {
     }
 }
 
-
 final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
     
     let name: String
