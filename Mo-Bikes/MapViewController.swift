@@ -27,9 +27,6 @@ class MapViewController: UIViewController {
         
         MapViewModel.sharedInstance.mapView = self.mapView
         MapViewModel.sharedInstance.mapViewController = self
-        let _ = StationManager.sharedInstance
-        
-        
     }
 
     func setupLocation() {
@@ -46,8 +43,17 @@ class MapViewController: UIViewController {
             print("Can't get current location")
             return
         }
-        self.mapView.region = MKCoordinateRegionMake(currentLocation.coordinate,
-                                                     MKCoordinateSpanMake(0.007, 0.007))
+//        self.mapView.region = MKCoordinateRegionMake(currentLocation.coordinate,
+//                                                     MKCoordinateSpanMake(0.007, 0.007))
+        
+        self.mapView.setRegion(MKCoordinateRegionMake(currentLocation.coordinate,
+                                                      MKCoordinateSpanMake(0.007, 0.007)),
+                               animated: true)
     }
+    
+    @IBAction func compassButtonPressed(_ sender: Any) {
+        self.zoomToCurrent()
+    }
+    
 }
 
