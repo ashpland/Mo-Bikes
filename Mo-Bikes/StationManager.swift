@@ -14,11 +14,13 @@ import RxSwift
 class StationManager {
     static let sharedInstance = StationManager()
     
-    var stations = [Station]()
+    var stations = [String : Station]()
     
     init() {
         NetworkManager.sharedInstance.updateStationData { (stations) in
-            self.stations = stations
+            self.stations = stations.reduce(self.stations, { (dict, station) -> [String : Station] in
+                return dict.merging([station.name : station], uniquingKeysWith: {$1})
+            })
             MapViewModel.sharedInstance.display(stations)
         }
     }
