@@ -18,11 +18,23 @@ class StationManager {
     
     init() {
         NetworkManager.sharedInstance.updateStationData { (stations) in
-            self.stations = stations.reduce(self.stations, { (dict, station) -> [String : Station] in
-                return dict.merging([station.name : station], uniquingKeysWith: {$1})
-            })
+            self.stations = stations.dictionary()
             MapViewModel.sharedInstance.display(stations)
         }
+    }
+    
+    func update(_ stations: [Station]) {
+        self.stations = self.stations.merging(stations.dictionary(),
+                                              uniquingKeysWith: { (currentStation, updatedStation) -> Station in
+                                                if let station = currentStation.sync(updatedStation) {
+                                                    return station
+                                                }
+                                                else {
+                                                    // do something to remove station because it's inactive
+                                                    return currentStation
+                                                }
+                                                
+        })
     }
 }
 
@@ -68,7 +80,7 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
         super.init()
     }
     
-    func sync(update: Station) -> Station? {
+    func sync(_ update: Station) -> Station? {
         guard update.operative != false else { return nil }
         
         do {
@@ -83,3 +95,10 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     }
 }
 
+extension Array where Element == Station {
+    func dictionary() -> [String : Station] {
+        return self.reduce([String : Station](), { (dict, station) -> [String : Station] in
+            return dict.merging([station.name : station], uniquingKeysWith: {$1})
+        })
+    }
+}
