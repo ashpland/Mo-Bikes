@@ -66,34 +66,3 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
         super.init()
     }
 }
-
-
-/*
- NSString *latString = [coordinatesString substringToIndex:9];
- NSString *lonString = [coordinatesString substringFromIndex:(coordinatesString.length - 11)];
-
- 
- */
-
-/*
- "name":"0001 10th & Cambie
- "coordinates":"49.262487, -123.114397"
- "total_slots":52,
- "free_slots":32,
- "avl_bikes":20,
- "operative":true,
- "style":""
-*/
-
-/*
-guard
-    let username = response.url?.lastPathComponent,
-    let representation = representation as? [String: Any],
-    let name = representation["name"] as? String
-    else { return nil }
-
-self.username = username
-self.name = name
-
-
-*/
