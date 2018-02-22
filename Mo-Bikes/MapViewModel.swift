@@ -62,13 +62,11 @@ extension Array where Element == Station {
 
 
 class StationAnnotation: NSObject, MKAnnotation {
-    let station: Station
     let coordinate: CLLocationCoordinate2D
     let numAvailable: Observable<(bikes: Int, slots: Int)>
     let stateSub: BehaviorSubject<BikesOrSlots>
     
     init(_ station: Station, in mapView: MKMapView, with stateSub: BehaviorSubject<BikesOrSlots>) {
-        self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
         self.numAvailable = Observable.combineLatest(station.availableBikes,
                                                      station.freeSlots,
@@ -84,7 +82,6 @@ class StationAnnotation: NSObject, MKAnnotation {
             case true: return
             case false:
                 mapView.removeAnnotation(self)
-                
                 return
             }
         }).disposed(by: DisposeBag())
