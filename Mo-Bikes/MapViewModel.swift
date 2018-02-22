@@ -43,25 +43,24 @@ class MapViewModel {
     
     init() {
         self.bikesOrSlots = BehaviorSubject<BikesOrSlots>(value: .bikes)
+        
     }
     
-    func display(_ stations: [Station]) {
+    func display(_ stations: [Station], in mapView: MKMapView) {
         
-        self.stationAnnotations = stations.map{$0.annotation()}
+        self.stationAnnotations = stations.map{$0.annotation(in: mapView)}
             .reduce([String : StationAnnotation](), { (dict, stationAnnotation) -> [String : StationAnnotation] in
                 return dict.merging([stationAnnotation.station.name : stationAnnotation], uniquingKeysWith: {$1})
             })
         
-        if let mapView = self.mapView {
-            mapView.addAnnotations(self.stationAnnotations.map({$1}))
-            mapView.addAnnotations(self.stationAnnotations.map({$1}))
+        mapView.addAnnotations(self.stationAnnotations.map({$1}))
+        mapView.addAnnotations(self.stationAnnotations.map({$1}))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 50.0, execute: {
+            mapView.removeAnnotations(self.stationAnnotations.map({$1}))
+            mapView.removeAnnotation(StationAnnotation(Station(name: "hey", coordinate: (2,2), totalSlots: 2, freeSlots: 2, availableBikes: 2, operative: true), in: mapView))
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 50.0, execute: {
-                mapView.removeAnnotations(self.stationAnnotations.map({$1}))
-                mapView.removeAnnotation(StationAnnotation(Station(name: "hey", coordinate: (2,2), totalSlots: 2, freeSlots: 2, availableBikes: 2, operative: true)))
-
-            })
-        }
+        })
     }
     
     
@@ -71,14 +70,26 @@ class StationAnnotation: NSObject, MKAnnotation {
     let station: Station
     let coordinate: CLLocationCoordinate2D
     var numAvailable: Observable<(bikes: Int, slots: Int)>
+    let mapView: MKMapView
     
-    init(_ station: Station) {
+    init(_ station: Station, in mapView: MKMapView) {
         self.station = station
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
         self.numAvailable = Observable.combineLatest(station.availableBikes,
                                                      station.freeSlots,
                                                      resultSelector: {(bikes: $0, slots: $1)})
+        self.mapView = mapView
+        
         super.init()
+
+        station.operative.subscribe(onNext: { (operative) in
+            switch operative {
+            case true: return
+            case false:
+                mapView.removeAnnotation(self)
+                return
+            }
+        }).disposed(by: DisposeBag())
     }
 }
 
@@ -91,14 +102,14 @@ extension StationAnnotation {
 }
 
 extension Station {
-    func annotation() -> StationAnnotation {
-        return StationAnnotation(self)
+    func annotation(in mapView: MKMapView) -> StationAnnotation {
+        return StationAnnotation(self, in: mapView)
     }
 }
 
 extension Array where Element == Station {
-    func annotations() -> [StationAnnotation] {
-        return self.map{station in station.annotation()}
+    func annotations(in mapView: MKMapView) -> [StationAnnotation] {
+        return self.map{station in station.annotation(in: mapView)}
     }
 }
 

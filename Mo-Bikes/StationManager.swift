@@ -14,17 +14,16 @@ import RxSwift
 class StationManager {
     static let sharedInstance = StationManager()
     
-    var stations = [String : Station]()
+    var stations = [Station]()
     
     func update(_ stations: [Station]) {
+        let activeStations = stations.filter{$0.getOperative()}
         
-        let activeStations = stations.filter {$0.getOperative()}
-
-        self.stations = self.stations.update(from: activeStations.dictionary(),
-                                             onRemove: {$0.operative.onNext(false)},
-                                             sync: {(existingStation, updateStation) -> Station in
-                                                return existingStation.sync(updateStation)
-        })
+        self.stations =
+            self.stations
+                .dictionary()
+                .update(from: activeStations.dictionary(), onRemove: {$0.operative.onNext(false)}, sync: {return $0.sync($1)})
+                .map({$0.value})
     }
 }
 
@@ -60,14 +59,6 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
             let operative = representation["operative"] as? Bool
             else { return nil }
         
-//        self.name = name
-//        self.coordinate = (lat, lon)
-//        self.totalSlots = totalSlots
-//        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
-//        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
-//        self.operative = operative
-//
-//        super.init()
         
         self.init(name: name,
                   coordinate: (lat, lon),

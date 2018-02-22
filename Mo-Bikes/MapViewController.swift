@@ -30,8 +30,8 @@ class MapViewController: UIViewController {
         
         
         NetworkManager.sharedInstance.updateStationData { (stations) in
-            StationManager.sharedInstance.stations = stations.dictionary()
-            MapViewModel.sharedInstance.display(stations)
+            StationManager.sharedInstance.stations = stations
+            MapViewModel.sharedInstance.display(stations, in: self.mapView)
         }
     }
 
@@ -49,12 +49,11 @@ class MapViewController: UIViewController {
             print("Can't get current location")
             return
         }
-//        self.mapView.region = MKCoordinateRegionMake(currentLocation.coordinate,
-//                                                     MKCoordinateSpanMake(0.007, 0.007))
+
+        let currentRegion = MKCoordinateRegionMake(currentLocation.coordinate,
+                                                   MKCoordinateSpanMake(0.007, 0.007))
         
-        self.mapView.setRegion(MKCoordinateRegionMake(currentLocation.coordinate,
-                                                      MKCoordinateSpanMake(0.007, 0.007)),
-                               animated: true)
+        self.mapView.setRegion(currentRegion ,animated: true)
     }
     
     @IBAction func compassButtonPressed(_ sender: Any) {
