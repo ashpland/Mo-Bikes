@@ -109,7 +109,10 @@ extension Dictionary {
         return Set(self.map({$0.key}))
     }
     
-    func update(from update: Dictionary<Key, Value>, onRemove: (Value) -> Void, sync: (Value, Value) throws -> Value) -> Dictionary<Key, Value> {
+    func update(from update: Dictionary<Key, Value>,
+                onRemove: (Value) -> Void,
+                sync: (Value, Value) throws -> Value) -> Dictionary<Key, Value>
+    {
         let keysToRemove = self.keySet().subtracting(update.keySet())
         var updatedDict = self
         
