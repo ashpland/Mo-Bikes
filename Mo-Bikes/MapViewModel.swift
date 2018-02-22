@@ -17,50 +17,74 @@ enum BikesOrSlots  {
 }
 
 class MapViewModel {
-    static let sharedInstance = MapViewModel()
-    var mapView: MKMapView?
+
     let bikesOrSlots: BehaviorSubject<BikesOrSlots>
     let disposeBag = DisposeBag()
-    var mapViewController: MapViewController? {
-        didSet {
-            if let mapViewController = mapViewController {
-                mapViewController.bikesDocksControl.rx.selectedSegmentIndex.subscribe(onNext: { (segmentIndex) in
-                    switch segmentIndex {
-                    case 0:
-                        self.bikesOrSlots.onNext(.bikes)
-                    case 1:
-                        self.bikesOrSlots.onNext(.slots)
-                    default:
-                        return
-                    }
-                }).disposed(by: disposeBag)                
-            }
-        }
-    }
     
-    init() {
+    init(for mapViewController: MapViewController, with stationManager: StationManager) {
         self.bikesOrSlots = BehaviorSubject<BikesOrSlots>(value: .bikes)
+        
+        mapViewController.bikesDocksControl.rx.selectedSegmentIndex.subscribe(onNext: { (segmentIndex) in
+            switch segmentIndex {
+            case 0:
+                self.bikesOrSlots.onNext(.bikes)
+            case 1:
+                self.bikesOrSlots.onNext(.slots)
+            default:
+                return
+            }
+        }).disposed(by: disposeBag)
+        
+        stationManager.stations.subscribe(onNext: {self.display($0, in: mapViewController.mapView)}).disposed(by: disposeBag)
     }
     
-    func display(_ stations: [Station]) {
-        if let mapView = self.mapView {
-            mapView.addAnnotations(stations.annotations())
+    func display(_ stations: [Station], in mapView: MKMapView) {
+        stations.addAnnotations(to: mapView, with: self.bikesOrSlots)
+    }
+}
+
+extension Station {
+    func annotation(in mapView: MKMapView, with stateSub: BehaviorSubject<BikesOrSlots>) -> StationAnnotation {
+        return StationAnnotation(self, in: mapView, with: stateSub)
+    }
+}
+
+extension Array where Element == Station {
+    func annotations(in mapView: MKMapView, with stateSub: BehaviorSubject<BikesOrSlots>) -> [StationAnnotation] {
+        return self.map{station in station.annotation(in: mapView, with: stateSub)}
+    }
+    
+    func addAnnotations(to mapView: MKMapView, with stateSub: BehaviorSubject<BikesOrSlots>) {
+        let _ = self.map{station in station.annotation(in: mapView, with: stateSub)
         }
     }
 }
 
+
 class StationAnnotation: NSObject, MKAnnotation {
-    let station: Station
     let coordinate: CLLocationCoordinate2D
-    var numAvailable: Observable<(bikes: Int, slots: Int)>
+    let numAvailable: Observable<(bikes: Int, slots: Int)>
+    let stateSub: BehaviorSubject<BikesOrSlots>
     
-    init(_ station: Station) {
-        self.station = station
+    init(_ station: Station, in mapView: MKMapView, with stateSub: BehaviorSubject<BikesOrSlots>) {
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat, longitude: station.coordinate.lon)
         self.numAvailable = Observable.combineLatest(station.availableBikes,
                                                      station.freeSlots,
                                                      resultSelector: {(bikes: $0, slots: $1)})
+        self.stateSub = stateSub
+
         super.init()
+        
+        mapView.addAnnotation(self)
+
+        station.operative.subscribe(onNext: { (operative) in
+            switch operative {
+            case true: return
+            case false:
+                mapView.removeAnnotation(self)
+                return
+            }
+        }).disposed(by: DisposeBag())
     }
 }
 
@@ -68,21 +92,10 @@ extension StationAnnotation {
     func marker() -> StationMarker {
         return StationMarker(station: self,
                              numAvailable: self.numAvailable,
-                             stateSub: MapViewModel.sharedInstance.bikesOrSlots)
+                             stateSub: self.stateSub)
     }
 }
 
-extension Station {
-    func annotation() -> StationAnnotation {
-        return StationAnnotation(self)
-    }
-}
-
-extension Array where Element == Station {
-    func annotations() -> [StationAnnotation] {
-        return self.map{station in station.annotation()}
-    }
-}
 
 class StationMarker: MKMarkerAnnotationView {
     
@@ -102,7 +115,7 @@ class StationMarker: MKMarkerAnnotationView {
          stateSub: BehaviorSubject<BikesOrSlots>) {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
-                
+        
         Observable.combineLatest(stateSub, numAvailable){(state: $0, available: $1)}
             .subscribe(onNext: { (latest) in
                 switch latest.state {

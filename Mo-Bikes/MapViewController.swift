@@ -17,7 +17,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var bikesDocksControl: UISegmentedControl!
     
     let locationManager: CLLocationManager = CLLocationManager()
-    let mapDelegate = MapDelgate()
+    let mapDelegate: MKMapViewDelegate = MapDelgate()
+    var mapViewModel: MapViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,11 @@ class MapViewController: UIViewController {
         
         self.mapView.delegate = self.mapDelegate
         
-        MapViewModel.sharedInstance.mapView = self.mapView
-        MapViewModel.sharedInstance.mapViewController = self
+        mapViewModel = MapViewModel(for: self, with: StationManager.sharedInstance)
+        
+        NetworkManager.sharedInstance.updateStationData { (stations) in
+            StationManager.sharedInstance.update(stations)
+        }
     }
 
     func setupLocation() {
@@ -43,12 +47,11 @@ class MapViewController: UIViewController {
             print("Can't get current location")
             return
         }
-//        self.mapView.region = MKCoordinateRegionMake(currentLocation.coordinate,
-//                                                     MKCoordinateSpanMake(0.007, 0.007))
+
+        let currentRegion = MKCoordinateRegionMake(currentLocation.coordinate,
+                                                   MKCoordinateSpanMake(0.007, 0.007))
         
-        self.mapView.setRegion(MKCoordinateRegionMake(currentLocation.coordinate,
-                                                      MKCoordinateSpanMake(0.007, 0.007)),
-                               animated: true)
+        self.mapView.setRegion(currentRegion ,animated: true)
     }
     
     @IBAction func compassButtonPressed(_ sender: Any) {
