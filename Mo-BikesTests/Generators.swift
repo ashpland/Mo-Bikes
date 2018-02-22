@@ -34,3 +34,15 @@ func generateStation(_ name: String) -> Station {
                    availableBikes: slots.bikes,
                    operative: true)
 }
+
+extension Array where Element: Comparable {
+    func containsSameElements(as other: [Element]) -> Bool {
+        return self.count == other.count && self.sorted() == other.sorted()
+    }
+}
+
+extension Station: Comparable {
+    public static func <(lhs: Station, rhs: Station) -> Bool {
+        return lhs.name < rhs.name
+    }
+}

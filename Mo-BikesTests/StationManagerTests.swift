@@ -63,5 +63,45 @@ class StationManagerTests: XCTestCase {
             }
         }
     }
+    
+    func testSyncStations() {
+        let expectStations = expectation(description: "Station should appear in stations array")
+        
+        var testStations = [Station]()
+        
+        for i in 1...3 {
+            testStations.append(generateStation("Station \(i)"))
+        }
+        
+        let initialStations = Array(testStations[...1])
+        let updatedStations = Array(testStations[1...])
+        
+        stationManager.stations.subscribe(onNext: {
+            stations in
+            
+            switch stations.count {
+            case 0:
+                return
+            default:
+                if stations.containsSameElements(as: initialStations) {
+                    return
+                }
+                
+                XCTAssertFalse(stations.contains(testStations[0]) , "Station 0 should be removed")
+                XCTAssertTrue(stations.contains(testStations[2]) , "Station 2 should be added")
+                XCTAssert(stations.containsSameElements(as: updatedStations), "Updating should make stations array same as updatedStations")
+                expectStations.fulfill()
+            }
+        }).disposed(by: disposeBag)
+        
+        stationManager.update(initialStations)
+        stationManager.update(updatedStations)
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
 }
 
