@@ -27,10 +27,6 @@ class MapViewController: UIViewController {
         self.mapView.delegate = self.mapDelegate
         
         mapViewModel = MapViewModel(for: self, with: StationManager.sharedInstance)
-        
-        NetworkManager.sharedInstance.updateStationData { (stations) in
-            StationManager.sharedInstance.update(stations)
-        }
     }
 
     func setupLocation() {
@@ -56,6 +52,12 @@ class MapViewController: UIViewController {
     
     @IBAction func compassButtonPressed(_ sender: Any) {
         self.zoomToCurrent()
+    }
+    
+    @IBAction func refreshPressed(_ sender: Any) {
+        NetworkManager.sharedInstance.updateStationData { (stations) in
+            StationManager.sharedInstance.update(stations)
+        }
     }
     
 }
