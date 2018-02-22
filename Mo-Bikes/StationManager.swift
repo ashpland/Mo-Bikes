@@ -16,24 +16,14 @@ class StationManager {
     
     var stations = [String : Station]()
     
-    init() {
-        NetworkManager.sharedInstance.updateStationData { (stations) in
-            self.stations = stations.dictionary()
-            MapViewModel.sharedInstance.display(stations)
-        }
-    }
-    
     func update(_ stations: [Station]) {
-        self.stations = self.stations.merging(stations.dictionary(),
-                                              uniquingKeysWith: { (currentStation, updatedStation) -> Station in
-                                                if let station = currentStation.sync(updatedStation) {
-                                                    return station
-                                                }
-                                                else {
-                                                    // do something to remove station because it's inactive
-                                                    return currentStation
-                                                }
-                                                
+        
+        let activeStations = stations.filter {$0.getOperative()}
+
+        self.stations = self.stations.update(from: activeStations.dictionary(),
+                                             onRemove: {$0.operative.onNext(false)},
+                                             sync: {(existingStation, updateStation) -> Station in
+                                                return existingStation.sync(updateStation)
         })
     }
 }
@@ -45,7 +35,7 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     let totalSlots: Int
     let freeSlots: BehaviorSubject<Int>
     let availableBikes: BehaviorSubject<Int>
-    let operative: Bool
+    let operative: BehaviorSubject<Bool>
     
     init(name: String, coordinate: (lat: Double, lon: Double), totalSlots: Int, freeSlots: Int, availableBikes: Int, operative: Bool) {
         self.name = name
@@ -53,12 +43,12 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
         self.totalSlots = totalSlots
         self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
         self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
-        self.operative = operative
+        self.operative = BehaviorSubject<Bool>(value: operative)
         
         super.init()
     }
     
-    required init?(response: HTTPURLResponse, representation: Any) {
+    required convenience init?(response: HTTPURLResponse, representation: Any) {
         guard let representation = representation as? [String: Any],
             let name = representation["name"] as? String,
             let coord = representation["coordinates"] as? String,
@@ -70,28 +60,43 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
             let operative = representation["operative"] as? Bool
             else { return nil }
         
-        self.name = name
-        self.coordinate = (lat, lon)
-        self.totalSlots = totalSlots
-        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
-        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
-        self.operative = operative
+//        self.name = name
+//        self.coordinate = (lat, lon)
+//        self.totalSlots = totalSlots
+//        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
+//        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
+//        self.operative = operative
+//
+//        super.init()
         
-        super.init()
+        self.init(name: name,
+                  coordinate: (lat, lon),
+                  totalSlots: totalSlots,
+                  freeSlots: freeSlots,
+                  availableBikes: availableBikes,
+                  operative: operative)
     }
     
-    func sync(_ update: Station) -> Station? {
-        guard update.operative != false else { return nil }
-        
+    func sync(_ update: Station) -> Station {
         do {
             let updateBikes = try update.availableBikes.value()
             self.freeSlots.onNext(updateBikes)
             let updateSlots = try update.freeSlots.value()
             self.freeSlots.onNext(updateSlots)
         }
-        catch { return nil }
+        catch { print("Could not update station data for \(self.name)") }
         
         return self
+    }
+    
+    func getOperative() -> Bool {
+        do {
+            return try self.operative.value()
+        }
+        catch {
+            print("Can't get current operative value for station \(self.name)")
+        }
+        return false
     }
 }
 
@@ -100,5 +105,31 @@ extension Array where Element == Station {
         return self.reduce([String : Station](), { (dict, station) -> [String : Station] in
             return dict.merging([station.name : station], uniquingKeysWith: {$1})
         })
+    }
+}
+
+extension Dictionary {
+    func keySet() -> Set<Key> {
+        return Set(self.map({$0.key}))
+    }
+    
+    func update(from update: Dictionary<Key, Value>, onRemove: (Value) -> Void, sync: (Value, Value) throws -> Value) -> Dictionary<Key, Value> {
+        let keysToRemove = self.keySet().subtracting(update.keySet())
+        var updatedDict = self
+        
+        for key in keysToRemove {
+            if let removeValue = updatedDict.removeValue(forKey: key) {
+                onRemove(removeValue)
+            }
+        }
+        
+        do {
+            try updatedDict.merge(update, uniquingKeysWith: sync)
+        }
+        catch {
+            print("Could not merge dictionaries")
+        }
+        
+        return updatedDict
     }
 }

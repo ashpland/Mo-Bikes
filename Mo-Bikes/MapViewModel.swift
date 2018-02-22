@@ -18,6 +18,9 @@ enum BikesOrSlots  {
 
 class MapViewModel {
     static let sharedInstance = MapViewModel()
+    
+    var stationAnnotations = [String : StationAnnotation]()
+    
     var mapView: MKMapView?
     let bikesOrSlots: BehaviorSubject<BikesOrSlots>
     let disposeBag = DisposeBag()
@@ -43,10 +46,25 @@ class MapViewModel {
     }
     
     func display(_ stations: [Station]) {
+        
+        self.stationAnnotations = stations.map{$0.annotation()}
+            .reduce([String : StationAnnotation](), { (dict, stationAnnotation) -> [String : StationAnnotation] in
+                return dict.merging([stationAnnotation.station.name : stationAnnotation], uniquingKeysWith: {$1})
+            })
+        
         if let mapView = self.mapView {
-            mapView.addAnnotations(stations.annotations())
+            mapView.addAnnotations(self.stationAnnotations.map({$1}))
+            mapView.addAnnotations(self.stationAnnotations.map({$1}))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 50.0, execute: {
+                mapView.removeAnnotations(self.stationAnnotations.map({$1}))
+                mapView.removeAnnotation(StationAnnotation(Station(name: "hey", coordinate: (2,2), totalSlots: 2, freeSlots: 2, availableBikes: 2, operative: true)))
+
+            })
         }
     }
+    
+    
 }
 
 class StationAnnotation: NSObject, MKAnnotation {
@@ -102,7 +120,7 @@ class StationMarker: MKMarkerAnnotationView {
          stateSub: BehaviorSubject<BikesOrSlots>) {
         
         super.init(annotation: station, reuseIdentifier: StationMarker.reuseID)
-                
+        
         Observable.combineLatest(stateSub, numAvailable){(state: $0, available: $1)}
             .subscribe(onNext: { (latest) in
                 switch latest.state {

@@ -27,6 +27,12 @@ class MapViewController: UIViewController {
         
         MapViewModel.sharedInstance.mapView = self.mapView
         MapViewModel.sharedInstance.mapViewController = self
+        
+        
+        NetworkManager.sharedInstance.updateStationData { (stations) in
+            StationManager.sharedInstance.stations = stations.dictionary()
+            MapViewModel.sharedInstance.display(stations)
+        }
     }
 
     func setupLocation() {
