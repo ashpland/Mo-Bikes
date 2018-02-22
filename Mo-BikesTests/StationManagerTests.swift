@@ -79,24 +79,18 @@ class StationManagerTests: XCTestCase {
         stationManager.stations.subscribe(onNext: {
             stations in
             
-            switch stations.count {
-            case 0:
-                return
-            default:
-                if stations.containsSameElements(as: initialStations) {
-                    return
-                }
-                
-                XCTAssertFalse(stations.contains(testStations[0]) , "Station 0 should be removed")
-                XCTAssertTrue(stations.contains(testStations[2]) , "Station 2 should be added")
-                XCTAssert(stations.containsSameElements(as: updatedStations), "Updating should make stations array same as updatedStations")
-                expectStations.fulfill()
-            }
+            guard stations.count != 0 && !stations.containsSameElements(as: initialStations) else { return }
+            
+            XCTAssertFalse(stations.contains(testStations[0]) , "Station 0 should be removed")
+            XCTAssertTrue(stations.contains(testStations[2]) , "Station 2 should be added")
+            XCTAssert(stations.containsSameElements(as: updatedStations), "Updating should make stations array same as updatedStations")
+            expectStations.fulfill()
+            
         }).disposed(by: disposeBag)
         
         stationManager.update(initialStations)
         stationManager.update(updatedStations)
-
+        
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
