@@ -17,7 +17,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var bikesDocksControl: UISegmentedControl!
     
     let locationManager: CLLocationManager = CLLocationManager()
-    let mapDelegate = MapDelgate()
+    let mapDelegate: MKMapViewDelegate = MapDelgate()
+    var mapViewModel: MapViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,10 @@ class MapViewController: UIViewController {
         
         self.mapView.delegate = self.mapDelegate
         
-        MapViewModel.sharedInstance.mapView = self.mapView
-        MapViewModel.sharedInstance.mapViewController = self
-        
+        mapViewModel = MapViewModel(for: self, with: StationManager.sharedInstance)
         
         NetworkManager.sharedInstance.updateStationData { (stations) in
-            StationManager.sharedInstance.stations = stations
-            MapViewModel.sharedInstance.display(stations, in: self.mapView)
+            StationManager.sharedInstance.update(stations)
         }
     }
 

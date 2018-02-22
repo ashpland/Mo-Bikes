@@ -14,16 +14,21 @@ import RxSwift
 class StationManager {
     static let sharedInstance = StationManager()
     
-    var stations = [Station]()
+    let stations = BehaviorSubject<Array<Station>>(value: [Station]())
     
     func update(_ stations: [Station]) {
         let activeStations = stations.filter{$0.getOperative()}
-        
-        self.stations =
-            self.stations
+        do {
+            let updatedStations = try self.stations.value()
                 .dictionary()
                 .update(from: activeStations.dictionary(), onRemove: {$0.operative.onNext(false)}, sync: {return $0.sync($1)})
                 .map({$0.value})
+            
+            self.stations.onNext(updatedStations)
+        }
+        catch {
+            print("Could not get current value of stations array")
+        }
     }
 }
 
