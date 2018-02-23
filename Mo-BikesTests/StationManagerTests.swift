@@ -66,6 +66,7 @@ class StationManagerTests: XCTestCase {
     
     func testSyncStations() {
         let expectStations = expectation(description: "Station should appear in stations array")
+        let expectOperationalFalse = expectation(description: "Removed station should set Operational to False")
         
         var testStations = [Station]()
         
@@ -75,6 +76,18 @@ class StationManagerTests: XCTestCase {
         
         let initialStations = Array(testStations[...1])
         let updatedStations = Array(testStations[1...])
+        
+        testStations[0].operative.subscribe(onNext: {
+            operative in
+            switch operative {
+            case true:
+                return
+            case false:
+                XCTAssertFalse(operative, "Station 0 should set operative to false on removal")
+                expectOperationalFalse.fulfill()
+            }
+            
+        }).disposed(by: disposeBag)
         
         stationManager.stations.subscribe(onNext: {
             stations in

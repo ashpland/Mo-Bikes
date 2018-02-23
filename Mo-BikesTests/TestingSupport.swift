@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 @testable import Mo_Bikes
 
 
@@ -44,5 +45,11 @@ extension Array where Element: Comparable {
 extension Station: Comparable {
     public static func <(lhs: Station, rhs: Station) -> Bool {
         return lhs.name < rhs.name
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
