@@ -68,11 +68,10 @@ class MapViewModelTests: XCTestCase {
     }
     
     func testDisplayMarker() {
-        
-        mapView.region
-        
+                
         print(mapView.region.center)
         print(mapView.region.span)
+        
         
         // stations coordinates needs to be in visible bounds of mapview. Can you set mapview to whole map?
         

@@ -17,6 +17,14 @@ func generateLatLon() -> (lat: Double, lon: Double) {
     return (lat, lon)
 }
 
+func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
+    let latMax = UInt32(region.span.latitudeDelta * 1000000)
+    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
+    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
+    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
+    return (lat, lon)
+}
+
 func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     let uTotal = arc4random_uniform(99) + 1
     let total = Int(uTotal)
