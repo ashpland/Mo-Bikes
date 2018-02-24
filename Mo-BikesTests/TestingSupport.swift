@@ -34,10 +34,19 @@ func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     return (total, bikes, slots)
 }
 
-func generateStation(_ name: String) -> Station {
+func generateStation(_ name: String, in region: MKCoordinateRegion?) -> Station {
     let slots = generateSlots()
+    
+    let coordinate: (Double, Double)
+    if let region = region {
+        coordinate = generateLatLon(in: region)
+    }
+    else {
+        coordinate = generateLatLon()
+    }
+    
     return Station(name: name,
-                   coordinate: generateLatLon(),
+                   coordinate: coordinate,
                    totalSlots: slots.total,
                    freeSlots: slots.free,
                    availableBikes: slots.bikes,

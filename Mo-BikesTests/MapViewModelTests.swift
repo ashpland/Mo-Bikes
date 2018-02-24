@@ -56,7 +56,7 @@ class MapViewModelTests: XCTestCase {
     
     func testDisplayStation() {
         
-        let testStation = generateStation("Test Station")
+        let testStation = generateStation("Test Station", in: mapView.region)
         
         mapViewModel.display([testStation], in: mapView)
         
@@ -68,20 +68,26 @@ class MapViewModelTests: XCTestCase {
     }
     
     func testDisplayMarker() {
-                
-        print(mapView.region.center)
-        print(mapView.region.span)
+        let expectMarker = expectation(description: "Marker should display for Station")
+
+        let testStation = generateStation("Test Station", in: mapView.region)
         
-        
-        // stations coordinates needs to be in visible bounds of mapview. Can you set mapview to whole map?
-        
-        let testStation = generateStation("Test Station")
+        print(testStation.coordinate)
+        print(mapView.region)
         
         mapViewModel.display([testStation], in: mapView)
         
-        let annotationContainerView = mapView.subviews[0].subviews[2]
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            let annotationContainerView = self.mapView.subviews[0].subviews[2]
+            XCTAssertTrue(annotationContainerView.subviews.count > 0)
+            expectMarker.fulfill()
+        })
         
-        XCTAssertTrue(annotationContainerView.subviews.count > 0)
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
     }
 }
 

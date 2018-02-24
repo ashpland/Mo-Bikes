@@ -39,7 +39,7 @@ class StationManagerTests: XCTestCase {
         
         let expectStation = expectation(description: "Station should appear in stations array")
         
-        let testStation = generateStation("Test Station")
+        let testStation = generateStation("Test Station", in: nil)
         
         stationManager.stations.subscribe(onNext: {
             stations in
@@ -71,7 +71,7 @@ class StationManagerTests: XCTestCase {
         var testStations = [Station]()
         
         for i in 1...3 {
-            testStations.append(generateStation("Station \(i)"))
+            testStations.append(generateStation("Station \(i)", in: nil))
         }
         
         let initialStations = Array(testStations[...1])
