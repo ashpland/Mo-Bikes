@@ -45,7 +45,7 @@ class MapViewModelTests: XCTestCase {
         stationManager.stations.subscribe(onNext: {
             stations in
             for station in stations {
-                station.operative.onNext(false)
+                station.operative.accept(false)
             }
         }).disposed(by: disposeBag)
         
@@ -115,15 +115,9 @@ class MapViewModelTests: XCTestCase {
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     if let firstNumber = firstMarker.glyphText {
-                        
-                        do {
-                            let testNumber = try testStation.availableBikes.value()
-                            XCTAssertEqual(firstNumber, String(testNumber))
-                            expectValue.fulfill()
-                        }
-                        catch {
-                            XCTAssert(false, "Unable to retrieve available bikes value from testStation")
-                        }
+                        let testNumber = testStation.availableBikes.value
+                        XCTAssertEqual(firstNumber, String(testNumber))
+                        expectValue.fulfill()
                     }
                 })
             }
