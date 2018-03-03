@@ -14,7 +14,11 @@ import RxSwift
 class StationManager {
     static let sharedInstance = StationManager()
     
-    let stations = BehaviorSubject<Array<Station>>(value: [Station]())
+    let stations: BehaviorSubject<Array<Station>>
+    
+    init() {
+        self.stations = BehaviorSubject<Array<Station>>(value: [Station]())
+    }
     
     func update(_ stations: [Station]) {
         let activeStations = stations.filter{$0.getOperative()}
