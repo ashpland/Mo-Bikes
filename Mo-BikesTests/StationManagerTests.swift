@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+import RxCocoa
 @testable import Mo_Bikes
 
 class StationManagerTests: XCTestCase {
@@ -27,7 +28,7 @@ class StationManagerTests: XCTestCase {
         stationManager.stations.subscribe(onNext: {
             stations in
             for station in stations {
-                station.operative.onNext(false)
+                station.operative.accept(false)
             }
         }).disposed(by: disposeBag)
         

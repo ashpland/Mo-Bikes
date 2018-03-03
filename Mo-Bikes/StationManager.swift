@@ -10,29 +10,27 @@ import Foundation
 import MapKit
 import Alamofire
 import RxSwift
+import RxCocoa
 
 class StationManager {
     static let sharedInstance = StationManager()
     
-    let stations: BehaviorSubject<Array<Station>>
+    let stations: BehaviorRelay<Array<Station>>
     
     init() {
-        self.stations = BehaviorSubject<Array<Station>>(value: [Station]())
+        self.stations = BehaviorRelay<Array<Station>>(value: [Station]())
     }
     
     func update(_ stations: [Station]) {
-        let activeStations = stations.filter{$0.getOperative()}
-        do {
-            let updatedStations = try self.stations.value()
-                .dictionary()
-                .update(from: activeStations.dictionary(), onRemove: {$0.operative.onNext(false)}, sync: {return $0.sync($1)})
-                .map({$0.value})
-            
-            self.stations.onNext(updatedStations)
-        }
-        catch {
-            print("Could not get current value of stations array")
-        }
+        let activeStations = stations.filter{$0.operative.value}
+        let updatedStations = self.stations.value
+            .dictionary()
+            .update(from: activeStations.dictionary(),
+                    onRemove: {$0.operative.accept(false)},
+                    sync: {return $0.update(from: $1)})
+            .map({$0.value})
+        
+        self.stations.accept(updatedStations)
     }
 }
 
@@ -41,17 +39,22 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     let name: String
     let coordinate: (lat: Double, lon: Double)
     let totalSlots: Int
-    let freeSlots: BehaviorSubject<Int>
-    let availableBikes: BehaviorSubject<Int>
-    let operative: BehaviorSubject<Bool>
+    let freeSlots: BehaviorRelay<Int>
+    let availableBikes: BehaviorRelay<Int>
+    let operative: BehaviorRelay<Bool>
     
-    init(name: String, coordinate: (lat: Double, lon: Double), totalSlots: Int, freeSlots: Int, availableBikes: Int, operative: Bool) {
+    init(name: String,
+         coordinate: (lat: Double, lon: Double),
+         totalSlots: Int,
+         freeSlots: Int,
+         availableBikes: Int,
+         operative: Bool) {
         self.name = name
         self.coordinate = coordinate
         self.totalSlots = totalSlots
-        self.freeSlots = BehaviorSubject<Int>(value: freeSlots)
-        self.availableBikes = BehaviorSubject<Int>(value: availableBikes)
-        self.operative = BehaviorSubject<Bool>(value: operative)
+        self.freeSlots = BehaviorRelay<Int>(value: freeSlots)
+        self.availableBikes = BehaviorRelay<Int>(value: availableBikes)
+        self.operative = BehaviorRelay<Bool>(value: operative)
         
         super.init()
     }
@@ -77,26 +80,10 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
                   operative: operative)
     }
     
-    func sync(_ update: Station) -> Station {
-        do {
-            let updateBikes = try update.availableBikes.value()
-            self.freeSlots.onNext(updateBikes)
-            let updateSlots = try update.freeSlots.value()
-            self.freeSlots.onNext(updateSlots)
-        }
-        catch { print("Could not update station data for \(self.name)") }
-        
+    func update(from newStation: Station) -> Station {
+        self.freeSlots.accept(newStation.availableBikes.value)
+        self.freeSlots.accept(newStation.freeSlots.value)
         return self
-    }
-    
-    func getOperative() -> Bool {
-        do {
-            return try self.operative.value()
-        }
-        catch {
-            print("Can't get current operative value for station \(self.name)")
-        }
-        return false
     }
 }
 
