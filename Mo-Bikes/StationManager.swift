@@ -38,8 +38,8 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     
     let name: String
     let coordinate: (lat: Double, lon: Double)
-    let totalSlots: Int
-    let freeSlots: BehaviorRelay<Int>
+    let totalDocks: Int
+    let availableDocks: BehaviorRelay<Int>
     let availableBikes: BehaviorRelay<Int>
     let operative: BehaviorRelay<Bool>
     
@@ -51,8 +51,8 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
          operative: Bool) {
         self.name = name
         self.coordinate = coordinate
-        self.totalSlots = totalSlots
-        self.freeSlots = BehaviorRelay<Int>(value: freeSlots)
+        self.totalDocks = totalSlots
+        self.availableDocks = BehaviorRelay<Int>(value: freeSlots)
         self.availableBikes = BehaviorRelay<Int>(value: availableBikes)
         self.operative = BehaviorRelay<Bool>(value: operative)
         
@@ -81,8 +81,8 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
     }
     
     func update(from newStation: Station) -> Station {
-        self.freeSlots.accept(newStation.availableBikes.value)
-        self.freeSlots.accept(newStation.freeSlots.value)
+        self.availableDocks.accept(newStation.availableBikes.value)
+        self.availableDocks.accept(newStation.availableDocks.value)
         return self
     }
 }

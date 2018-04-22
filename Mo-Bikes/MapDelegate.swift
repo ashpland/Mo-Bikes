@@ -16,28 +16,21 @@ class MapDelgate: NSObject, MKMapViewDelegate {
     let disposeBag = DisposeBag()
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is StationAnnotation {
-            let station = annotation as! StationAnnotation
+        if let station = annotation as? StationAnnotation {
             return station.marker()
         }
         return nil
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if view is StationMarker {
-            let marker = view as! StationMarker
-            marker.currentNumber
-                .takeUntil(marker.unsubscribeNumber)
-                .subscribe(onNext: { marker.glyphText = $0 })
-            .disposed(by: disposeBag)
+        if let marker = view as? StationMarker {
+            marker.currentlySelected.onNext(true)
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if view is StationMarker {
-            let marker = view as! StationMarker
-            marker.unsubscribeNumber.onNext(()) // "()" passes Void
-            marker.glyphText = nil
+        if let marker = view as? StationMarker {
+            marker.currentlySelected.onNext(false)
         }
     }
 }
