@@ -59,7 +59,11 @@ extension Array where Element: Comparable {
     }
 }
 
-extension Station: Comparable {
+extension Station: Equatable, Comparable {
+    public static func == (lhs: Station, rhs: Station) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     public static func <(lhs: Station, rhs: Station) -> Bool {
         return lhs.name < rhs.name
     }
@@ -68,5 +72,15 @@ extension Station: Comparable {
 extension CLLocationCoordinate2D: Equatable {
     public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
+class FakeMapView: MKMapView {
+    override func addAnnotation(_ annotation: MKAnnotation) {
+        
+    }
+    
+    override func removeAnnotation(_ annotation: MKAnnotation) {
+        
     }
 }

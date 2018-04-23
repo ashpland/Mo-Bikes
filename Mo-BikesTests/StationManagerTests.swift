@@ -9,107 +9,62 @@
 import XCTest
 import RxSwift
 import RxCocoa
+import RxTest
 @testable import Mo_Bikes
 
 class StationManagerTests: XCTestCase {
     
     var stationManager: StationManager!
-    let disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
-        
         stationManager = StationManager()
-        
     }
     
     override func tearDown() {
-        
-        stationManager.stations.subscribe(onNext: {
-            stations in
-            for station in stations {
-                station.operative.accept(false)
-            }
-        }).disposed(by: disposeBag)
-        
-        
         super.tearDown()
     }
     
-    func testAddStation() {
-        
-        let expectStation = expectation(description: "Station should appear in stations array")
-        
+    func testSameStationsEqual() {
         let testStation = generateStation("Test Station", in: nil)
-        
-        stationManager.stations.subscribe(onNext: {
-            stations in
-            
-            switch stations.count {
-            case 0:
-                return
-            default:
-                if let firstStation = stations.first {
-                    XCTAssertEqual(testStation, firstStation, "Stations should be equal")
-                    expectStation.fulfill()
-                }
-            }
-        }).disposed(by: disposeBag)
-        
-        stationManager.update([testStation])
-        
-        waitForExpectations(timeout: 1) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
+        XCTAssertEqual(testStation, testStation)
     }
     
+    func testDifferentStationsNotEqual() {
+        let testStation0 = generateStation("Test Station 0", in: nil)
+        let testStation1 = generateStation("Test Station 1", in: nil)
+        XCTAssertNotEqual(testStation0, testStation1)
+    }
+    
+    func testAddStation() {
+        let testStation = generateStation("Test Station", in: nil)
+        stationManager.update([testStation])
+        if let resultStation = stationManager.stations.value.first {
+            XCTAssertEqual(testStation, resultStation)
+        }
+    }
+
     func testSyncStations() {
-        let expectStations = expectation(description: "Station should appear in stations array")
-        let expectOperationalFalse = expectation(description: "Removed station should set Operational to False")
-        
         var testStations = [Station]()
-        
-        for i in 1...3 {
+
+        for i in 0...2 {
             testStations.append(generateStation("Station \(i)", in: nil))
         }
-        
+
         let initialStations = Array(testStations[...1])
         let updatedStations = Array(testStations[1...])
-        
-        testStations[0].operative.subscribe(onNext: {
-            operative in
-            switch operative {
-            case true:
-                return
-            case false:
-                XCTAssertFalse(operative, "Station 0 should set operative to false on removal")
-                expectOperationalFalse.fulfill()
-            }
-            
-        }).disposed(by: disposeBag)
-        
-        stationManager.stations.subscribe(onNext: {
-            stations in
-            
-            guard stations.count != 0 && !stations.containsSameElements(as: initialStations) else { return }
-            
-            XCTAssertFalse(stations.contains(testStations[0]) , "Station 0 should be removed")
-            XCTAssertTrue(stations.contains(testStations[2]) , "Station 2 should be added")
-            XCTAssert(stations.containsSameElements(as: updatedStations), "Updating should make stations array same as updatedStations")
-            expectStations.fulfill()
-            
-        }).disposed(by: disposeBag)
-        
+
         stationManager.update(initialStations)
         stationManager.update(updatedStations)
         
-        waitForExpectations(timeout: 1) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
+        XCTAssertFalse(testStations[0].operative.value,
+                       "Station 0 should set operative to false on removal")
+
+        let stations = stationManager.stations.value
+        
+        XCTAssertFalse(stations.contains(testStations[0]) , "Station 0 should be removed")
+        XCTAssertTrue(stations.contains(testStations[2]) , "Station 2 should be added")
+        XCTAssert(stations.containsSameElements(as: updatedStations), "Updating should make stations array same as updatedStations")
     }
 }
 
