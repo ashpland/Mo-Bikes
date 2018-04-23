@@ -26,29 +26,39 @@ class StationManagerTests: XCTestCase {
     }
     
     func testSameStationsEqual() {
-        let testStation = generateStation("Test Station", in: nil)
-        XCTAssertEqual(testStation, testStation)
+        let testStation0 = generateStation("Test Station")
+        let testStation1 = generateStation("Test Station")
+        XCTAssertEqual(testStation0, testStation1)
     }
     
     func testDifferentStationsNotEqual() {
-        let testStation0 = generateStation("Test Station 0", in: nil)
-        let testStation1 = generateStation("Test Station 1", in: nil)
+        let testStation0 = generateStation("Test Station 0")
+        let testStation1 = generateStation("Test Station 1")
         XCTAssertNotEqual(testStation0, testStation1)
     }
     
     func testAddStation() {
-        let testStation = generateStation("Test Station", in: nil)
+        let testStation = generateStation("Test Station")
         stationManager.update([testStation])
         if let resultStation = stationManager.stations.value.first {
             XCTAssertEqual(testStation, resultStation)
         }
+    }
+    
+    func testUpdateStation() {
+        let originalStation = generateStation("Test Station")
+        let newValue = originalStation.availableBikes.value + 1
+        let updatedStation = originalStation
+        updatedStation.availableBikes.accept(newValue)
+        _ = originalStation.update(from: updatedStation)
+        XCTAssertEqual(originalStation.availableBikes.value, newValue)
     }
 
     func testSyncStations() {
         var testStations = [Station]()
 
         for i in 0...2 {
-            testStations.append(generateStation("Station \(i)", in: nil))
+            testStations.append(generateStation("Station \(i)"))
         }
 
         let initialStations = Array(testStations[...1])

@@ -17,13 +17,13 @@ func generateLatLon() -> (lat: Double, lon: Double) {
     return (lat, lon)
 }
 
-func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
-    let latMax = UInt32(region.span.latitudeDelta * 1000000)
-    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
-    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
-    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
-    return (lat, lon)
-}
+//func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
+//    let latMax = UInt32(region.span.latitudeDelta * 1000000)
+//    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
+//    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
+//    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
+//    return (lat, lon)
+//}
 
 func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     let uTotal = arc4random_uniform(99) + 1
@@ -34,16 +34,10 @@ func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     return (total, bikes, slots)
 }
 
-func generateStation(_ name: String, in region: MKCoordinateRegion?) -> Station {
+func generateStation(_ name: String) -> Station {
     let slots = generateSlots()
     
-    let coordinate: (Double, Double)
-    if let region = region {
-        coordinate = generateLatLon(in: region)
-    }
-    else {
-        coordinate = generateLatLon()
-    }
+    let coordinate = generateLatLon()
     
     return Station(name: name,
                    coordinate: coordinate,
@@ -76,11 +70,16 @@ extension CLLocationCoordinate2D: Equatable {
 }
 
 class FakeMapView: MKMapView {
+    
+    var annotationHolder = [MKAnnotation]()
+    
     override func addAnnotation(_ annotation: MKAnnotation) {
-        
+        annotationHolder.append(annotation)
     }
     
     override func removeAnnotation(_ annotation: MKAnnotation) {
-        
+        if let index = annotations.index(where: { $0.coordinate == annotation.coordinate } ) {
+            annotationHolder.remove(at: index)            
+        }
     }
 }

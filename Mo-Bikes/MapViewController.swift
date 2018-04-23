@@ -8,17 +8,19 @@
 
 import UIKit
 import MapKit
+import RxSwift
 import RxCocoa
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var bikesDocksControl: UISegmentedControl!
     
     let locationManager: CLLocationManager = CLLocationManager()
     let mapDelegate: MKMapViewDelegate = MapDelgate()
-    var mapViewModel: MapViewModel?
+    var mapViewModel: MapViewModel!
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,11 @@ class MapViewController: UIViewController {
         
         self.mapView.delegate = self.mapDelegate
         
-        mapViewModel = MapViewModel(for: self, with: StationManager.sharedInstance)
+        mapViewModel = MapViewModel(StationManager.sharedInstance)
+        
+        setupRx()
     }
-
+    
     func setupLocation() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.requestWhenInUseAuthorization()
@@ -43,11 +47,26 @@ class MapViewController: UIViewController {
             print("Can't get current location")
             return
         }
-
+        
         let currentRegion = MKCoordinateRegionMake(currentLocation.coordinate,
                                                    MKCoordinateSpanMake(0.007, 0.007))
         
         self.mapView.setRegion(currentRegion ,animated: true)
+    }
+    
+    func setupRx() {
+        bikesDocksControl.rx.selectedSegmentIndex
+            .map { return $0 == 0 ? .bikes : .docks }
+            .bind(to: mapViewModel.bikesOrDocks)
+            .disposed(by: disposeBag)
+        
+        mapViewModel.stationAnnotations
+            .subscribe(onNext: { self.mapView.addAnnotations($0) } )
+            .disposed(by: disposeBag)
+        
+        mapViewModel.removeAnnotations
+            .subscribe(onNext: { self.mapView.removeAnnotation($0) } )
+            .disposed(by: disposeBag)
     }
     
     @IBAction func compassButtonPressed(_ sender: Any) {

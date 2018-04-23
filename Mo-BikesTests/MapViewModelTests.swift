@@ -8,137 +8,54 @@
 
 import XCTest
 import RxSwift
+import RxTest
+import RxBlocking
 import MapKit
 @testable import Mo_Bikes
 
 class MapViewModelTests: XCTestCase {
     
     var stationManager: StationManager!
-    var mapViewController: MapViewController!
     var mapViewModel: MapViewModel!
-    var mapView: MKMapView!
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         
-        continueAfterFailure = false
-        
         stationManager = StationManager()
-        
-        let storyboard = UIStoryboard(name: "MapView",
-                                      bundle: Bundle.main)
-        mapViewController = storyboard.instantiateInitialViewController() as! MapViewController
-        
-        UIApplication.shared.keyWindow?.rootViewController = mapViewController
-        
-        XCTAssertNotNil(mapViewController.view)
-        
-        mapView = mapViewController.mapView        
-        
-        mapViewModel = MapViewModel(for: mapViewController, with: stationManager)
-        
+        mapViewModel = MapViewModel(stationManager)
     }
     
     override func tearDown() {
-        
-        stationManager.stations.subscribe(onNext: {
-            stations in
-            for station in stations {
-                station.operative.accept(false)
-            }
-        }).disposed(by: disposeBag)
-        
-        
+        disposeBag = DisposeBag()
         super.tearDown()
     }
     
-    func testDisplayStation() {
+    func testCreateStationAnnotation() {
+        let expect = expectation(description: "Recieve first stationAnnotation")
+        let testStation = generateStation("Test Station")
         
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        let testAnnotation = testStation.annotation(in: mapView, with: mapViewModel.bikesOrSlots)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        if let firstAnnotation = mapView.annotations.first as? StationAnnotation {
-            XCTAssertEqual(firstAnnotation, testAnnotation, "Adding annotation to mapView with display(_ in:) should produce same annotation")
-        }
-    }
-    
-    func testDisplayMarker() {
-        let expectMarker = expectation(description: "Marker should display for Station")
-
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            let stationMarkerCount = self.mapView.subviews[0].subviews[2].subviews
-                .filter{$0 is StationMarker}
-                .count
-            XCTAssertTrue(stationMarkerCount == 1)
-            expectMarker.fulfill()
-        })
-        
-        waitForExpectations(timeout: 2) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-    }
-    
-    
-    
-    
-    // Replace this test with UITest
-    func testStationValues() {
-        
-        let expectValue = expectation(description: "Marker should display number of bikes")
-        
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            let annotationContainerView = self.mapView.subviews[0].subviews[2]
-            let markerArray = annotationContainerView.subviews.filter({ (view) -> Bool in
-                view is StationMarker
+        mapViewModel.stationAnnotations
+            .subscribe(onNext: { stations in
+                XCTAssertNotNil(stations.first)
+                expect.fulfill()
             })
-            
-            if let firstMarker = markerArray.first as? StationMarker {
-                firstMarker.setSelected(true, animated: true)
-                firstMarker.currentNumber
-                    .takeUntil(firstMarker.unsubscribeNumber)
-                    .subscribe(onNext: { firstMarker.glyphText = $0 })
-                    .disposed(by: self.disposeBag)
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    if let firstNumber = firstMarker.glyphText {
-                        let testNumber = testStation.availableBikes.value
-                        XCTAssertEqual(firstNumber, String(testNumber))
-                        expectValue.fulfill()
-                    }
-                })
-            }
-        })
+            .disposed(by: disposeBag)
         
-        waitForExpectations(timeout: 4) { error in
+        stationManager.update([testStation])
+        
+        waitForExpectations(timeout: 0.5) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
         }
-        
-        
-        
-        
-        
     }
     
+    func testSetInoperative() {}
+    
+    func testChangeBikeOrDockState() {}
+    func testChangeNumAvailable() {}
+    func testIsSelected() {}
+    func testIsDeselected() {}
     
 }
-
-
-
-
-

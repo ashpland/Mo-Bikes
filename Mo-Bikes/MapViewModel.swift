@@ -18,49 +18,27 @@ enum BikesOrDocks  {
 
 class MapViewModel {
 
-    let bikesOrDocks: BehaviorSubject<BikesOrDocks>
+    let bikesOrDocks = BehaviorSubject<BikesOrDocks>(value: .bikes)
+    let stationAnnotations = PublishSubject<[StationAnnotation]>()
+    let removeAnnotations = PublishSubject<StationAnnotation>()
     let disposeBag = DisposeBag()
     
-    init(for mapViewController: MapViewController, with stationManager: StationManager) {
-        
-        self.bikesOrDocks = BehaviorSubject<BikesOrDocks>(value: .bikes)
-        
-        mapViewController.bikesDocksControl.rx.selectedSegmentIndex
-            .map { return $0 == 0 ? .bikes : .docks }
-            .bind(to: bikesOrDocks)
-            .disposed(by: disposeBag)
-        
-        stationManager.stations
-            .subscribe(onNext: { self.display($0, in: mapViewController.mapView) } )
+    init(_ stationManager: StationManager) {
+        stationManager.stations.asObservable()
+            .map { $0.map { StationAnnotation(station: $0,
+                                              stateSub: self.bikesOrDocks,
+                                              disposal: self.removeAnnotations) } }
+            .bind(to: stationAnnotations)
             .disposed(by: disposeBag)
     }
-    
-    func display(_ stations: [Station], in mapView: MKMapView) {
-        stations.addAnnotations(to: mapView, with: self.bikesOrDocks)
-    }
 }
-
-extension Station {
-    func annotation(in mapView: MKMapView,
-                    with stateSub: Observable<BikesOrDocks>) -> StationAnnotation {
-        return StationAnnotation(self, in: mapView, with: stateSub)
-    }
-}
-
-extension Array where Element == Station {
-    func addAnnotations(to mapView: MKMapView,
-                        with stateSub: Observable<BikesOrDocks>) {
-        let _ = self.map{ station in station.annotation(in: mapView, with: stateSub) }
-    }
-}
-
 
 class StationAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let numAvailable: Observable<(bikes: Int, docks: Int)>
     let stateSub: Observable<BikesOrDocks>
     
-    init(_ station: Station, in mapView: MKMapView, with stateSub: Observable<BikesOrDocks>) {
+    init(station: Station, stateSub: Observable<BikesOrDocks>, disposal: PublishSubject<StationAnnotation>) {
         self.coordinate = CLLocationCoordinate2D(latitude: station.coordinate.lat,
                                                  longitude: station.coordinate.lon)
         self.numAvailable = Observable.combineLatest(station.availableBikes,
@@ -70,16 +48,16 @@ class StationAnnotation: NSObject, MKAnnotation {
 
         super.init()
         
-        mapView.addAnnotation(self)
-
         station.operative
-            .subscribe(onNext: { if !$0 { mapView.removeAnnotation(self) } })
+            .filter { !$0 }
+            .map { _ in self}
+            .bind(to: disposal)
             .disposed(by: DisposeBag())
     }
 }
 
 extension StationAnnotation {
-    func marker() -> StationMarker {
+    var marker: StationMarker {
         return StationMarker(station: self,
                              numAvailable: self.numAvailable,
                              stateSub: self.stateSub)

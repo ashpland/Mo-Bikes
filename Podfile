@@ -13,6 +13,7 @@ target "Mo-Bikes" do
     target "Mo-BikesTests" do
         inherit! :search_paths
         pod 'RxTest', '~> 4.0'
+        pod 'RxBlocking', '4.1.1'
     end
 
 end
