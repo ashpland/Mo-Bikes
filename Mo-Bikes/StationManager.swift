@@ -34,7 +34,7 @@ class StationManager {
     }
 }
 
-final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSerializable {
+final class Station: ResponseObjectSerializable, ResponseCollectionSerializable {
     
     let name: String
     let coordinate: (lat: Double, lon: Double)
@@ -54,9 +54,7 @@ final class Station: NSObject, ResponseObjectSerializable, ResponseCollectionSer
         self.totalDocks = totalSlots
         self.availableDocks = BehaviorRelay<Int>(value: freeSlots)
         self.availableBikes = BehaviorRelay<Int>(value: availableBikes)
-        self.operative = BehaviorRelay<Bool>(value: operative)
-        
-        super.init()
+        self.operative = BehaviorRelay<Bool>(value: operative)        
     }
     
     required convenience init?(response: HTTPURLResponse, representation: Any) {

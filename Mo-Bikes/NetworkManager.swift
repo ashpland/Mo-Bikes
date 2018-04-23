@@ -37,8 +37,6 @@ class ResultContainer: ResponseObjectSerializable {
     }
 }
 
-
-
 protocol ResponseObjectSerializable {
     init?(response: HTTPURLResponse, representation: Any)
 }
