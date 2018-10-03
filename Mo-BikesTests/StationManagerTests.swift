@@ -50,7 +50,7 @@ class StationManagerTests: XCTestCase {
         let newValue = originalStation.availableBikes.value + 1
         let updatedStation = originalStation
         updatedStation.availableBikes.accept(newValue)
-        _ = originalStation.update(from: updatedStation)
+        _ = originalStation.updated(from: updatedStation)
         XCTAssertEqual(originalStation.availableBikes.value, newValue)
     }
 

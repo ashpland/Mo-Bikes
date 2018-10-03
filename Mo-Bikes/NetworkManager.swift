@@ -12,6 +12,7 @@ import Alamofire
 class NetworkManager {
     static let sharedInstance = NetworkManager()
     
+    // TODO: Change to return Completeable
     func updateStationData(_ completion: @escaping ([Station]) -> Void) {
         let _ = Alamofire.request("https://vancouver-ca.smoove.pro/api-public/stations",
                           method: .get)

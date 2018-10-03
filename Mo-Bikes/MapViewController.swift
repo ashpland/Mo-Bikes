@@ -14,22 +14,16 @@ import RxCocoa
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var bikesDocksControl: UISegmentedControl!
     
-    let locationManager: CLLocationManager = CLLocationManager()
-    let mapDelegate: MKMapViewDelegate = MapDelgate()
-    var mapViewModel: MapViewModel!
+    let locationManager = CLLocationManager()
+    let viewModel = MapViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
-        
-        self.mapView.delegate = self.mapDelegate
-        
-        mapViewModel = MapViewModel(StationManager.sharedInstance)
-        
+        mapView.delegate = self        
         setupRx()
     }
     
@@ -48,24 +42,24 @@ class MapViewController: UIViewController {
             return
         }
         
-        let currentRegion = MKCoordinateRegionMake(currentLocation.coordinate,
-                                                   MKCoordinateSpanMake(0.007, 0.007))
+        let currentRegion = MKCoordinateRegion(center: currentLocation.coordinate,
+                                               span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
         
         self.mapView.setRegion(currentRegion ,animated: true)
     }
     
     func setupRx() {
-        bikesDocksControl.rx.selectedSegmentIndex
+        bikesDocksControl.rx.selectedSegmentIndex.asDriver()
             .map { return $0 == 0 ? .bikes : .docks }
-            .bind(to: mapViewModel.bikesOrDocks)
+            .drive(viewModel.bikesOrDocks)
             .disposed(by: disposeBag)
         
-        mapViewModel.stationAnnotations
-            .subscribe(onNext: { self.mapView.addAnnotations($0) } )
+        viewModel.stationsDriver
+            .drive(onNext: { self.mapView.addAnnotations($0) })
             .disposed(by: disposeBag)
         
-        mapViewModel.removeAnnotations
-            .subscribe(onNext: { self.mapView.removeAnnotation($0) } )
+        viewModel.stationsToRemoveSignal
+            .emit(onNext: { self.mapView.removeAnnotation($0) })
             .disposed(by: disposeBag)
     }
     
@@ -74,10 +68,34 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func refreshPressed(_ sender: Any) {
-        NetworkManager.sharedInstance.updateStationData { (stations) in
-            StationManager.sharedInstance.update(stations)
+        viewModel.updateStations()
+    }
+    
+}
+
+
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let station = annotation as? Station {
+            let stationView = StationView()
+            stationView.viewModel = StationViewModel(station: station,
+                                                     bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
+            return stationView
+        }
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let stationView = view as? StationView {
+            stationView.viewModel.stationIsSelected.accept(true)
         }
     }
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if let stationView = view as? StationView {
+            stationView.viewModel.stationIsSelected.accept(false)
+        }
+    }
 }
 
