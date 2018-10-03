@@ -20,11 +20,16 @@ class MapViewController: UIViewController {
     let viewModel = MapViewModel()
     let disposeBag = DisposeBag()
     
+    let networker = Networker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupLocation()
-        mapView.delegate = self        
-        setupRx()
+        
+        networker.temp()
+        
+//        self.setupLocation()
+//        mapView.delegate = self
+//        setupRx()
     }
     
     func setupLocation() {

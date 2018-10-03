@@ -78,12 +78,69 @@ import Alamofire
 class Networker {
     func temp() {
         
+        // Wrap in Single
+        
         Alamofire
             .request("https://vancouver-ca.smoove.pro/api-public/stations",
                      method: .get)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
+            .responseData(completionHandler: { response in
+                switch response.result {
+                case .success(let data):
+                    let decoder = JSONDecoder()
+                    
+                    guard let stations = try? decoder.decode(TestStationList.self, from: data) else { print("It broke"); return } // decoding error
+                    print(stations.result.map { $0.coordinate })
+                    
+                   
+                    
+                    
+                case .failure(let error):
+                    print(error.localizedDescription) // network error
+                }
+            })
+        
         
         
     }
+}
+
+class TestStation: NSObject, MKAnnotation, Decodable {
+    let name: String
+    let coordinates: String
+    let totalDocks: Int
+    let availableDocks: Int
+    let availableBikes: Int
+    let operative: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case coordinates
+        case totalDocks = "total_slots"
+        case availableDocks = "free_slots"
+        case availableBikes = "avl_bikes"
+        case operative
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        let splitCoordinates = coordinates
+            .split(separator: ",")
+            .map { String($0.trimmingCharacters(in: .whitespaces)) }
+        
+        guard let latString = splitCoordinates.first,
+            let lonString = splitCoordinates.last,
+            let lat = Double(latString),
+            let lon = Double(lonString)
+            else { return kCLLocationCoordinate2DInvalid }
+        
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    }
+
+}
+
+// {"name":"0001 10th & Cambie","coordinates":"49.262487, -123.114397","total_slots":52,"free_slots":32,"avl_bikes":20,"operative":true,"style":""}
+
+struct TestStationList: Decodable {
+    let result: [TestStation]
 }
