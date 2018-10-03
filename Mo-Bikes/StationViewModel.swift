@@ -10,14 +10,14 @@ import RxSwift
 import RxCocoa
 
 class StationViewModel {
-    
+
     let markerTintColor: Driver<UIColor?>
     let glyphText: Driver<String?>
     let glyphImage: Driver<UIImage?>
     let stationIsSelected = BehaviorRelay<Bool>(value: false)
-    
+
     init(station: Station, bikesOrDocksState: Driver<BikesOrDocksState>) {
-        
+
         let currentAvailable: Driver<Int> = Driver
             .combineLatest(bikesOrDocksState,
                            station.availableBikes.asDriver(),
@@ -30,17 +30,17 @@ class StationViewModel {
                     return availableDocks
                 }
         }
-        
+
         self.markerTintColor = currentAvailable
             .map { $0 > Styles.lowAvailable ? Styles.markerColor.normal : Styles.markerColor.low }
-        
+
         self.glyphText = Driver
             .combineLatest(stationIsSelected.asDriver(),
                            currentAvailable)
             .map { currentlySelected, currentAvailable in
                 return currentlySelected ? String(currentAvailable) : nil
         }
-        
+
         self.glyphImage = Driver
             .combineLatest(stationIsSelected.asDriver(),
                            bikesOrDocksState)
@@ -53,6 +53,6 @@ class StationViewModel {
                     return Styles.glyphs.docks
                 }
         }
-        
+
     }
 }

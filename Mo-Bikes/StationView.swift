@@ -11,25 +11,25 @@ import RxSwift
 
 class StationView: MKMarkerAnnotationView {
     private let disposeBag = DisposeBag()
-    
+
     var viewModel: StationViewModel! {
         didSet {
             setupRx()
         }
     }
-    
+
     func setupRx() {
         viewModel.markerTintColor
             .drive(onNext: { self.markerTintColor = $0 })
             .disposed(by: disposeBag)
-        
+
         viewModel.glyphText
             .drive(onNext: { self.glyphText = $0 })
             .disposed(by: disposeBag)
-        
+
         viewModel.glyphImage
             .drive(onNext: { self.glyphImage = $0 })
             .disposed(by: disposeBag)
     }
-    
+
 }

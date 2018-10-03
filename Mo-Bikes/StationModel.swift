@@ -18,7 +18,7 @@ final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, Respons
     let totalDocks: Int
     let availableDocks: BehaviorRelay<Int>
     let availableBikes: BehaviorRelay<Int>
-    
+
     init(name: String,
          coordinate: CLLocationCoordinate2D,
          totalSlots: Int,
@@ -30,7 +30,7 @@ final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, Respons
         self.availableDocks = BehaviorRelay<Int>(value: freeSlots)
         self.availableBikes = BehaviorRelay<Int>(value: availableBikes)
     }
-    
+
     required convenience init?(response: HTTPURLResponse, representation: Any) {
         guard let representation = representation as? [String: Any],
             let name = representation["name"] as? String,
@@ -41,24 +41,24 @@ final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, Respons
             let isActive = representation["operative"] as? Bool,
             isActive == true
             else { return nil }
-        
+
         let splitCoordinates = coordinates
             .split(separator: ",")
             .map { String($0.trimmingCharacters(in: .whitespaces)) }
-        
+
         guard let latString = splitCoordinates.first,
             let lonString = splitCoordinates.last,
             let lat = Double(latString),
             let lon = Double(lonString)
             else { return nil }
-        
+
         self.init(name: name,
                   coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon),
                   totalSlots: totalSlots,
                   freeSlots: freeSlots,
                   availableBikes: availableBikes)
     }
-    
+
     func updated(from newStation: Station) -> Station {
         self.availableDocks.accept(newStation.availableBikes.value)
         self.availableDocks.accept(newStation.availableDocks.value)

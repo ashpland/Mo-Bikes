@@ -10,7 +10,6 @@ import Foundation
 import MapKit
 @testable import Mo_Bikes
 
-
 func generateLatLon() -> (lat: Double, lon: Double) {
     let lat = Double(arc4random_uniform(90*1000000)) / 1000000
     let lon = Double(Int(arc4random_uniform(360*1000000)) - 180*1000000) / 1000000
@@ -30,15 +29,15 @@ func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     let total = Int(uTotal)
     let bikes = Int(arc4random_uniform(uTotal))
     let slots = total - bikes
-    
+
     return (total, bikes, slots)
 }
 
 func generateStation(_ name: String) -> Station {
     let slots = generateSlots()
-    
+
     let coordinate = generateLatLon()
-    
+
     return Station(name: name,
                    coordinate: coordinate,
                    totalSlots: slots.total,
@@ -57,7 +56,7 @@ extension Station: Equatable, Comparable {
     public static func == (lhs: Station, rhs: Station) -> Bool {
         return lhs.name == rhs.name
     }
-    
+
     public static func <(lhs: Station, rhs: Station) -> Bool {
         return lhs.name < rhs.name
     }
@@ -70,16 +69,16 @@ extension CLLocationCoordinate2D: Equatable {
 }
 
 class FakeMapView: MKMapView {
-    
+
     var annotationHolder = [MKAnnotation]()
-    
+
     override func addAnnotation(_ annotation: MKAnnotation) {
         annotationHolder.append(annotation)
     }
-    
+
     override func removeAnnotation(_ annotation: MKAnnotation) {
-        if let index = annotations.index(where: { $0.coordinate == annotation.coordinate } ) {
-            annotationHolder.remove(at: index)            
+        if let index = annotations.index(where: { $0.coordinate == annotation.coordinate }) {
+            annotationHolder.remove(at: index)
         }
     }
 }
