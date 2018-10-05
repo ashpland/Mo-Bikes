@@ -20,8 +20,8 @@ class StationViewModel {
 
         let currentAvailable: Driver<Int> = Driver
             .combineLatest(bikesOrDocksState,
-                           station.availableBikes.asDriver(),
-                           station.availableDocks.asDriver())
+                           station.availableBikesDriver,
+                           station.availableDocksDriver)
             .map { bikesOrDocksState, availableBikes, availableDocks in
                 switch bikesOrDocksState {
                 case .bikes:

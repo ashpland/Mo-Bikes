@@ -11,38 +11,21 @@ import Alamofire
 import RxSwift
 import RxCocoa
 
-final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, ResponseCollectionSerializable {
+final class Station: NSObject, MKAnnotation, NameIndexable {
 
-    let name: String
-    let coordinate: CLLocationCoordinate2D
-    let totalDocks: Int
-    let availableDocks: BehaviorRelay<Int>
-    let availableBikes: BehaviorRelay<Int>
-
-    init(name: String,
-         coordinate: CLLocationCoordinate2D,
-         totalSlots: Int,
-         freeSlots: Int,
-         availableBikes: Int) {
-        self.name = name
-        self.coordinate = coordinate
-        self.totalDocks = totalSlots
-        self.availableDocks = BehaviorRelay<Int>(value: freeSlots)
-        self.availableBikes = BehaviorRelay<Int>(value: availableBikes)
+    var stationData: StationData {
+        didSet(newStationData) {
+            availableDocks.accept(newStationData.availableDocks)
+            availableBikes.accept(newStationData.availableBikes)
+        }
     }
 
-    required convenience init?(response: HTTPURLResponse, representation: Any) {
-        guard let representation = representation as? [String: Any],
-            let name = representation["name"] as? String,
-            let coordinates = representation["coordinates"] as? String,
-            let totalSlots = representation["total_slots"] as? Int,
-            let freeSlots = representation["free_slots"] as? Int,
-            let availableBikes = representation["avl_bikes"] as? Int,
-            let isActive = representation["operative"] as? Bool,
-            isActive == true
-            else { return nil }
+    var name: String {
+        return stationData.name
+    }
 
-        let splitCoordinates = coordinates
+    var coordinate: CLLocationCoordinate2D {
+        let splitCoordinates = stationData.coordinates
             .split(separator: ",")
             .map { String($0.trimmingCharacters(in: .whitespaces)) }
 
@@ -50,18 +33,52 @@ final class Station: NSObject, MKAnnotation, ResponseObjectSerializable, Respons
             let lonString = splitCoordinates.last,
             let lat = Double(latString),
             let lon = Double(lonString)
-            else { return nil }
+            else { return kCLLocationCoordinate2DInvalid }
 
-        self.init(name: name,
-                  coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon),
-                  totalSlots: totalSlots,
-                  freeSlots: freeSlots,
-                  availableBikes: availableBikes)
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
 
-    func updated(from newStation: Station) -> Station {
-        self.availableDocks.accept(newStation.availableBikes.value)
-        self.availableDocks.accept(newStation.availableDocks.value)
-        return self
+    var availableDocksDriver: Driver<Int> {
+        return availableDocks.asDriver().distinctUntilChanged()
     }
+
+    var availableBikesDriver: Driver<Int> {
+        return availableBikes.asDriver().distinctUntilChanged()
+    }
+
+    private let availableDocks: BehaviorRelay<Int>
+    private let availableBikes: BehaviorRelay<Int>
+
+    init(_ stationData: StationData) {
+        self.stationData = stationData
+        self.availableDocks = BehaviorRelay<Int>(value: stationData.availableDocks)
+        self.availableBikes = BehaviorRelay<Int>(value: stationData.availableBikes)
+    }
+}
+
+struct StationData: Decodable, NameIndexable {
+    let name: String
+    let coordinates: String
+    let totalDocks: Int
+    let availableDocks: Int
+    let availableBikes: Int
+    let operative: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case coordinates
+        case totalDocks = "total_slots"
+        case availableDocks = "free_slots"
+        case availableBikes = "avl_bikes"
+        case operative
+    }
+
+    private struct StationDataList: Decodable {
+        let result: [StationData]
+    }
+
+    static func decode(from data: Data) -> [StationData]? {
+        return try? JSONDecoder().decode(StationDataList.self, from: data).result
+    }
+
 }

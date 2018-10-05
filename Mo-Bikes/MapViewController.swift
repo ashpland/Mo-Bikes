@@ -20,16 +20,12 @@ class MapViewController: UIViewController {
     let viewModel = MapViewModel()
     let disposeBag = DisposeBag()
 
-    let networker = Networker()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networker.temp()
-
-//        self.setupLocation()
-//        mapView.delegate = self
-//        setupRx()
+        self.setupLocation()
+        mapView.delegate = self
+        setupRx()
     }
 
     func setupLocation() {
@@ -65,6 +61,13 @@ class MapViewController: UIViewController {
 
         viewModel.stationsToRemoveSignal
             .emit(onNext: { self.mapView.removeAnnotation($0) })
+            .disposed(by: disposeBag)
+
+        Signal<Int>
+            .timer(0, period: 60)
+            .emit(onNext: { [weak self] _ in
+                self?.viewModel.updateStations()
+            })
             .disposed(by: disposeBag)
     }
 

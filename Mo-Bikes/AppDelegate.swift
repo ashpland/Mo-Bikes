@@ -13,11 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mockAPI: MockAPI!
-    let networkManager = NetworkManager.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        mockAPI = MockAPI()
+//        mockAPI = MockAPI()
 
         return true
     }

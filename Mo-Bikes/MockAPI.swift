@@ -19,7 +19,7 @@ struct MockAPI {
                     statusCode: 200,
                     headers: ["Content-Type":"application/json"]
                     )
-                    .requestTime(1.0, responseTime: 2.0)
+                    .requestTime(0.5, responseTime: 0.5)
             } else {
                 return OHHTTPStubsResponse()
             }

@@ -9,6 +9,7 @@
 import MapKit
 import RxSwift
 import RxCocoa
+import Alamofire
 
 enum BikesOrDocksState {
     case bikes
@@ -30,15 +31,12 @@ class MapViewModel: NSObject {
     private let disposeBag = DisposeBag()
 
     func updateStations() {
-        let networkResponse = Single.just([Station]())
-
-        networkResponse
-            .subscribe(onSuccess: { [weak self] updatedStations in
+        getStationData()
+            .subscribe(onSuccess: { [weak self] updatedStationData in
                 guard let `self` = self else { return }
 
                 var currentStations = self.stations.value.asDictionary
-                let updatedStations = updatedStations.asDictionary
-
+                let updatedStations = updatedStationData.asDictionary
                 let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
 
                 for key in keysToRemove {
@@ -47,22 +45,59 @@ class MapViewModel: NSObject {
                     }
                 }
 
-                currentStations.merge(updatedStations) { currentStation, updatedStation in
-                    return currentStation.updated(from: updatedStation)
+                for station in currentStations {
+                    if let updatedData = updatedStations[station.key] {
+                        station.value.stationData = updatedData
+                    }
+                }
+
+                let keysToAdd = updatedStations.asSetOfKeys.subtracting(currentStations.asSetOfKeys)
+
+                for key in keysToAdd {
+                    if let newStationData = updatedStations[key] {
+                        currentStations[key] = Station(newStationData)
+                    }
                 }
 
                 self.stations.accept(currentStations.map { $0.value })
+
             })
             .disposed(by: disposeBag)
     }
 
+    func getStationData() -> Single<[StationData]> {
+        return Single<[StationData]>.create { single -> Disposable in
+            let request = Alamofire
+                .request("https://vancouver-ca.smoove.pro/api-public/stations",
+                         method: .get)
+                .validate(statusCode: 200..<300)
+                .validate(contentType: ["application/json"])
+                .responseData(completionHandler: { response in
+                    switch response.result {
+                    case .success(let data):
+                        if let stations = StationData.decode(from: data) {
+                            single(.success(stations))
+                        } else {
+                            single(.error(JSONError()))
+                        }
+                    case .failure(let error):
+                        single(.error(error))
+                    }
+                })
+            return Disposables.create(with: request.cancel)
+        }
+    }
 }
 
-extension Array where Element == Station {
-    var asDictionary: [String: Station] {
-        return self.reduce(into: [String : Station](), { dictionary, station in
-            dictionary[station.name] = station
-        })
+protocol NameIndexable {
+    var name: String { get }
+}
+
+extension Array where Element: NameIndexable {
+    var asDictionary: [String: Element] {
+        return self.reduce(into: [String: Element]()) { dictionary, element in
+            dictionary[element.name] = element
+        }
     }
 }
 
@@ -72,69 +107,8 @@ extension Dictionary {
     }
 }
 
-import Alamofire
-
-class Networker {
-    func temp() {
-
-        // Wrap in Single
-
-        Alamofire
-            .request("https://vancouver-ca.smoove.pro/api-public/stations",
-                     method: .get)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseData(completionHandler: { response in
-                switch response.result {
-                case .success(let data):
-                    let decoder = JSONDecoder()
-
-                    guard let stations = try? decoder.decode(TestStationList.self, from: data) else { print("It broke"); return } // decoding error
-                    print(stations.result.map { $0.coordinate })
-
-                case .failure(let error):
-                    print(error.localizedDescription) // network error
-                }
-            })
-
+struct JSONError: LocalizedError {
+    var errorDescription: String? {
+        return "JSON Decoding Error"
     }
-}
-
-class TestStation: NSObject, MKAnnotation, Decodable {
-    let name: String
-    let coordinates: String
-    let totalDocks: Int
-    let availableDocks: Int
-    let availableBikes: Int
-    let operative: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case coordinates
-        case totalDocks = "total_slots"
-        case availableDocks = "free_slots"
-        case availableBikes = "avl_bikes"
-        case operative
-    }
-
-    var coordinate: CLLocationCoordinate2D {
-        let splitCoordinates = coordinates
-            .split(separator: ",")
-            .map { String($0.trimmingCharacters(in: .whitespaces)) }
-
-        guard let latString = splitCoordinates.first,
-            let lonString = splitCoordinates.last,
-            let lat = Double(latString),
-            let lon = Double(lonString)
-            else { return kCLLocationCoordinate2DInvalid }
-
-        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
-    }
-
-}
-
-// {"name":"0001 10th & Cambie","coordinates":"49.262487, -123.114397","total_slots":52,"free_slots":32,"avl_bikes":20,"operative":true,"style":""}
-
-struct TestStationList: Decodable {
-    let result: [TestStation]
 }
