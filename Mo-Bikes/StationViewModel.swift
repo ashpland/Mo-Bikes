@@ -31,17 +31,17 @@ class StationViewModel {
                 }
         }
 
-        self.markerTintColor = currentAvailable
+        markerTintColor = currentAvailable
             .map { $0 > Styles.lowAvailable ? Styles.markerColor.normal : Styles.markerColor.low }
 
-        self.glyphText = Driver
+        glyphText = Driver
             .combineLatest(stationIsSelected.asDriver(),
                            currentAvailable)
             .map { currentlySelected, currentAvailable in
                 return currentlySelected ? String(currentAvailable) : nil
         }
 
-        self.glyphImage = Driver
+        glyphImage = Driver
             .combineLatest(stationIsSelected.asDriver(),
                            bikesOrDocksState)
             .map { currentlySelected, bikesOrDocksState in

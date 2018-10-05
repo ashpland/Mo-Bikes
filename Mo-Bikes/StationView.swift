@@ -8,9 +8,9 @@
 
 import MapKit
 import RxSwift
+import RxCocoa
 
 class StationView: MKMarkerAnnotationView {
-    private let disposeBag = DisposeBag()
 
     var viewModel: StationViewModel! {
         didSet {
@@ -18,17 +18,19 @@ class StationView: MKMarkerAnnotationView {
         }
     }
 
+    private let disposeBag = DisposeBag()
+
     func setupRx() {
         viewModel.markerTintColor
-            .drive(onNext: { self.markerTintColor = $0 })
+            .drive(rx.markerTintColor)
             .disposed(by: disposeBag)
 
         viewModel.glyphText
-            .drive(onNext: { self.glyphText = $0 })
+            .drive(rx.glyphText)
             .disposed(by: disposeBag)
 
         viewModel.glyphImage
-            .drive(onNext: { self.glyphImage = $0 })
+            .drive(rx.glyphImage)
             .disposed(by: disposeBag)
     }
 

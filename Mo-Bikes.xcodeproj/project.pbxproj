@@ -24,6 +24,7 @@
 		49B4B229216484C700112B4A /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B228216484C700112B4A /* StationViewModel.swift */; };
 		49B4B22D2164856C00112B4A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22C2164856C00112B4A /* StationView.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
+		49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB9FF92167CE9200E68C89 /* RxExtensions.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		49B4B228216484C700112B4A /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		49B4B22C2164856C00112B4A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		49BB9FF92167CE9200E68C89 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +118,9 @@
 				49B4B22C2164856C00112B4A /* StationView.swift */,
 				49B4B228216484C700112B4A /* StationViewModel.swift */,
 				49B00FDD2035FEFC00028812 /* StationModel.swift */,
-				49B00FE720360B5500028812 /* MockAPI.swift */,
 				49B4B22E216485DC00112B4A /* Styles.swift */,
+				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
+				49B00FE720360B5500028812 /* MockAPI.swift */,
 				49AD20512035FA7400661B0D /* MapView.storyboard */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
@@ -393,6 +396,7 @@
 				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
 				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
+				49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
 				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,

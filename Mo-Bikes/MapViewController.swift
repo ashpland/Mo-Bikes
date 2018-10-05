@@ -22,31 +22,30 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.setupLocation()
         mapView.delegate = self
+        setupLocation()
         setupRx()
     }
 
     func setupLocation() {
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        self.mapView.showsUserLocation = true
-        self.mapView.showsPointsOfInterest = false
-        self.zoomToCurrent()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        mapView.showsPointsOfInterest = false
+        zoomToCurrent()
     }
 
     func zoomToCurrent() {
         guard let currentLocation = self.locationManager.location else {
-            print("Can't get current location")
+            debugPrint("Can't get current location")
             return
         }
 
         let currentRegion = MKCoordinateRegion(center: currentLocation.coordinate,
                                                span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
 
-        self.mapView.setRegion(currentRegion, animated: true)
+        mapView.setRegion(currentRegion, animated: true)
     }
 
     func setupRx() {
@@ -55,12 +54,12 @@ class MapViewController: UIViewController {
             .drive(viewModel.bikesOrDocks)
             .disposed(by: disposeBag)
 
-        viewModel.stationsDriver
-            .drive(onNext: { self.mapView.addAnnotations($0) })
+        viewModel.stationsToAddDriver
+            .drive(mapView.rx.addAnnotations)
             .disposed(by: disposeBag)
 
         viewModel.stationsToRemoveSignal
-            .emit(onNext: { self.mapView.removeAnnotation($0) })
+            .emit(to: mapView.rx.removeAnnotation)
             .disposed(by: disposeBag)
 
         Signal<Int>
@@ -72,7 +71,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func compassButtonPressed(_ sender: Any) {
-        self.zoomToCurrent()
+        zoomToCurrent()
     }
 
     @IBAction func refreshPressed(_ sender: Any) {

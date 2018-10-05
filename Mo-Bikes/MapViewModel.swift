@@ -19,11 +19,12 @@ enum BikesOrDocksState {
 class MapViewModel: NSObject {
 
     let bikesOrDocks = BehaviorRelay<BikesOrDocksState>(value: .bikes)
-    var stationsDriver: Driver<[Station]> {
-        return stations.asDriver()
+
+    var stationsToAddDriver: Driver<[MKAnnotation]> {
+        return stations.asDriver().map { $0.map { $0 as MKAnnotation } }
     }
-    var stationsToRemoveSignal: Signal<Station> {
-        return stationsToRemove.asSignal()
+    var stationsToRemoveSignal: Signal<MKAnnotation> {
+        return stationsToRemove.asSignal().map { $0 as MKAnnotation }
     }
 
     private let stations = BehaviorRelay(value: [Station]())
