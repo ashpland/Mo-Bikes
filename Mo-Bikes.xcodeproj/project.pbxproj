@@ -13,7 +13,7 @@
 		491C6914203F604400C79C53 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6913203F604400C79C53 /* MapViewModelTests.swift */; };
 		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
 		49AD20502035FA7400661B0D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* MapViewController.swift */; };
-		49AD20532035FA7400661B0D /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapView.storyboard */; };
+		49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapViewController.storyboard */; };
 		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
 		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
 		49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* StationModel.swift */; };
@@ -51,7 +51,7 @@
 		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49AD204F2035FA7400661B0D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		49AD20522035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MapView.storyboard; sourceTree = "<group>"; };
+		49AD20522035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MapViewController.storyboard; sourceTree = "<group>"; };
 		49AD20542035FA7400661B0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49AD20572035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49AD20592035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,15 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
-				49AD204F2035FA7400661B0D /* MapViewController.swift */,
-				49B00FDF2035FF0A00028812 /* MapViewModel.swift */,
-				49B4B22C2164856C00112B4A /* StationView.swift */,
-				49B4B228216484C700112B4A /* StationViewModel.swift */,
-				49B00FDD2035FEFC00028812 /* StationModel.swift */,
-				49B4B22E216485DC00112B4A /* Styles.swift */,
-				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
-				49B00FE720360B5500028812 /* MockAPI.swift */,
-				49AD20512035FA7400661B0D /* MapView.storyboard */,
+				49AF7F442168324D00A88560 /* MapView */,
+				49AF7F452168325A00A88560 /* StationView */,
+				49AF7F47216832DB00A88560 /* SupplementLayers */,
+				49AF7F462168328800A88560 /* Misc */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
 				49AD20592035FA7400661B0D /* Info.plist */,
@@ -139,6 +134,43 @@
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
+			sourceTree = "<group>";
+		};
+		49AF7F442168324D00A88560 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				49AD204F2035FA7400661B0D /* MapViewController.swift */,
+				49AD20512035FA7400661B0D /* MapViewController.storyboard */,
+				49B00FDF2035FF0A00028812 /* MapViewModel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		49AF7F452168325A00A88560 /* StationView */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B22C2164856C00112B4A /* StationView.swift */,
+				49B4B228216484C700112B4A /* StationViewModel.swift */,
+				49B00FDD2035FEFC00028812 /* StationModel.swift */,
+			);
+			path = StationView;
+			sourceTree = "<group>";
+		};
+		49AF7F462168328800A88560 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B22E216485DC00112B4A /* Styles.swift */,
+				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
+				49B00FE720360B5500028812 /* MockAPI.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		49AF7F47216832DB00A88560 /* SupplementLayers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupplementLayers;
 			sourceTree = "<group>";
 		};
 		655ECDB840C28B867813189B /* Frameworks */ = {
@@ -258,7 +290,7 @@
 			files = (
 				49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */,
 				49AD20552035FA7400661B0D /* Assets.xcassets in Resources */,
-				49AD20532035FA7400661B0D /* MapView.storyboard in Resources */,
+				49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */,
 				49B00FE620360B2200028812 /* Sample Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,12 +457,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		49AD20512035FA7400661B0D /* MapView.storyboard */ = {
+		49AD20512035FA7400661B0D /* MapViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				49AD20522035FA7400661B0D /* Base */,
 			);
-			name = MapView.storyboard;
+			name = MapViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		49AD20562035FA7400661B0D /* LaunchScreen.storyboard */ = {
