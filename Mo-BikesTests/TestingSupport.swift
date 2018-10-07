@@ -16,14 +16,6 @@ func generateLatLon() -> (lat: Double, lon: Double) {
     return (lat, lon)
 }
 
-//func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
-//    let latMax = UInt32(region.span.latitudeDelta * 1000000)
-//    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
-//    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
-//    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
-//    return (lat, lon)
-//}
-
 func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     let uTotal = arc4random_uniform(99) + 1
     let total = Int(uTotal)
@@ -33,18 +25,35 @@ func generateSlots() -> (total: Int, bikes: Int, free: Int) {
     return (total, bikes, slots)
 }
 
-func generateStation(_ name: String) -> Station {
+func generateStationData(_ name: String) -> StationData {
     let slots = generateSlots()
-
     let coordinate = generateLatLon()
-
-    return Station(name: name,
-                   coordinate: coordinate,
-                   totalSlots: slots.total,
-                   freeSlots: slots.free,
-                   availableBikes: slots.bikes,
-                   operative: true)
+    let coordinateString = "\(coordinate.lat), \(coordinate.lon)"
+    
+    return StationData(name: name,
+                       coordinates: coordinateString,
+                       totalDocks: slots.total,
+                       availableDocks: slots.free,
+                       availableBikes: slots.bikes,
+                       operative: true)
 }
+
+func generateStationJSON(_ stationData: StationData) -> Data {    
+    let jsonString =  "{\"result\":[{\"name\":\"\(stationData.name)\",\"coordinates\":\"\(stationData.coordinates)\",\"total_slots\":\(stationData.totalDocks),\"free_slots\":\(stationData.availableDocks),\"avl_bikes\":\(stationData.availableBikes),\"operative\":\(stationData.operative),\"style\":\"\"}]}"
+    
+    return jsonString.data(using: .utf8)!
+}
+
+
+//func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
+//    let latMax = UInt32(region.span.latitudeDelta * 1000000)
+//    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
+//    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
+//    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
+//    return (lat, lon)
+//}
+//
+//
 
 extension Array where Element: Comparable {
     func containsSameElements(as other: [Element]) -> Bool {
@@ -52,11 +61,7 @@ extension Array where Element: Comparable {
     }
 }
 
-extension Station: Equatable, Comparable {
-    public static func == (lhs: Station, rhs: Station) -> Bool {
-        return lhs.name == rhs.name
-    }
-
+extension Station: Comparable {
     public static func <(lhs: Station, rhs: Station) -> Bool {
         return lhs.name < rhs.name
     }

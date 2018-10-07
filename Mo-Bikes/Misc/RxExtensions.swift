@@ -43,3 +43,26 @@ extension Reactive where Base: MKMapView {
         }
     }
 }
+
+
+
+// MARK: - Remove Nils
+
+public protocol OptionalType: ExpressibleByNilLiteral {
+    associatedtype WrappedType
+    var asOptional: WrappedType? { get }
+}
+
+extension Optional: OptionalType {
+    public var asOptional: Wrapped? {
+        return self
+    }
+}
+
+extension Observable where Element: OptionalType {
+    func removeNils() -> Observable<Element.WrappedType> {
+        return self
+            .filter { $0.asOptional != nil }
+            .map { $0.asOptional! }
+    }
+}

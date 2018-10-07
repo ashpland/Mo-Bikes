@@ -14,9 +14,9 @@ import RxCocoa
 final class Station: NSObject, MKAnnotation, NameIndexable {
 
     var stationData: StationData {
-        didSet(newStationData) {
-            availableDocks.accept(newStationData.availableDocks)
-            availableBikes.accept(newStationData.availableBikes)
+        didSet {
+            availableDocks.accept(stationData.availableDocks)
+            availableBikes.accept(stationData.availableBikes)
         }
     }
 
