@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         setupLocation()
+        setupMap()
         setupRx()
     }
 
@@ -46,6 +47,11 @@ class MapViewController: UIViewController {
                                                span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
 
         mapView.setRegion(currentRegion, animated: true)
+    }
+
+    func setupMap() {
+        mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
+
     }
 
     func setupRx() {
@@ -84,7 +90,7 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let station = annotation as? Station {
-            let stationView = StationView()
+            let stationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
             stationView.viewModel = StationViewModel(station: station,
                                                      bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
             return stationView

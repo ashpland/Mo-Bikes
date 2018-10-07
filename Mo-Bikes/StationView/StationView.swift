@@ -18,7 +18,11 @@ class StationView: MKMarkerAnnotationView {
         }
     }
 
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
+
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+    }
 
     func setupRx() {
         viewModel.markerTintColor
