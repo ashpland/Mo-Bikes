@@ -20,7 +20,7 @@ class StationViewModelTests: XCTestCase {
     var testStationViewModel: StationViewModel!
     var bikesOrDocksRelay: BehaviorRelay<BikesOrDocksState>!
     var disposeBag: DisposeBag = DisposeBag()
-    
+
     override func setUp() {
         super.setUp()
         stationData1 = generateStationData(stationName)
@@ -30,32 +30,32 @@ class StationViewModelTests: XCTestCase {
                                             availableDocks: 0,
                                             availableBikes: level.low,
                                             operative: stationData1.operative)
-        
+
         let replacementData2  = StationData(name: stationData1.name,
                                             coordinates: stationData1.coordinates,
                                             totalDocks: 0,
                                             availableDocks: 0,
                                             availableBikes: level.normal,
                                             operative: stationData1.operative)
-        
+
         stationData1 = replacementData1
         stationData2 = replacementData2
         testStation = Station(stationData1)
         bikesOrDocksRelay = BehaviorRelay(value: .bikes)
         testStationViewModel = StationViewModel(station: testStation,
                                                 bikesOrDocksState: bikesOrDocksRelay.asDriver())
-        
+
     }
-    
+
     override func tearDown() {
         disposeBag = DisposeBag()
         super.tearDown()
     }
-    
+
     func testStationViewModelMarkerTintColor() {
         let expect = expectation(description: #function)
         var results = [UIColor]()
-        
+
         testStationViewModel.markerTintColor
             .asObservable()
             .take(2)
@@ -72,7 +72,7 @@ class StationViewModelTests: XCTestCase {
                 }
             })
             .disposed(by: disposeBag)
-        
+
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
@@ -80,13 +80,13 @@ class StationViewModelTests: XCTestCase {
                 XCTAssertEqual(results, [Styles.markerColor.low, Styles.markerColor.normal])
             }
         }
-        
+
     }
-    
+
     func testStationViewModelGlyphText() {
         let expect = expectation(description: #function)
         var results = [String?]()
-        
+
         testStationViewModel.glyphText
             .asObservable()
             .take(3)
@@ -106,7 +106,7 @@ class StationViewModelTests: XCTestCase {
                 }
             })
             .disposed(by: disposeBag)
-        
+
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
@@ -117,11 +117,11 @@ class StationViewModelTests: XCTestCase {
             }
         }
     }
-    
+
     func testStationViewModelGlyphImage() {
         let expect = expectation(description: #function)
         var results = [UIImage?]()
-        
+
         testStationViewModel.glyphImage
             .asObservable()
             .take(3)
@@ -141,7 +141,7 @@ class StationViewModelTests: XCTestCase {
                 }
             })
             .disposed(by: disposeBag)
-        
+
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
@@ -152,9 +152,5 @@ class StationViewModelTests: XCTestCase {
             }
         }
     }
-    
-    
-    
-    
-    
+
 }

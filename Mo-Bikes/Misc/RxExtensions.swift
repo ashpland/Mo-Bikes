@@ -44,7 +44,19 @@ extension Reactive where Base: MKMapView {
     }
 }
 
+extension MapViewModel {
+    var rx: Reactive<MapViewModel> {
+        return Reactive(self)
+    }
+}
 
+extension Reactive where Base: MapViewModel {
+    var updateStations: Binder<[StationData]> {
+        return Binder(self.base) { mapViewModel, updatedStationData in
+            mapViewModel.updateStations(from: updatedStationData)
+        }
+    }
+}
 
 // MARK: - Remove Nils
 

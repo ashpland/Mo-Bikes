@@ -56,7 +56,22 @@ final class Station: NSObject, MKAnnotation, NameIndexable {
     }
 }
 
-struct StationData: Decodable, NameIndexable {
+extension Station {
+    override func isEqual(_ object: Any?) -> Bool {
+        if let otherStation = object as? Station,
+            self.stationData == otherStation.stationData {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    override var hash: Int {
+        return stationData.hashValue
+    }
+}
+
+struct StationData: Decodable, NameIndexable, Hashable, Equatable {
     let name: String
     let coordinates: String
     let totalDocks: Int

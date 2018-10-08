@@ -29,7 +29,7 @@ func generateStationData(_ name: String) -> StationData {
     let slots = generateSlots()
     let coordinate = generateLatLon()
     let coordinateString = "\(coordinate.lat), \(coordinate.lon)"
-    
+
     return StationData(name: name,
                        coordinates: coordinateString,
                        totalDocks: slots.total,
@@ -38,12 +38,11 @@ func generateStationData(_ name: String) -> StationData {
                        operative: true)
 }
 
-func generateStationJSON(_ stationData: StationData) -> Data {    
+func generateStationJSON(_ stationData: StationData) -> Data {
     let jsonString =  "{\"result\":[{\"name\":\"\(stationData.name)\",\"coordinates\":\"\(stationData.coordinates)\",\"total_slots\":\(stationData.totalDocks),\"free_slots\":\(stationData.availableDocks),\"avl_bikes\":\(stationData.availableBikes),\"operative\":\(stationData.operative),\"style\":\"\"}]}"
-    
+
     return jsonString.data(using: .utf8)!
 }
-
 
 //func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
 //    let latMax = UInt32(region.span.latitudeDelta * 1000000)

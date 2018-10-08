@@ -25,6 +25,7 @@
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
 		49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB9FF92167CE9200E68C89 /* RxExtensions.swift */; };
 		49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */; };
+		49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		49BB9FF92167CE9200E68C89 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModelTests.swift; sourceTree = "<group>"; };
+		49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +130,9 @@
 		49AD20612035FA7400661B0D /* Mo-BikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				494476D2216A648600051515 /* StationModelTests.swift */,
+				49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */,
 				49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */,
+				494476D2216A648600051515 /* StationModelTests.swift */,
 				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
@@ -443,6 +446,7 @@
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
 				49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */,
 				494476D3216A648600051515 /* StationModelTests.swift in Sources */,
+				49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

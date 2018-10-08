@@ -70,9 +70,9 @@ class MapViewController: UIViewController {
 
         Signal<Int>
             .timer(0, period: 60)
-            .emit(onNext: { [weak self] _ in
-                self?.viewModel.updateStations()
-            })
+            .asObservable()
+            .flatMap { _ in self.updateStations() }
+            .bind(to: viewModel.rx.updateStations)
             .disposed(by: disposeBag)
     }
 
@@ -81,7 +81,19 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func refreshPressed(_ sender: Any) {
-        viewModel.updateStations()
+        updateStations()
+            .bind(to: viewModel.rx.updateStations)
+            .disposed(by: disposeBag)
+    }
+
+    private func updateStations() -> Observable<[StationData]> {
+        return viewModel
+            .getStationData()
+            .asDriver(onErrorRecover: { error -> SharedSequence<DriverSharingStrategy, [StationData]> in
+                print(error.localizedDescription) // TODO: User facing error handling
+                return Driver.just([StationData]())
+            })
+            .asObservable()
     }
 
 }

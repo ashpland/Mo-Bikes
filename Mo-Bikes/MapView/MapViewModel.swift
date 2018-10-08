@@ -16,7 +16,7 @@ enum BikesOrDocksState {
     case docks
 }
 
-class MapViewModel: NSObject {
+class MapViewModel {
 
     let bikesOrDocks = BehaviorRelay<BikesOrDocksState>(value: .bikes)
 
@@ -31,39 +31,34 @@ class MapViewModel: NSObject {
     private let stationsToRemove = PublishRelay<Station>()
     private let disposeBag = DisposeBag()
 
-    func updateStations() {
-        getStationData()
-            .subscribe(onSuccess: { [weak self] updatedStationData in
-                guard let `self` = self else { return }
+    func updateStations(from updatedStationData: [StationData]) {
+        guard !updatedStationData.isEmpty else { return }
 
-                var currentStations = self.stations.value.asDictionary
-                let updatedStations = updatedStationData.asDictionary
-                let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
+        var currentStations = stations.value.asDictionary
+        let updatedStations = updatedStationData.asDictionary
+        let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
 
-                for key in keysToRemove {
-                    if let inactiveStation = currentStations.removeValue(forKey: key) {
-                        self.stationsToRemove.accept(inactiveStation)
-                    }
-                }
+        for key in keysToRemove {
+            if let inactiveStation = currentStations.removeValue(forKey: key) {
+                stationsToRemove.accept(inactiveStation)
+            }
+        }
 
-                for station in currentStations {
-                    if let updatedData = updatedStations[station.key] {
-                        station.value.stationData = updatedData
-                    }
-                }
+        for station in currentStations {
+            if let updatedData = updatedStations[station.key] {
+                station.value.stationData = updatedData
+            }
+        }
 
-                let keysToAdd = updatedStations.asSetOfKeys.subtracting(currentStations.asSetOfKeys)
+        let keysToAdd = updatedStations.asSetOfKeys.subtracting(currentStations.asSetOfKeys)
 
-                for key in keysToAdd {
-                    if let newStationData = updatedStations[key] {
-                        currentStations[key] = Station(newStationData)
-                    }
-                }
+        for key in keysToAdd {
+            if let newStationData = updatedStations[key] {
+                currentStations[key] = Station(newStationData)
+            }
+        }
 
-                self.stations.accept(currentStations.map { $0.value })
-
-            })
-            .disposed(by: disposeBag)
+        stations.accept(currentStations.map { $0.value })
     }
 
     func getStationData() -> Single<[StationData]> {
