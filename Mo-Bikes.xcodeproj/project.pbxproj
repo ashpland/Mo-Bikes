@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
+		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
+		494476D3216A648600051515 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494476D2216A648600051515 /* StationModelTests.swift */; };
 		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
-		49AD20502035FA7400661B0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* ViewController.swift */; };
-		49AD20532035FA7400661B0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* Main.storyboard */; };
+		49AD20502035FA7400661B0D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* MapViewController.swift */; };
+		49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapViewController.storyboard */; };
 		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
 		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
-		49AD20632035FA7400661B0D /* Mo_BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD20622035FA7400661B0D /* Mo_BikesTests.swift */; };
+		49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* StationModel.swift */; };
+		49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapViewModel.swift */; };
+		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
+		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
+		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
+		49B4B229216484C700112B4A /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B228216484C700112B4A /* StationViewModel.swift */; };
+		49B4B22D2164856C00112B4A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22C2164856C00112B4A /* StationView.swift */; };
+		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
+		49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB9FF92167CE9200E68C89 /* RxExtensions.swift */; };
+		49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */; };
+		49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,16 +46,28 @@
 		367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
 		38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.release.xcconfig"; sourceTree = "<group>"; };
+		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
+		494476D2216A648600051515 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
 		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		49AD204F2035FA7400661B0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		49AD20522035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49AD204F2035FA7400661B0D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		49AD20522035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MapViewController.storyboard; sourceTree = "<group>"; };
 		49AD20542035FA7400661B0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49AD20572035FA7400661B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49AD20592035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mo-BikesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AD20622035FA7400661B0D /* Mo_BikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mo_BikesTests.swift; sourceTree = "<group>"; };
 		49AD20642035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49B00FDD2035FEFC00028812 /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
+		49B00FDF2035FF0A00028812 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
+		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		49B4B228216484C700112B4A /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
+		49B4B22C2164856C00112B4A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		49BB9FF92167CE9200E68C89 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
+		49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModelTests.swift; sourceTree = "<group>"; };
+		49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B00FE42036092000028812 /* MapKit.framework in Frameworks */,
 				DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,11 +115,14 @@
 			isa = PBXGroup;
 			children = (
 				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
-				49AD204F2035FA7400661B0D /* ViewController.swift */,
-				49AD20512035FA7400661B0D /* Main.storyboard */,
+				49AF7F442168324D00A88560 /* MapView */,
+				49AF7F452168325A00A88560 /* StationView */,
+				49AF7F47216832DB00A88560 /* SupplementLayers */,
+				49AF7F462168328800A88560 /* Misc */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
 				49AD20592035FA7400661B0D /* Info.plist */,
+				49B00FE520360B2200028812 /* Sample Data */,
 			);
 			path = "Mo-Bikes";
 			sourceTree = "<group>";
@@ -102,15 +130,56 @@
 		49AD20612035FA7400661B0D /* Mo-BikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				49AD20622035FA7400661B0D /* Mo_BikesTests.swift */,
+				49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */,
+				49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */,
+				494476D2216A648600051515 /* StationModelTests.swift */,
+				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
 			sourceTree = "<group>";
 		};
+		49AF7F442168324D00A88560 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				49AD204F2035FA7400661B0D /* MapViewController.swift */,
+				49AD20512035FA7400661B0D /* MapViewController.storyboard */,
+				49B00FDF2035FF0A00028812 /* MapViewModel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		49AF7F452168325A00A88560 /* StationView */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B22C2164856C00112B4A /* StationView.swift */,
+				49B4B228216484C700112B4A /* StationViewModel.swift */,
+				49B00FDD2035FEFC00028812 /* StationModel.swift */,
+			);
+			path = StationView;
+			sourceTree = "<group>";
+		};
+		49AF7F462168328800A88560 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				49B4B22E216485DC00112B4A /* Styles.swift */,
+				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
+				49B00FE720360B5500028812 /* MockAPI.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		49AF7F47216832DB00A88560 /* SupplementLayers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupplementLayers;
+			sourceTree = "<group>";
+		};
 		655ECDB840C28B867813189B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49B00FE32036092000028812 /* MapKit.framework */,
 				076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */,
 				2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */,
 			);
@@ -179,12 +248,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = hearthedge;
 				TargetAttributes = {
 					49AD20492035FA7400661B0D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					49AD205D2035FA7400661B0D = {
 						CreatedOnToolsVersion = 9.2;
@@ -219,7 +293,8 @@
 			files = (
 				49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */,
 				49AD20552035FA7400661B0D /* Assets.xcassets in Resources */,
-				49AD20532035FA7400661B0D /* Main.storyboard in Resources */,
+				49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */,
+				49B00FE620360B2200028812 /* Sample Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +358,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,8 +427,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AD20502035FA7400661B0D /* ViewController.swift in Sources */,
+				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
+				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
+				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
+				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
+				49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */,
+				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
+				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
 				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,
+				49B4B229216484C700112B4A /* StationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +443,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AD20632035FA7400661B0D /* Mo_BikesTests.swift in Sources */,
+				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
+				49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */,
+				494476D3216A648600051515 /* StationModelTests.swift in Sources */,
+				49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,12 +461,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		49AD20512035FA7400661B0D /* Main.storyboard */ = {
+		49AD20512035FA7400661B0D /* MapViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				49AD20522035FA7400661B0D /* Base */,
 			);
-			name = Main.storyboard;
+			name = MapViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		49AD20562035FA7400661B0D /* LaunchScreen.storyboard */ = {
@@ -407,6 +494,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -414,6 +502,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -441,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -464,6 +553,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -471,6 +561,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -492,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -511,7 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -527,7 +618,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-Bikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -544,7 +635,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-BikesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mo-Bikes.app/Mo-Bikes";
 			};
@@ -562,7 +653,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "land.ashp.Mo-BikesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mo-Bikes.app/Mo-Bikes";
 			};
