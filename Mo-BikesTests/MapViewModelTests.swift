@@ -2,143 +2,119 @@
 //  MapViewModelTests.swift
 //  Mo-BikesTests
 //
-//  Created by Andrew on 2018-02-22.
+//  Created by Andrew on 2018-10-07.
 //  Copyright © 2018 hearthedge. All rights reserved.
 //
 
 import XCTest
-import RxSwift
 import MapKit
+import RxSwift
+import RxCocoa
+import RxBlocking
 @testable import Mo_Bikes
 
 class MapViewModelTests: XCTestCase {
-    
-    var stationManager: StationManager!
-    var mapViewController: MapViewController!
+
     var mapViewModel: MapViewModel!
-    var mapView: MKMapView!
-    let disposeBag = DisposeBag()
-    
+    var mockAPI: MockAPI?
+
+    var disposeBag = DisposeBag()
+
     override func setUp() {
         super.setUp()
-        
-        continueAfterFailure = false
-        
-        stationManager = StationManager()
-        
-        let storyboard = UIStoryboard(name: "MapView",
-                                      bundle: Bundle.main)
-        mapViewController = storyboard.instantiateInitialViewController() as! MapViewController
-        
-        UIApplication.shared.keyWindow?.rootViewController = mapViewController
-        
-        XCTAssertNotNil(mapViewController.view)
-        
-        mapView = mapViewController.mapView        
-        
-        mapViewModel = MapViewModel(for: mapViewController, with: stationManager)
-        
+        mapViewModel = MapViewModel()
     }
-    
+
     override func tearDown() {
-        
-        stationManager.stations.subscribe(onNext: {
-            stations in
-            for station in stations {
-                station.operative.accept(false)
-            }
-        }).disposed(by: disposeBag)
-        
-        
+        disposeBag = DisposeBag()
+        mockAPI = nil
         super.tearDown()
     }
-    
-    func testDisplayStation() {
-        
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        let testAnnotation = testStation.annotation(in: mapView, with: mapViewModel.bikesOrSlots)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        if let firstAnnotation = mapView.annotations.first as? StationAnnotation {
-            XCTAssertEqual(firstAnnotation, testAnnotation, "Adding annotation to mapView with display(_ in:) should produce same annotation")
-        }
-    }
-    
-    func testDisplayMarker() {
-        let expectMarker = expectation(description: "Marker should display for Station")
 
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            let stationMarkerCount = self.mapView.subviews[0].subviews[2].subviews
-                .filter{$0 is StationMarker}
-                .count
-            XCTAssertTrue(stationMarkerCount == 1)
-            expectMarker.fulfill()
-        })
-        
-        waitForExpectations(timeout: 2) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-    }
-    
-    
-    
-    
-    // Replace this test with UITest
-    func testStationValues() {
-        
-        let expectValue = expectation(description: "Marker should display number of bikes")
-        
-        let testStation = generateStation("Test Station", in: mapView.region)
-        
-        mapViewModel.display([testStation], in: mapView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            let annotationContainerView = self.mapView.subviews[0].subviews[2]
-            let markerArray = annotationContainerView.subviews.filter({ (view) -> Bool in
-                view is StationMarker
-            })
-            
-            if let firstMarker = markerArray.first as? StationMarker {
-                firstMarker.setSelected(true, animated: true)
-                firstMarker.currentNumber
-                    .takeUntil(firstMarker.unsubscribeNumber)
-                    .subscribe(onNext: { firstMarker.glyphText = $0 })
-                    .disposed(by: self.disposeBag)
+    func testAddStation() {
+        let stationData = [generateStationData("0")]
+        let stations = stationData.map { Station($0) }
+        let expect = expectation(description: #function)
+        let results = try? mapViewModel.stationsToAddDriver
+            .asObservable()
+            .take(2)
+            .do(onNext: { _ in self.mapViewModel.updateStations(from: stationData) },
+                onCompleted: { expect.fulfill() })
+            .map { $0.map { $0 as! Station } }
+            .toBlocking()
+            .toArray()
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    if let firstNumber = firstMarker.glyphText {
-                        let testNumber = testStation.availableBikes.value
-                        XCTAssertEqual(firstNumber, String(testNumber))
-                        expectValue.fulfill()
-                    }
-                })
-            }
-        })
-        
-        waitForExpectations(timeout: 4) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-        
-        
-        
-        
-        
+        wait(for: [expect], timeout: 1.0)
+
+        XCTAssertEqual(results!, [[Station](), stations])
     }
-    
-    
+
+    func testRemoveStation() {
+        let stationData0 = generateStationData("0")
+        let stationData1 = generateStationData("1")
+
+        let initialStationData = [stationData0, stationData1]
+        let updatedStationData = [stationData1]
+        let station0 = Station(stationData0)
+        mapViewModel.updateStations(from: initialStationData)
+
+        let expect = expectation(description: #function)
+        let result = try? mapViewModel.stationsToRemoveSignal
+            .asObservable()
+            .take(1)
+            .do(onCompleted: { expect.fulfill() },
+                onSubscribed: { self.mapViewModel.updateStations(from: updatedStationData) })
+            .map { $0 as! Station }
+            .toBlocking()
+            .first()
+
+        wait(for: [expect], timeout: 1.0)
+        XCTAssertEqual(result, station0)
+    }
+
+    func testUpdateStation() {
+        let stationData0 = generateStationData("Test Station")
+        let stationData1 = generateStationData("Test Station")
+
+        mapViewModel.updateStations(from: [stationData0])
+
+        let expect = expectation(description: #function)
+        let results = try? mapViewModel.stationsToAddDriver
+            .asObservable()
+            .take(2)
+            .do(onNext: { _ in self.mapViewModel.updateStations(from: [stationData0]) })
+            .map { $0.map { $0 as! Station } }
+            .toBlocking()
+            .toArray()
+
+        guard let station = results?.first?.first else {
+            XCTFail()
+            return
+        }
+
+        let resultData0 = station.stationData
+        mapViewModel.updateStations(from: [stationData1])
+        let resultData1 = station.stationData
+        expect.fulfill()
+
+        wait(for: [expect], timeout: 1.0)
+        XCTAssertEqual(stationData0, resultData0)
+        XCTAssertEqual(stationData1, resultData1)
+    }
+
+    func testGetStationData() {
+        mockAPI = MockAPI()
+
+        let newStationData = try? mapViewModel
+            .getStationData()
+            .toBlocking()
+            .single()
+
+        if let newStationData = newStationData,
+            let first = newStationData.first {
+            XCTAssertEqual(first.name, "0001 10th & Cambie")
+        } else {
+            XCTFail()
+        }
+    }
 }
-
-
-
-
-
