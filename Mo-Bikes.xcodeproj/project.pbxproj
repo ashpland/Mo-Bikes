@@ -209,7 +209,6 @@
 				49AD20472035FA7400661B0D /* Frameworks */,
 				49AD20482035FA7400661B0D /* Resources */,
 				5D0FD5D6D4914CE878690F32 /* [CP] Embed Pods Frameworks */,
-				E3B8F72024781284CACA60BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,7 +228,6 @@
 				49AD205B2035FA7400661B0D /* Frameworks */,
 				49AD205C2035FA7400661B0D /* Resources */,
 				9FD2BD0D728666D13C76F88F /* [CP] Embed Pods Frameworks */,
-				D1BC16D6D957515EA651DB85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -315,6 +313,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -322,6 +321,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -370,36 +370,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D1BC16D6D957515EA651DB85 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E3B8F72024781284CACA60BF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4BB11CE32559936CACE43B7 /* [CP] Check Pods Manifest.lock */ = {
