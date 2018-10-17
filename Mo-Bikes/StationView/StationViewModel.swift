@@ -32,7 +32,7 @@ class StationViewModel {
         }
 
         markerTintColor = currentAvailable
-            .map { $0 > Styles.lowAvailable ? Styles.markerColor.normal : Styles.markerColor.low }
+            .map { $0 > Styles.lowAvailable ? Styles.Color.marker.normal : Styles.Color.marker.low }
 
         glyphText = Driver
             .combineLatest(stationIsSelected.asDriver(),

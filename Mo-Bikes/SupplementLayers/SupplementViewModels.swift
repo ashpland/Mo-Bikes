@@ -10,14 +10,14 @@ import MapKit
 
 func configureMarker(_ marker: MKMarkerAnnotationView, for annotation: SupplementAnnotation) -> MKMarkerAnnotationView {
     marker.glyphImage = annotation.pointType.glyphImage
-    //    marker.markerTintColor =
+    marker.markerTintColor = Styles.Color.secondary
     marker.isEnabled = false
     return marker
 }
 
 func configurePolylineRenderer(for supplementPolyline: SupplementPolyline) -> MKPolylineRenderer {
     let renderer = MKPolylineRenderer(polyline: supplementPolyline)
-    renderer.strokeColor = Styles.bikeRouteColor
+    renderer.strokeColor = Styles.Color.secondary
     renderer.lineWidth = 3.0
 
     if let lineType = supplementPolyline.lineType,

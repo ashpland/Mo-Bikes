@@ -53,14 +53,23 @@ class MapViewController: UIViewController {
     func setupMap() {
         mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
-        mapView.addOverlays(loadBikeways(), level: .aboveRoads)
+        do {
+            mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
+        }
+        catch {
+            debugPrint(error.localizedDescription)
+        }
     }
 
     func supplementLayers() {
-        for type in SupplementPointType.allCases {
-            type |> loadSupplementAnnotations >>> mapView.addAnnotations
+        do {
+            for type in SupplementPointType.allCases {
+                try type |> loadSupplementAnnotations >>> mapView.addAnnotations
+            }
         }
-
+        catch {
+            debugPrint(error.localizedDescription)
+        }
     }
 
     func setupRx() {

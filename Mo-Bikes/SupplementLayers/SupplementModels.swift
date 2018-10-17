@@ -37,9 +37,12 @@ class SupplementAnnotation: NSObject, MKAnnotation {
         self.pointType = pointType
         super.init()
     }
+}
 
-    static func of(_ pointType: SupplementPointType) -> (CLLocationCoordinate2D) -> SupplementAnnotation {
-        return { SupplementAnnotation(coordinate: $0, pointType: pointType) }
+func stringToAnnotation(of pointType: SupplementPointType) -> (String) -> SupplementAnnotation {
+    return { string in
+        return SupplementAnnotation(coordinate: string |> stringToCLLocationCoordinate2D,
+                                    pointType: pointType)
     }
 }
 
@@ -93,16 +96,16 @@ func extractLineType(from description: String) -> SupplementLineType? {
 
 // MARK: -
 
-func loadSupplementAnnotations(of pointType: SupplementPointType) -> [MKAnnotation] {
-    return pointType.fileURL
+func loadSupplementAnnotations(of pointType: SupplementPointType) throws -> [MKAnnotation] {
+    return try pointType.fileURL
         |> getXMLDocument
         >>> getPlacemarkElements
         >>> compactMap(getPointCoordinateString)
-        >>> map(stringToCLLocationCoordinate2D >>> SupplementAnnotation.of(pointType))
+        >>> map(stringToAnnotation(of: pointType))
 }
 
-func loadBikeways() -> [MKPolyline] {
-    return Bikeway.fileURL
+func loadBikeways() throws -> [MKPolyline] {
+    return try Bikeway.fileURL
         |> getXMLDocument
         >>> getPlacemarkElements
         >>> compactMap(getBikeway)

@@ -6,6 +6,8 @@
 //  Copyright © 2018 hearthedge. All rights reserved.
 //
 
+// MARK: Function application and composition
+
 precedencegroup ForwardApplication {
     associativity: left
 }
@@ -14,10 +16,6 @@ infix operator |>: ForwardApplication
 
 func |> <A, B>(a: A, f: (A) -> B) -> B {
     return f(a)
-}
-
-func |> <A, B>(a: A, f: (A) throws -> B) throws -> B {
-    return try f(a)
 }
 
 precedencegroup ForwardComposition {
@@ -33,12 +31,31 @@ func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> ((A) -> C) {
     }
 }
 
-// TODO: Figure out throwing composition
-func >>> <A, B, C>(f: @escaping (A) throws -> B, g: @escaping (B) -> C) throws -> ((A) throws -> C) {
+// MARK: - Overloads for throwing functions
+
+func |> <A, B>(a: A, f: (A) throws -> B) throws -> B {
+    return try f(a)
+}
+
+func >>> <A, B, C>(f: @escaping (A) throws -> B, g: @escaping (B) -> C) -> ((A) throws -> C) {
     return { a in
         try g(f(a))
     }
 }
+
+func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) throws -> C) -> ((A) throws -> C) {
+    return { a in
+        try g(f(a))
+    }
+}
+
+func >>> <A, B, C>(f: @escaping (A) throws -> B, g: @escaping (B) throws -> C) -> ((A) throws -> C) {
+    return { a in
+        try g(f(a))
+    }
+}
+
+// MARK: - Mapping
 
 func map<Element, ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> ([Element]) -> [ElementOfResult] {
     return { $0.map(transform) }

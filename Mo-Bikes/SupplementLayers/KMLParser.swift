@@ -8,30 +8,32 @@
 
 import AEXML
 
-// TODO: use these once functions compose with throw
-enum XMLError: Error {
-    case conversionFailed
-    case noPlacemarks
-}
-
 typealias PointCoordinate = String
 typealias LineCoordinates = [PointCoordinate]
 
-func getXMLDocument(xmlurl: URL) -> AEXMLDocument? {
+enum KMLError: String, LocalizedError {
+    case conversionFailed = "KML conversion failed"
+    case noPlacemarks = "No placemarks found in KML file"
+    
+    var errorDescription: String? {
+        return self.rawValue
+    }
+}
+
+func getXMLDocument(xmlurl: URL) throws -> AEXMLDocument {
     if let xmlData = try? Data(contentsOf: xmlurl),
         let xmlDoc = try? AEXMLDocument(xml: xmlData) {
         return xmlDoc
     } else {
-        return nil
+        throw KMLError.conversionFailed
     }
 }
 
-func getPlacemarkElements(_ xmlDoc: AEXMLDocument?) -> [AEXMLElement] {
-    if let xmlDoc = xmlDoc,
-        let elements = xmlDoc.root["Document"]["Folder"]["Placemark"].all {
+func getPlacemarkElements(_ xmlDoc: AEXMLDocument) throws -> [AEXMLElement] {
+    if let elements = xmlDoc.root["Document"]["Folder"]["Placemark"].all {
         return elements
     } else {
-       return [AEXMLElement]()
+       throw KMLError.noPlacemarks
     }
 }
 
