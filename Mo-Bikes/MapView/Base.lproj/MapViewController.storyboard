@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,68 +17,249 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="Mo_Bikes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="akK-qI-pPo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akK-qI-pPo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q98-Lp-moV">
-                                <rect key="frame" x="0.0" y="734" width="375" height="44"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrm-wu-Gud">
+                                <rect key="frame" x="0.0" y="481" width="375" height="186"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s37-Ih-lfw">
+                                        <rect key="frame" x="20" y="8" width="335" height="158"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qr5-vf-zoR" userLabel="Top">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-rd-2KU" customClass="MoButtonHamburger" customModule="Mo_Bikes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
+                                                        <color key="tintColor" name="Primary"/>
+                                                        <state key="normal" title="🍔"/>
+                                                        <connections>
+                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiY-mV-XR0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="opg-6M-yJs">
+                                                        <rect key="frame" x="30" y="0.0" width="77.5" height="50"/>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mUH-NN-7e9">
+                                                        <rect key="frame" x="107.5" y="0.0" width="120" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-tX-4qu" customClass="MoButtonBikes" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="52" height="50"/>
+                                                                <color key="tintColor" name="Primary"/>
+                                                                <state key="normal" image="bikeIcon"/>
+                                                                <connections>
+                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pLI-q6-pBw"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-Eg-zdM" customClass="MoButtonDocks" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                <rect key="frame" x="68" y="0.0" width="52" height="50"/>
+                                                                <color key="tintColor" name="Primary"/>
+                                                                <state key="normal" image="dockIcon"/>
+                                                                <connections>
+                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DYO-BS-b7b"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="6xK-ao-K84"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="wop-O2-GMl">
+                                                        <rect key="frame" x="227.5" y="0.0" width="77.5" height="50"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fx-gf-k2g" customClass="MoButtonCompass" customModule="Mo_Bikes" customModuleProvider="target">
+                                                        <rect key="frame" x="305" y="0.0" width="30" height="50"/>
+                                                        <color key="tintColor" name="Primary"/>
+                                                        <state key="normal" image="compass"/>
+                                                        <connections>
+                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ofH-T5-xdt"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstItem="awZ-rd-2KU" firstAttribute="width" secondItem="5Fx-gf-k2g" secondAttribute="width" id="FkM-bG-G9V"/>
+                                                    <constraint firstAttribute="height" constant="50" id="UJ4-eE-QCl"/>
+                                                    <constraint firstItem="opg-6M-yJs" firstAttribute="width" secondItem="wop-O2-GMl" secondAttribute="width" id="YRP-FX-VYY"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="rdT-ez-bjK" appends="YES" id="OWJ-gI-Pki"/>
+                                                </connections>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrx-YK-33A" userLabel="Bottom">
+                                                <rect key="frame" x="0.0" y="58" width="335" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6G-eR-uUI" userLabel="Line">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="1"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="Rzg-Af-wAo"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-aH-eQZ">
+                                                        <rect key="frame" x="0.0" y="9" width="335" height="91"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="amI-xC-XSR" userLabel="Buttons">
+                                                                <rect key="frame" x="0.0" y="0.0" width="170.5" height="91"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhV-WS-FNx" customClass="MoButtonContact" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="25"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" title="   Contact Mobi" image="phone"/>
+                                                                        <connections>
+                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j42-ud-TA5"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omr-A2-YWZ" customClass="MoButtonWashrooms" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="33" width="160" height="25"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                        <color key="tintColor" name="Inactive"/>
+                                                                        <state key="normal" title="  Public Washrooms" image="toilet"/>
+                                                                        <connections>
+                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQE-w0-PTx"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qsv-dd-jWH" customClass="MoButtonFountains" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="66" width="161" height="25"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                        <color key="tintColor" name="Inactive"/>
+                                                                        <state key="normal" title="  Drinking Fountains" image="fountain"/>
+                                                                        <connections>
+                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zo0-K0-J5g"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNY-dj-sYP" userLabel="Spacer">
+                                                                <rect key="frame" x="178.5" y="0.0" width="50" height="91"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="5UU-iE-evu"/>
+                                                                    <constraint firstAttribute="height" constant="91" id="9Tl-k3-bbM"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-q5-7OD" userLabel="Legend">
+                                                                <rect key="frame" x="236.5" y="0.0" width="98.5" height="91"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwB-G9-Fpy">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="25"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m02-47-gtm" userLabel="Bikeway">
+                                                                        <rect key="frame" x="0.0" y="33" width="98.5" height="25"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bikeway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-jC-8Id" userLabel="Bikeway">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="——" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-vR-eWj">
+                                                                                <rect key="frame" x="64" y="0.0" width="34.5" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                                                                <color key="textColor" name="Secondary"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="48W-1M-QR0" userLabel="Bike Lane">
+                                                                        <rect key="frame" x="0.0" y="66" width="98.5" height="25"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bike Lane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="YbJ-7k-yly" userLabel="Bike Lane">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="25"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="tcY-xL-1wf">
+                                                                                <rect key="frame" x="74.5" y="0.0" width="24" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                                                                <color key="textColor" name="Secondary"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="cwB-G9-Fpy" firstAttribute="bottom" secondItem="jhV-WS-FNx" secondAttribute="bottom" id="0bx-NX-OE3"/>
+                                                            <constraint firstItem="m02-47-gtm" firstAttribute="bottom" secondItem="omr-A2-YWZ" secondAttribute="bottom" id="9DP-8V-3eB"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="nxc-sK-Vge"/>
+                                    <constraint firstItem="s37-Ih-lfw" firstAttribute="top" secondItem="Qrm-wu-Gud" secondAttribute="top" constant="8" id="IF1-ct-8Ac"/>
+                                    <constraint firstItem="s37-Ih-lfw" firstAttribute="leading" secondItem="Qrm-wu-Gud" secondAttribute="leading" constant="20" symbolic="YES" id="SLC-YF-qIh"/>
+                                    <constraint firstAttribute="bottom" secondItem="s37-Ih-lfw" secondAttribute="bottom" constant="20" symbolic="YES" id="dGF-Il-c3b"/>
+                                    <constraint firstAttribute="trailing" secondItem="s37-Ih-lfw" secondAttribute="trailing" constant="20" symbolic="YES" id="ew5-64-IMd"/>
                                 </constraints>
-                                <items>
-                                    <barButtonItem title="Refresh" style="plain" id="NyE-9t-tdj">
-                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="19" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="refreshPressed:" destination="BYZ-38-t0r" id="gh6-i1-9hH"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UxK-UE-e8U"/>
-                                    <barButtonItem style="plain" id="Ao2-so-SBl">
-                                        <segmentedControl key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="9B7-IN-tWi">
-                                            <rect key="frame" x="127" y="7" width="121" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Bikes"/>
-                                                <segment title="Docks"/>
-                                            </segments>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vO4-jl-Yl1"/>
-                                    <barButtonItem image="compass" id="3Ap-5A-Rfc">
-                                        <connections>
-                                            <action selector="compassButtonPressed:" destination="BYZ-38-t0r" id="DpM-22-ham"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                            </toolbar>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="top" secondItem="akK-qI-pPo" secondAttribute="top" id="7eg-Q1-85G"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q98-Lp-moV" secondAttribute="bottom" id="Ahm-5d-wSG"/>
-                            <constraint firstItem="q98-Lp-moV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="E5R-ZG-biy"/>
                             <constraint firstAttribute="bottom" secondItem="akK-qI-pPo" secondAttribute="bottom" id="G3G-Pj-ye5"/>
-                            <constraint firstAttribute="trailing" secondItem="q98-Lp-moV" secondAttribute="trailing" id="QnZ-Di-052"/>
+                            <constraint firstAttribute="bottom" secondItem="Qrm-wu-Gud" secondAttribute="bottom" id="Gau-XS-J2s"/>
+                            <constraint firstItem="Qrm-wu-Gud" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lpv-2E-Ohc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s37-Ih-lfw" secondAttribute="bottom" constant="16" id="YkB-5H-RFb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="akK-qI-pPo" secondAttribute="trailing" id="bjK-qf-Q8o"/>
                             <constraint firstItem="akK-qI-pPo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ooU-vU-Ewl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qrm-wu-Gud" secondAttribute="trailing" id="xs6-Fh-gFo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YkB-5H-RFb"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="bikesDocksControl" destination="9B7-IN-tWi" id="pYa-ZC-vHA"/>
+                        <outlet property="hamburgerButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>
                         <outlet property="mapView" destination="akK-qI-pPo" id="Pzz-6D-d1b"/>
+                        <outlet property="trayBottomView" destination="nrx-YK-33A" id="a5o-HB-c8Z"/>
+                        <outlet property="trayStackView" destination="s37-Ih-lfw" id="2mk-sC-d86"/>
+                        <outlet property="trayView" destination="Qrm-wu-Gud" id="N3m-fz-UOR"/>
+                        <outlet property="trayViewBottomConstraint" destination="Gau-XS-J2s" id="g9i-em-c5Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rdT-ez-bjK">
+                    <connections>
+                        <action selector="topViewTapped:" destination="BYZ-38-t0r" id="fi1-oQ-cnn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="33.990147783251231"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bikeIcon" width="500" height="500"/>
         <image name="compass" width="25" height="25"/>
+        <image name="dockIcon" width="500" height="500"/>
+        <image name="fountain" width="25" height="25"/>
+        <image name="phone" width="25" height="25"/>
+        <image name="toilet" width="25" height="25"/>
+        <namedColor name="Inactive">
+            <color red="0.75400000810623169" green="0.75400000810623169" blue="0.75400000810623169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Primary">
+            <color red="0.57899999618530273" green="0.12800000607967377" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Secondary">
+            <color red="0.30199998617172241" green="0.62800002098083496" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -15,6 +15,7 @@ class StationView: MKMarkerAnnotationView {
     var viewModel: StationViewModel! {
         didSet {
             setupRx()
+            animatesWhenAdded = true
         }
     }
 

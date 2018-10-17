@@ -77,7 +77,7 @@ class StationViewModelTests: XCTestCase {
             if let error = error {
                 XCTFail(error.localizedDescription)
             } else {
-                XCTAssertEqual(results, [Styles.markerColor.low, Styles.markerColor.normal])
+                XCTAssertEqual(results, [Styles.Color.marker.low, Styles.Color.marker.normal])
             }
         }
 

@@ -12,7 +12,18 @@ func configureMarker(_ marker: MKMarkerAnnotationView, for annotation: Supplemen
     marker.glyphImage = annotation.pointType.glyphImage
     marker.markerTintColor = Styles.Color.secondary
     marker.isEnabled = false
+    marker.animatesWhenAdded = true
     return marker
+}
+
+func configureMarker(for annotation: SupplementAnnotation) -> (MKMarkerAnnotationView) -> MKMarkerAnnotationView {
+    return { marker in
+        marker.glyphImage = annotation.pointType.glyphImage
+        marker.markerTintColor = Styles.Color.secondary
+        marker.isEnabled = false
+        marker.animatesWhenAdded = true
+        return marker
+    }
 }
 
 func configurePolylineRenderer(for supplementPolyline: SupplementPolyline) -> MKPolylineRenderer {
@@ -24,6 +35,6 @@ func configurePolylineRenderer(for supplementPolyline: SupplementPolyline) -> MK
         case .bikeRouteDashed = lineType {
         renderer.lineDashPattern =  [5, 5]
     }
-
+    
     return renderer
 }

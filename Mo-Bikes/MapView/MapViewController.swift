@@ -14,8 +14,18 @@ import RxCocoa
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var bikesDocksControl: UISegmentedControl!
 
+    @IBOutlet weak var trayView: UIView!
+    @IBOutlet weak var trayStackView: UIStackView!
+    @IBOutlet weak var trayBottomView: UIStackView!
+    @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var hamburgerButton: MoButtonHamburger!
+    
+    private var bottomOffset: CGFloat {
+        return (trayStackView.spacing + trayBottomView.frame.height + 20) * -1
+    }
+    
     let locationManager = CLLocationManager()
     let viewModel = MapViewModel()
     let disposeBag = DisposeBag()
@@ -26,19 +36,22 @@ class MapViewController: UIViewController {
         setupLocation()
         setupMap()
         setupRx()
-        supplementLayers()
+        
+        trayViewBottomConstraint.constant = bottomOffset
+        trayBottomView.alpha = 0.0
+        
+        trayView.layer.cornerRadius = 20
+
     }
 
-    func setupLocation() {
+    private func setupLocation() {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
-        mapView.showsPointsOfInterest = false
         zoomToCurrent()
     }
 
-    func zoomToCurrent() {
+    private func zoomToCurrent() {
         guard let currentLocation = self.locationManager.location else {
             debugPrint("Can't get current location")
             return
@@ -50,7 +63,7 @@ class MapViewController: UIViewController {
         mapView.setRegion(currentRegion, animated: true)
     }
 
-    func setupMap() {
+    private func setupMap() {
         mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
         do {
@@ -61,23 +74,7 @@ class MapViewController: UIViewController {
         }
     }
 
-    func supplementLayers() {
-        do {
-            for type in SupplementPointType.allCases {
-                try type |> loadSupplementAnnotations >>> mapView.addAnnotations
-            }
-        }
-        catch {
-            debugPrint(error.localizedDescription)
-        }
-    }
-
-    func setupRx() {
-        bikesDocksControl.rx.selectedSegmentIndex.asDriver()
-            .map { return $0 == 0 ? .bikes : .docks }
-            .drive(viewModel.bikesOrDocks)
-            .disposed(by: disposeBag)
-
+    private func setupRx() {
         viewModel.stationsToAddDriver
             .drive(mapView.rx.addAnnotations)
             .disposed(by: disposeBag)
@@ -94,16 +91,6 @@ class MapViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
-    @IBAction func compassButtonPressed(_ sender: Any) {
-        zoomToCurrent()
-    }
-
-    @IBAction func refreshPressed(_ sender: Any) {
-        updateStations()
-            .bind(to: viewModel.rx.updateStations)
-            .disposed(by: disposeBag)
-    }
-
     private func updateStations() -> Observable<[StationData]> {
         return viewModel
             .getStationData()
@@ -113,42 +100,74 @@ class MapViewController: UIViewController {
             })
             .asObservable()
     }
-
-}
-
-extension MapViewController: MKMapViewDelegate {
-
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let station = annotation as? Station {
-            let stationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
-            stationView.viewModel = StationViewModel(station: station,
-                                                     bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
-            return stationView
-        } else if let supplement = annotation as? SupplementAnnotation {
-            let marker = mapView.dequeueReusableAnnotationView(withIdentifier: "\(SupplementPointType.self)") as! MKMarkerAnnotationView
-            return configureMarker(marker, for: supplement)
+    
+    @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
+        hamburgerButton |> openBottomDrawer
+    }
+    
+    @IBAction func buttonPressed(_ sender: MoButton) {
+        switch sender.type {
+        case .bikes:
+            viewModel.bikesOrDocks.accept(.bikes)
+        case .docks:
+            viewModel.bikesOrDocks.accept(.docks)
+        case .fountains, .washrooms:
+            sender as? MoButtonToggle |> displaySupplementAnnotations
+        case .contact:
+            callMobi()
+        case .compass:
+            zoomToCurrent()
+        case .hamburger:
+            sender as? MoButtonToggle |> openBottomDrawer
+        default:
+            return
+        }
+    }
+    
+    private func displaySupplementAnnotations(_ toggle: MoButtonToggle?) {
+        guard let toggle = toggle else { return }
+        
+        let pointType: SupplementPointType
+        switch toggle.type {
+        case .washrooms:
+            pointType = .washroom
+        case .fountains:
+            pointType = .fountain
+        default:
+            return
+        }
+        
+        if toggle.isOn {
+            toggle.tintColor = Styles.Color.inactive
+            mapView.annotations
+                |> compactMap(justAnnotations(of: pointType))
+                >>> mapView.removeAnnotations
         } else {
-            return nil
+            toggle.tintColor = Styles.Color.secondary
+            try? pointType
+                |> loadSupplementAnnotations
+                >>> mapView.addAnnotations
+        }
+        
+        toggle.isOn.toggle()
+    }
+    
+    private func openBottomDrawer(_ toggle: MoButtonToggle?) {
+        guard let toggle = toggle else { return }
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) {
+            self.trayViewBottomConstraint.constant = toggle.isOn ? self.bottomOffset : 0
+            self.trayBottomView.alpha = toggle.isOn ? 0.0 : 1.0
+            self.view.layoutIfNeeded()
+        }
+        
+        toggle.isOn.toggle()
+    }
+
+    private func callMobi() {
+        if let url = URL(string: "tel://7786551800") {
+            UIApplication.shared.open(url)
         }
     }
 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(true)
-        }
-    }
-
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(false)
-        }
-    }
-
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let supplementPolyline = overlay as? SupplementPolyline {
-            return supplementPolyline |> configurePolylineRenderer
-        } else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
-    }
 }

@@ -11,7 +11,7 @@ import MapKit
 // MARK: Points
 
 enum SupplementPointType: String, CaseIterable {
-    case drinkingFountain = "drinking_fountains"
+    case fountain = "drinking_fountains"
     case washroom = "public_washrooms"
 
     var fileURL: URL {
@@ -20,7 +20,7 @@ enum SupplementPointType: String, CaseIterable {
 
     var glyphImage: UIImage {
         switch self {
-        case .drinkingFountain:
+        case .fountain:
             return #imageLiteral(resourceName: "fountain")
         case .washroom:
             return #imageLiteral(resourceName: "toilet")
@@ -43,6 +43,17 @@ func stringToAnnotation(of pointType: SupplementPointType) -> (String) -> Supple
     return { string in
         return SupplementAnnotation(coordinate: string |> stringToCLLocationCoordinate2D,
                                     pointType: pointType)
+    }
+}
+
+func justAnnotations(of pointType: SupplementPointType) -> (MKAnnotation) -> SupplementAnnotation? {
+    return { annotation in
+        if let supplementAnnotation = annotation as? SupplementAnnotation,
+            supplementAnnotation.pointType == pointType {
+            return supplementAnnotation
+        } else {
+            return nil
+        }
     }
 }
 
