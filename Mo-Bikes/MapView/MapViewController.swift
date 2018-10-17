@@ -26,6 +26,7 @@ class MapViewController: UIViewController {
         setupLocation()
         setupMap()
         setupRx()
+        supplementLayers()
     }
 
     func setupLocation() {
@@ -51,6 +52,14 @@ class MapViewController: UIViewController {
 
     func setupMap() {
         mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
+        mapView.addOverlays(loadBikeways(), level: .aboveRoads)
+    }
+
+    func supplementLayers() {
+        for type in SupplementPointType.allCases {
+            type |> loadSupplementAnnotations >>> mapView.addAnnotations
+        }
 
     }
 
@@ -106,8 +115,12 @@ extension MapViewController: MKMapViewDelegate {
             stationView.viewModel = StationViewModel(station: station,
                                                      bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
             return stationView
+        } else if let supplement = annotation as? SupplementAnnotation {
+            let marker = mapView.dequeueReusableAnnotationView(withIdentifier: "\(SupplementPointType.self)") as! MKMarkerAnnotationView
+            return configureMarker(marker, for: supplement)
+        } else {
+            return nil
         }
-        return nil
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -119,6 +132,14 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if let stationView = view as? StationView {
             stationView.viewModel.stationIsSelected.accept(false)
+        }
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let supplementPolyline = overlay as? SupplementPolyline {
+            return supplementPolyline |> configurePolylineRenderer
+        } else {
+            return MKOverlayRenderer(overlay: overlay)
         }
     }
 }

@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
+		4913FC1E2176579800E590C8 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC1D2176579800E590C8 /* KMLParser.swift */; };
+		4913FC232176584A00E590C8 /* drinking_fountains.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC202176584A00E590C8 /* drinking_fountains.kml */; };
+		4913FC242176584A00E590C8 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC212176584A00E590C8 /* bikeways.kml */; };
+		4913FC252176584A00E590C8 /* public_washrooms.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC222176584A00E590C8 /* public_washrooms.kml */; };
+		4913FC2721765B5800E590C8 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2621765B5800E590C8 /* Functional.swift */; };
+		4913FC29217664CD00E590C8 /* SupplementModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC28217664CD00E590C8 /* SupplementModels.swift */; };
+		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
 		494476D3216A648600051515 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494476D2216A648600051515 /* StationModelTests.swift */; };
+		495998D721771DCD005B2887 /* SupplementViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495998D621771DCD005B2887 /* SupplementViewModels.swift */; };
 		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
 		49AD20502035FA7400661B0D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* MapViewController.swift */; };
 		49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapViewController.storyboard */; };
@@ -46,8 +54,16 @@
 		367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
 		38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.release.xcconfig"; sourceTree = "<group>"; };
+		4913FC1D2176579800E590C8 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
+		4913FC202176584A00E590C8 /* drinking_fountains.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = drinking_fountains.kml; sourceTree = "<group>"; };
+		4913FC212176584A00E590C8 /* bikeways.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bikeways.kml; sourceTree = "<group>"; };
+		4913FC222176584A00E590C8 /* public_washrooms.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_washrooms.kml; sourceTree = "<group>"; };
+		4913FC2621765B5800E590C8 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
+		4913FC28217664CD00E590C8 /* SupplementModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementModels.swift; sourceTree = "<group>"; };
+		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
 		494476D2216A648600051515 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
+		495998D621771DCD005B2887 /* SupplementViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementViewModels.swift; sourceTree = "<group>"; };
 		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49AD204F2035FA7400661B0D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +107,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4913FC1F2176584A00E590C8 /* Spatial Data */ = {
+			isa = PBXGroup;
+			children = (
+				4913FC202176584A00E590C8 /* drinking_fountains.kml */,
+				4913FC212176584A00E590C8 /* bikeways.kml */,
+				4913FC222176584A00E590C8 /* public_washrooms.kml */,
+			);
+			path = "Spatial Data";
+			sourceTree = "<group>";
+		};
 		49AD20412035FA7400661B0D = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +148,7 @@
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
 				49AD20592035FA7400661B0D /* Info.plist */,
+				4913FC1F2176584A00E590C8 /* Spatial Data */,
 				49B00FE520360B2200028812 /* Sample Data */,
 			);
 			path = "Mo-Bikes";
@@ -165,6 +192,8 @@
 				49B4B22E216485DC00112B4A /* Styles.swift */,
 				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
 				49B00FE720360B5500028812 /* MockAPI.swift */,
+				4913FC2621765B5800E590C8 /* Functional.swift */,
+				4913FC2A217665DE00E590C8 /* Coordinates.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -172,6 +201,9 @@
 		49AF7F47216832DB00A88560 /* SupplementLayers */ = {
 			isa = PBXGroup;
 			children = (
+				4913FC1D2176579800E590C8 /* KMLParser.swift */,
+				4913FC28217664CD00E590C8 /* SupplementModels.swift */,
+				495998D621771DCD005B2887 /* SupplementViewModels.swift */,
 			);
 			path = SupplementLayers;
 			sourceTree = "<group>";
@@ -290,9 +322,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */,
+				4913FC232176584A00E590C8 /* drinking_fountains.kml in Resources */,
 				49AD20552035FA7400661B0D /* Assets.xcassets in Resources */,
 				49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */,
 				49B00FE620360B2200028812 /* Sample Data in Resources */,
+				4913FC242176584A00E590C8 /* bikeways.kml in Resources */,
+				4913FC252176584A00E590C8 /* public_washrooms.kml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,12 +433,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
+				495998D721771DCD005B2887 /* SupplementViewModels.swift in Sources */,
 				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
 				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
 				49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
+				4913FC29217664CD00E590C8 /* SupplementModels.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
+				4913FC1E2176579800E590C8 /* KMLParser.swift in Sources */,
+				4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */,
+				4913FC2721765B5800E590C8 /* Functional.swift in Sources */,
 				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,
 				49B4B229216484C700112B4A /* StationViewModel.swift in Sources */,
 			);

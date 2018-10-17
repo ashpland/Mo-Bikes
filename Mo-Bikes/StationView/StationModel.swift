@@ -25,17 +25,7 @@ final class Station: NSObject, MKAnnotation, NameIndexable {
     }
 
     var coordinate: CLLocationCoordinate2D {
-        let splitCoordinates = stationData.coordinates
-            .split(separator: ",")
-            .map { String($0.trimmingCharacters(in: .whitespaces)) }
-
-        guard let latString = splitCoordinates.first,
-            let lonString = splitCoordinates.last,
-            let lat = Double(latString),
-            let lon = Double(lonString)
-            else { return kCLLocationCoordinate2DInvalid }
-
-        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        return stationData.coordinates |> stringToCLLocationCoordinate2D
     }
 
     var availableDocksDriver: Driver<Int> {
@@ -73,7 +63,7 @@ extension Station {
 
 struct StationData: Decodable, NameIndexable, Hashable, Equatable {
     let name: String
-    let coordinates: String
+    let coordinates: PointCoordinate
     let totalDocks: Int
     let availableDocks: Int
     let availableBikes: Int
