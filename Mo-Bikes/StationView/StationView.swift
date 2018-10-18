@@ -7,36 +7,30 @@
 //
 
 import MapKit
-import RxSwift
-import RxCocoa
 
 class StationView: MKMarkerAnnotationView {
+    var stationData: StationData!
+}
 
-    var viewModel: StationViewModel! {
-        didSet {
-            setupRx()
-            animatesWhenAdded = true
-        }
+func configureStationView(_ bikesOrDocksState: BikesOrDocks) -> (StationView) -> StationView {
+    return { view in
+        let currentAvailable: Int = {
+            switch bikesOrDocksState {
+            case .bikes:
+                return view.stationData.availableBikes
+            case .docks:
+                return view.stationData.availableDocks
+            }
+        }()
+        view.markerTintColor = currentAvailable |> markerColor
+        view.glyphText = view.isSelected ? String(currentAvailable) : nil
+        view.glyphImage = view.isSelected ? nil : bikesOrDocksState.glyph
+        view.animatesWhenAdded = true
+        
+        return view
     }
+}
 
-    private var disposeBag = DisposeBag()
-
-    override func prepareForReuse() {
-        disposeBag = DisposeBag()
-    }
-
-    func setupRx() {
-        viewModel.markerTintColor
-            .drive(rx.markerTintColor)
-            .disposed(by: disposeBag)
-
-        viewModel.glyphText
-            .drive(rx.glyphText)
-            .disposed(by: disposeBag)
-
-        viewModel.glyphImage
-            .drive(rx.glyphImage)
-            .disposed(by: disposeBag)
-    }
-
+func markerColor(_ currentAvailable: Int) -> UIColor {
+    return currentAvailable > Styles.lowAvailable ? Styles.Color.marker.normal : Styles.Color.marker.low
 }

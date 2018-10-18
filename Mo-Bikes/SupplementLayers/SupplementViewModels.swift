@@ -8,14 +8,6 @@
 
 import MapKit
 
-func configureMarker(_ marker: MKMarkerAnnotationView, for annotation: SupplementAnnotation) -> MKMarkerAnnotationView {
-    marker.glyphImage = annotation.pointType.glyphImage
-    marker.markerTintColor = Styles.Color.secondary
-    marker.isEnabled = false
-    marker.animatesWhenAdded = true
-    return marker
-}
-
 func configureMarker(for annotation: SupplementAnnotation) -> (MKMarkerAnnotationView) -> MKMarkerAnnotationView {
     return { marker in
         marker.glyphImage = annotation.pointType.glyphImage

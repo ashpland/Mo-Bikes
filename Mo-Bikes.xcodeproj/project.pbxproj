@@ -30,10 +30,8 @@
 		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
 		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
-		49B4B229216484C700112B4A /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B228216484C700112B4A /* StationViewModel.swift */; };
 		49B4B22D2164856C00112B4A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22C2164856C00112B4A /* StationView.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
-		49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB9FF92167CE9200E68C89 /* RxExtensions.swift */; };
 		49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */; };
 		49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
@@ -82,10 +80,8 @@
 		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
-		49B4B228216484C700112B4A /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		49B4B22C2164856C00112B4A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		49BB9FF92167CE9200E68C89 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModelTests.swift; sourceTree = "<group>"; };
 		49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				49B4B22C2164856C00112B4A /* StationView.swift */,
-				49B4B228216484C700112B4A /* StationViewModel.swift */,
 				49B00FDD2035FEFC00028812 /* StationModel.swift */,
 			);
 			path = StationView;
@@ -195,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				49B4B22E216485DC00112B4A /* Styles.swift */,
-				49BB9FF92167CE9200E68C89 /* RxExtensions.swift */,
 				49B00FE720360B5500028812 /* MockAPI.swift */,
 				4913FC2621765B5800E590C8 /* Functional.swift */,
 				4913FC2A217665DE00E590C8 /* Coordinates.swift */,
@@ -445,7 +439,6 @@
 				494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */,
 				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
-				49BB9FFA2167CE9200E68C89 /* RxExtensions.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
 				4913FC29217664CD00E590C8 /* SupplementModels.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
@@ -453,7 +446,6 @@
 				4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */,
 				4913FC2721765B5800E590C8 /* Functional.swift in Sources */,
 				49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */,
-				49B4B229216484C700112B4A /* StationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

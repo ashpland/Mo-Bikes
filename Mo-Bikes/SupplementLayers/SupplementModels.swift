@@ -109,7 +109,7 @@ func extractLineType(from description: String) -> SupplementLineType? {
 
 func loadSupplementAnnotations(of pointType: SupplementPointType) throws -> [MKAnnotation] {
     return try pointType.fileURL
-        |> getXMLDocument
+        |>  getXMLDocument
         >>> getPlacemarkElements
         >>> compactMap(getPointCoordinateString)
         >>> map(stringToAnnotation(of: pointType))
@@ -117,7 +117,7 @@ func loadSupplementAnnotations(of pointType: SupplementPointType) throws -> [MKA
 
 func loadBikeways() throws -> [MKPolyline] {
     return try Bikeway.fileURL
-        |> getXMLDocument
+        |>  getXMLDocument
         >>> getPlacemarkElements
         >>> compactMap(getBikeway)
         >>> map(bikewayToPolylines)

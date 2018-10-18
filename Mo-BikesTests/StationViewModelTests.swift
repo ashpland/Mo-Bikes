@@ -18,7 +18,7 @@ class StationViewModelTests: XCTestCase {
     var stationData2: StationData!
     var testStation: Station!
     var testStationViewModel: StationViewModel!
-    var bikesOrDocksRelay: BehaviorRelay<BikesOrDocksState>!
+    var bikesOrDocksRelay: BehaviorRelay<BikesOrDocks>!
     var disposeBag: DisposeBag = DisposeBag()
 
     override func setUp() {

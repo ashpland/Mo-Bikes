@@ -7,81 +7,73 @@
 //
 
 import MapKit
-import RxSwift
-import RxCocoa
 import Alamofire
 
-enum BikesOrDocksState {
+enum BikesOrDocks {
     case bikes
     case docks
+    
+    var glyph: UIImage {
+        switch self {
+        case .bikes:
+            return Styles.glyphs.bikes
+        case .docks:
+            return Styles.glyphs.docks
+        }
+    }
 }
 
-class MapViewModel {
+func getStationData(_ completionHandler: @escaping (DataResponse<Data>) -> Void) {
+    Alamofire
+        .request("https://vancouver-ca.smoove.pro/api-public/stations",
+                 method: .get)
+        .validate(statusCode: 200..<300)
+        .validate(contentType: ["application/json"])
+        .responseData(completionHandler: completionHandler)
+}
 
-    let bikesOrDocks = BehaviorRelay<BikesOrDocksState>(value: .bikes)
-
-    var stationsToAddDriver: Driver<[MKAnnotation]> {
-        return stations.asDriver().map { $0.map { $0 as MKAnnotation } }
+func decodeStationData(response: DataResponse<Data>) -> [StationData]? {
+    switch response.result {
+    case .success(let data):
+        if let stationData = StationData.decode(from: data) {
+            return stationData
+        } else {
+            debugPrint(JSONError().localizedDescription)
+            return nil
+        }
+    case .failure(let error):
+        debugPrint(error.localizedDescription)
+        return nil
     }
-    var stationsToRemoveSignal: Signal<MKAnnotation> {
-        return stationsToRemove.asSignal().map { $0 as MKAnnotation }
-    }
+}
 
-    private let stations = BehaviorRelay(value: [Station]())
-    private let stationsToRemove = PublishRelay<Station>()
-    private let disposeBag = DisposeBag()
-
-    func updateStations(from updatedStationData: [StationData]) {
-        guard !updatedStationData.isEmpty else { return }
-
-        var currentStations = stations.value.asDictionary
+func update(existingStations: [Station]) -> ([StationData]?) -> (current: [Station], remove: [Station]) {
+    return { updatedStationData in
+        
+        guard let updatedStationData = updatedStationData,
+            !updatedStationData.isEmpty else { return ([Station](), [Station]()) }
+        
+        var currentStations = existingStations.asDictionary
         let updatedStations = updatedStationData.asDictionary
         let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
-
-        for key in keysToRemove {
-            if let inactiveStation = currentStations.removeValue(forKey: key) {
-                stationsToRemove.accept(inactiveStation)
-            }
-        }
-
+        
+        let stationsToRemove = keysToRemove.compactMap { currentStations.removeValue(forKey: $0) }
+        
         for station in currentStations {
             if let updatedData = updatedStations[station.key] {
                 station.value.stationData = updatedData
             }
         }
-
+        
         let keysToAdd = updatedStations.asSetOfKeys.subtracting(currentStations.asSetOfKeys)
-
+        
         for key in keysToAdd {
             if let newStationData = updatedStations[key] {
                 currentStations[key] = Station(newStationData)
             }
         }
-
-        stations.accept(currentStations.map { $0.value })
-    }
-
-    func getStationData() -> Single<[StationData]> {
-        return Single<[StationData]>.create { single -> Disposable in
-            let request = Alamofire
-                .request("https://vancouver-ca.smoove.pro/api-public/stations",
-                         method: .get)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .responseData(completionHandler: { response in
-                    switch response.result {
-                    case .success(let data):
-                        if let stations = StationData.decode(from: data) {
-                            single(.success(stations))
-                        } else {
-                            single(.error(JSONError()))
-                        }
-                    case .failure(let error):
-                        single(.error(error))
-                    }
-                })
-            return Disposables.create(with: request.cancel)
-        }
+        
+        return (currentStations.map { $0.value}, stationsToRemove)
     }
 }
 

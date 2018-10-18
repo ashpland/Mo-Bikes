@@ -10,27 +10,28 @@ import MapKit
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let station = annotation as? Station {
-            let stationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
-            stationView.viewModel = StationViewModel(station: station,
-                                                     bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
-            return stationView
-        } else if let supplement = annotation as? SupplementAnnotation {
+        switch annotation {
+        
+        case let station as Station:
+            return mapView |> dequeueStationView(with: station) >>> configureStationView(bikesOrDocksState)
+        
+        case let supplement as SupplementAnnotation:
             return mapView |> dequeueSupplementView >>> configureMarker(for: supplement)
-        } else {
+        
+        default:
             return nil
         }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(true)
+            stationView |> configureStationView(bikesOrDocksState)
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(false)
+            stationView |> configureStationView(bikesOrDocksState)
         }
     }
     
@@ -43,9 +44,12 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
-
-func dequeueStationView(_ mapView: MKMapView) -> StationView {
-    return mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
+func dequeueStationView(with station: Station) -> (MKMapView) -> StationView {
+    return { mapView in
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
+        view.stationData = station.stationData
+        return view
+    }
 }
 
 func dequeueSupplementView(_ mapView: MKMapView) -> MKMarkerAnnotationView {
