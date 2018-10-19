@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Alamofire
 
 class MapViewController: UIViewController {
 
@@ -28,7 +29,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,8 @@ class MapViewController: UIViewController {
     }
     
     private func setupMap() {
-        mapView.delegate = self
-        locationManager |> setup
-        mapView |> setup >>> zoomToCurrent(locationManager)
+        locationManager &|> setupLocationManager
+        mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
     }
     
     private func setupView() {
@@ -58,83 +58,84 @@ class MapViewController: UIViewController {
     }
     
     private func updateStations() {
-        getStationData(
-            decodeStationData
+        getStationData { self.processNewStationData($0) }
+    }
+    
+    private func processNewStationData(_ response: DataResponse<Data>) {
+        do {
+            try response |> decodeResponse
                 >>> update(existingStations: mapView |> getStations)
-                >>> update(mapView: mapView)
-                >>> refreshStationViews(with: .bikes))
+                >>> update(mapView: &mapView)
+                >>> refreshStationViews(with: .bikes)
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
     }
     
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
-        hamburgerButton |> openBottomDrawer
+        hamburgerButton.isOn |> openBottomDrawer
+        hamburgerButton.isOn.toggle()
     }
     
     @IBAction func buttonPressed(_ sender: MoButton) {
-        switch sender.type {
-        case .bikes:
-            bikesOrDocksState = .bikes
-        case .docks:
-            bikesOrDocksState = .docks
-        case .fountains, .washrooms:
-            sender as? MoButtonToggle |> displaySupplementAnnotations(in: mapView)
-        case .contact:
-            callMobi()
-        case .compass:
-            mapView |> zoomToCurrent(locationManager)
-        case .hamburger:
-            sender as? MoButtonToggle |> openBottomDrawer
-        default:
-            return
+        do {
+            switch sender.type {
+            case .bikes:
+                bikesOrDocksState = .bikes
+            case .docks:
+                bikesOrDocksState = .docks
+            case .fountains:
+                if var toggleButton = sender as? MoButtonToggle {
+                    toggleButton &|> updateToggleButton
+                    try mapView &|> displaySupplementAnnotations(.fountain, toggleButton.isOn)
+                }
+            case .washrooms:
+                if var toggleButton = sender as? MoButtonToggle {
+                    toggleButton &|> updateToggleButton
+                    try mapView &|> displaySupplementAnnotations(.washroom, toggleButton.isOn)
+                }
+            case .contact:
+                callMobi()
+            case .compass:
+                mapView &|> zoomTo(locationManager.location)
+            case .hamburger:
+                hamburgerButton.isOn |> openBottomDrawer
+                hamburgerButton.isOn.toggle()
+            default:
+                return
+            }
+        } catch {
+            debugPrint(error.localizedDescription)
         }
     }
     
-    private func openBottomDrawer(_ toggle: MoButtonToggle?) {
-        guard let toggle = toggle else { return }
+    private func openBottomDrawer(_ shouldOpen: Bool) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) {
-            self.trayViewBottomConstraint.constant = toggle.isOn ? self.bottomOffset : 0
-            self.trayBottomView.alpha = toggle.isOn ? 0.0 : 1.0
+            self.trayViewBottomConstraint.constant = shouldOpen ? self.bottomOffset : 0
+            self.trayBottomView.alpha = shouldOpen ? 0.0 : 1.0
             self.view.layoutIfNeeded()
         }
-        toggle.isOn.toggle()
     }
+    
 }
 
+func updateToggleButton(_ button: inout MoButtonToggle) {
+    button.isOn.toggle()
+    button.tintColor = button.isOn ? Styles.Color.secondary : Styles.Color.inactive
+}
 
-func displaySupplementAnnotations(in mapView: MKMapView) -> (MoButtonToggle?) -> Void {
-    return { toggle in
-        guard let toggle = toggle else { return }
-        
-        let pointType: SupplementPointType
-        switch toggle.type {
-        case .washrooms:
-            pointType = .washroom
-        case .fountains:
-            pointType = .fountain
-        default:
-            return
-        }
-        
-        if toggle.isOn {
-            toggle.tintColor = Styles.Color.inactive
-            mapView.annotations
-                |> compactMap(justAnnotations(of: pointType))
-                >>> mapView.removeAnnotations
+func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {
+    return { mapView in
+        if turnOn {
+            try pointType
+                |> loadSupplementAnnotations
+                >>> mapView.addAnnotations
         } else {
-            toggle.tintColor = Styles.Color.secondary
-            do {
-                try pointType
-                    |> loadSupplementAnnotations
-                    >>> mapView.addAnnotations
-            }
-            catch {
-                debugPrint(error.localizedDescription)
-                return
-            }
-            
+            mapView.annotations
+                .compactMap(justAnnotations(of: pointType))
+                |> mapView.removeAnnotations
         }
-        
-        toggle.isOn.toggle()
     }
 }
 

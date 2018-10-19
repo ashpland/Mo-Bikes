@@ -32,6 +32,21 @@ func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> ((A) -> C) {
     }
 }
 
+precedencegroup SingleTypeComposition {
+    associativity: left
+    higherThan: ForwardApplication
+}
+
+infix operator <>: SingleTypeComposition
+
+func <> <A>(
+    f: @escaping (A) -> A,
+    g: @escaping (A) -> A)
+    -> ((A) -> A) {
+        
+        return f >>> g
+}
+
 // MARK: - Overloads for throwing functions
 
 func |> <A, B>(a: A, f: (A) throws -> B) throws -> B {
@@ -68,4 +83,27 @@ func compactMap<Element, ElementOfResult>(_ transform: @escaping (Element) -> El
 
 func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
     return sequence.flatMap { $0 }
+}
+
+// MARK: - Inout
+
+infix operator &|>: ForwardApplication
+
+@discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {
+    return f(&a)
+}
+
+@discardableResult func &|> <A, B>(a: inout A, f: (inout A) throws -> B) throws -> B {
+    return try f(&a)
+}
+
+func <> <A>(
+    f: @escaping (inout A) -> Void,
+    g: @escaping (inout A) -> Void)
+    -> ((inout A) -> Void) {
+        
+        return { a in
+            f(&a)
+            g(&a)
+        }
 }

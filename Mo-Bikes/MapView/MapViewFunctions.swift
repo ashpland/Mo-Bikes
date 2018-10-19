@@ -8,35 +8,33 @@
 
 import MapKit
 
-func setup(mapView: MKMapView) -> MKMapView {
-    mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
-    mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
-    do {
-        mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
+func setupMapView(delegate: MKMapViewDelegate) -> (inout MKMapView) -> Void {
+    return { mapView in
+        mapView.delegate = delegate
+        mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
+        do {
+            mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
+        }
+        catch {
+            debugPrint(error.localizedDescription)
+        }
     }
-    catch {
-        debugPrint(error.localizedDescription)
-    }
-    return mapView
 }
 
-func setup(locationManager: CLLocationManager) {
+func setupLocationManager(_ locationManager: inout CLLocationManager) -> Void {
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
     locationManager.requestWhenInUseAuthorization()
     locationManager.startUpdatingLocation()
 }
 
-func zoomToCurrent(_ locationManager: CLLocationManager) -> (MKMapView) -> Void {
+func zoomTo(_ location: CLLocation?) -> (inout MKMapView) -> Void {
     return { mapView in
-        guard let currentLocation = locationManager.location else {
-            debugPrint("Can't get current location")
-            return
-        }
+        guard let location = location else { return }
+        let region = MKCoordinateRegion(center: location.coordinate,
+                                        span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
         
-        let currentRegion = MKCoordinateRegion(center: currentLocation.coordinate,
-                                               span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
-        
-        mapView.setRegion(currentRegion, animated: true)
+        mapView.setRegion(region, animated: true)
     }
 }
 
@@ -44,7 +42,8 @@ func getStations(from mapView: MKMapView) -> [Station] {
     return mapView.annotations.compactMap { $0 as? Station }
 }
 
-func update(mapView: MKMapView) -> ((current: [Station], remove: [Station])) -> MKMapView {
+func update(mapView: inout MKMapView) -> ((current: [Station], remove: [Station])) -> MKMapView {
+    let mapView = mapView
     return { updates in
         mapView.addAnnotations(updates.current)
         mapView.removeAnnotations(updates.remove)

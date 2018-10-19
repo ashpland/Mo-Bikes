@@ -32,27 +32,21 @@ func getStationData(_ completionHandler: @escaping (DataResponse<Data>) -> Void)
         .responseData(completionHandler: completionHandler)
 }
 
-func decodeStationData(response: DataResponse<Data>) -> [StationData]? {
+func decodeResponse(response: DataResponse<Data>) throws -> [StationData] {
     switch response.result {
     case .success(let data):
         if let stationData = StationData.decode(from: data) {
             return stationData
         } else {
-            debugPrint(JSONError().localizedDescription)
-            return nil
+            throw JSONError()
         }
     case .failure(let error):
-        debugPrint(error.localizedDescription)
-        return nil
+        throw error
     }
 }
 
-func update(existingStations: [Station]) -> ([StationData]?) -> (current: [Station], remove: [Station]) {
+func update(existingStations: [Station]) -> ([StationData]) -> (current: [Station], remove: [Station]) {
     return { updatedStationData in
-        
-        guard let updatedStationData = updatedStationData,
-            !updatedStationData.isEmpty else { return ([Station](), [Station]()) }
-        
         var currentStations = existingStations.asDictionary
         let updatedStations = updatedStationData.asDictionary
         let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
