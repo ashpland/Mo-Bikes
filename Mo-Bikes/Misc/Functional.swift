@@ -47,6 +47,39 @@ func <> <A>(
         return f >>> g
 }
 
+// MARK: - Mapping
+
+func map<Element, ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> ([Element]) -> [ElementOfResult] {
+    return { $0.map(transform) }
+}
+
+func compactMap<Element, ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult?) -> ([Element]) -> [ElementOfResult] {
+    return { $0.compactMap(transform) }
+}
+
+func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
+    return sequence.flatMap { $0 }
+}
+
+// MARK: - Inout
+
+infix operator &|>: ForwardApplication
+
+@discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {
+    return f(&a)
+}
+
+func <> <A>(
+    f: @escaping (inout A) -> Void,
+    g: @escaping (inout A) -> Void)
+    -> ((inout A) -> Void) {
+
+        return { a in
+            f(&a)
+            g(&a)
+        }
+}
+
 // MARK: - Overloads for throwing functions
 
 func |> <A, B>(a: A, f: (A) throws -> B) throws -> B {
@@ -71,39 +104,39 @@ func >>> <A, B, C>(f: @escaping (A) throws -> B, g: @escaping (B) throws -> C) -
     }
 }
 
-// MARK: - Mapping
-
-func map<Element, ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult) -> ([Element]) -> [ElementOfResult] {
-    return { $0.map(transform) }
-}
-
-func compactMap<Element, ElementOfResult>(_ transform: @escaping (Element) -> ElementOfResult?) -> ([Element]) -> [ElementOfResult] {
-    return { $0.compactMap(transform) }
-}
-
-func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
-    return sequence.flatMap { $0 }
-}
-
-// MARK: - Inout
-
-infix operator &|>: ForwardApplication
-
-@discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {
-    return f(&a)
-}
-
 @discardableResult func &|> <A, B>(a: inout A, f: (inout A) throws -> B) throws -> B {
     return try f(&a)
 }
 
 func <> <A>(
-    f: @escaping (inout A) -> Void,
+    f: @escaping (inout A) throws -> Void,
     g: @escaping (inout A) -> Void)
-    -> ((inout A) -> Void) {
+    -> ((inout A) throws -> Void) {
+        
+        return { a in
+            try f(&a)
+            g(&a)
+        }
+}
 
+func <> <A>(
+    f: @escaping (inout A) -> Void,
+    g: @escaping (inout A) throws -> Void)
+    -> ((inout A) throws -> Void) {
+        
         return { a in
             f(&a)
-            g(&a)
+            try g(&a)
+        }
+}
+
+func <> <A>(
+    f: @escaping (inout A) throws -> Void,
+    g: @escaping (inout A) throws -> Void)
+    -> ((inout A) throws -> Void) {
+        
+        return { a in
+            try f(&a)
+            try g(&a)
         }
 }

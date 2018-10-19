@@ -14,6 +14,7 @@
 		4913FC252176584A00E590C8 /* public_washrooms.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC222176584A00E590C8 /* public_washrooms.kml */; };
 		4913FC2721765B5800E590C8 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2621765B5800E590C8 /* Functional.swift */; };
 		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
+		49145C86217A618000197D95 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C85217A618000197D95 /* Errors.swift */; };
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
 		494476D3216A648600051515 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494476D2216A648600051515 /* StationModelTests.swift */; };
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
@@ -61,6 +62,7 @@
 		4913FC222176584A00E590C8 /* public_washrooms.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_washrooms.kml; sourceTree = "<group>"; };
 		4913FC2621765B5800E590C8 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		49145C85217A618000197D95 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
 		494476D2216A648600051515 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				4913FC2A217665DE00E590C8 /* Coordinates.swift */,
 				494B01D72177C1E10017F289 /* Buttons.swift */,
 				49B00FE720360B5500028812 /* MockAPI.swift */,
+				49145C85217A618000197D95 /* Errors.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				494B01D82177C1E10017F289 /* Buttons.swift in Sources */,
 				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
 				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
+				49145C86217A618000197D95 /* Errors.swift in Sources */,
 				494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */,
 				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapModel.swift in Sources */,

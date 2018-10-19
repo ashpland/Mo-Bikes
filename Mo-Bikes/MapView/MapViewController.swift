@@ -42,7 +42,9 @@ class MapViewController: UIViewController {
 
     private func setupMap() {
         locationManager &|> setupLocationManager
-        mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
+        doCatchPrint {
+            try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
+        }
     }
 
     private func setupView() {
@@ -64,13 +66,11 @@ class MapViewController: UIViewController {
     }
 
     private func processNewStationData(_ response: DataResponse<Data>) {
-        do {
+        doCatchPrint {
             try response |> decodeResponse
                 >>> update(existingStations: mapView |> getStations)
                 >>> update(mapView: &mapView)
                 >>> refreshStationViews(with: .bikes)
-        } catch {
-            debugPrint(error.localizedDescription)
         }
     }
 
@@ -90,7 +90,9 @@ class MapViewController: UIViewController {
             case .contact:
                 callMobi()
             case .compass:
-                mapView &|> zoomTo(locationManager.location)
+                doCatchPrint {
+                    try self.mapView &|> zoomTo(locationManager.location)
+                }
             case .hamburger:
                 hamburgerButton.isOn |> openBottomDrawer
                 hamburgerButton.isOn.toggle()
@@ -111,7 +113,7 @@ class MapViewController: UIViewController {
 
     private func handleSupplementAnnotations(for sender: MoButton) {
         guard let toggleButton = sender as? MoButtonToggle else { return }
-        do {
+        doCatchPrint {
             switch (toggleButton.type, toggleButton.isOn) {
             case (.fountains, true):
                 try fountainsOn(false)
@@ -130,8 +132,6 @@ class MapViewController: UIViewController {
             default:
                 return
             }
-        } catch {
-            debugPrint(error.localizedDescription)
         }
     }
 

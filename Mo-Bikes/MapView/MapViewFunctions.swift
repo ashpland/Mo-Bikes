@@ -8,16 +8,12 @@
 
 import MapKit
 
-func setupMapView(delegate: MKMapViewDelegate) -> (inout MKMapView) -> Void {
+func setupMapView(delegate: MKMapViewDelegate) -> (inout MKMapView) throws -> Void {
     return { mapView in
         mapView.delegate = delegate
         mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
-        do {
-            mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
-        } catch {
-            debugPrint(error.localizedDescription)
-        }
+        mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
     }
 }
 
@@ -27,9 +23,9 @@ func setupLocationManager(_ locationManager: inout CLLocationManager) {
     locationManager.startUpdatingLocation()
 }
 
-func zoomTo(_ location: CLLocation?) -> (inout MKMapView) -> Void {
+func zoomTo(_ location: CLLocation?) -> (inout MKMapView) throws -> Void {
     return { mapView in
-        guard let location = location else { return }
+        guard let location = location else { throw MapError.noLocation }
         let region = MKCoordinateRegion(center: location.coordinate,
                                         span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
 

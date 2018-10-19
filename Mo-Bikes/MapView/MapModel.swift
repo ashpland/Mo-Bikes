@@ -38,7 +38,7 @@ func decodeResponse(response: DataResponse<Data>) throws -> [StationData] {
         if let stationData = StationData.decode(from: data) {
             return stationData
         } else {
-            throw JSONError()
+            throw JSONError.decoding
         }
     case .failure(let error):
         throw error
@@ -86,11 +86,5 @@ extension Array where Element: NameIndexable {
 extension Dictionary {
     var asSetOfKeys: Set<Key> {
         return Set(self.map({$0.key}))
-    }
-}
-
-struct JSONError: LocalizedError {
-    var errorDescription: String? {
-        return "JSON Decoding Error"
     }
 }
