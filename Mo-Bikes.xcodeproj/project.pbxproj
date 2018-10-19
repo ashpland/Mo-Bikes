@@ -15,6 +15,10 @@
 		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
 		49145C86217A618000197D95 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C85217A618000197D95 /* Errors.swift */; };
 		49145C88217A721100197D95 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C87217A721100197D95 /* StationModelTests.swift */; };
+		49145C8A217A7B9B00197D95 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C89217A7B9B00197D95 /* main.swift */; };
+		49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C8B217A91D800197D95 /* CoordinatesTests.swift */; };
+		49145C90217A97A200197D95 /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C8F217A97A200197D95 /* MiscTests.swift */; };
+		49145C92217A989300197D95 /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C91217A989300197D95 /* FunctionalTests.swift */; };
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
 		494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D92177E0860017F289 /* MapViewDelegate.swift */; };
@@ -59,6 +63,10 @@
 		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		49145C85217A618000197D95 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		49145C87217A721100197D95 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
+		49145C89217A7B9B00197D95 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		49145C8B217A91D800197D95 /* CoordinatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesTests.swift; sourceTree = "<group>"; };
+		49145C8F217A97A200197D95 /* MiscTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscTests.swift; sourceTree = "<group>"; };
+		49145C91217A989300197D95 /* FunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalTests.swift; sourceTree = "<group>"; };
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		494B01D92177E0860017F289 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 		49AD204C2035FA7400661B0D /* Mo-Bikes */ = {
 			isa = PBXGroup;
 			children = (
+				49145C89217A7B9B00197D95 /* main.swift */,
 				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
 				498894222179556E0079E693 /* MapView */,
 				49AF7F452168325A00A88560 /* Stations */,
@@ -167,6 +176,9 @@
 			children = (
 				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
 				49145C87217A721100197D95 /* StationModelTests.swift */,
+				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
+				49145C8F217A97A200197D95 /* MiscTests.swift */,
+				49145C91217A989300197D95 /* FunctionalTests.swift */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
@@ -382,6 +394,7 @@
 			files = (
 				49889424217956900079E693 /* SupplementMarker.swift in Sources */,
 				494B01D82177C1E10017F289 /* Buttons.swift in Sources */,
+				49145C8A217A7B9B00197D95 /* main.swift in Sources */,
 				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
 				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
 				49145C86217A618000197D95 /* Errors.swift in Sources */,
@@ -403,7 +416,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49145C92217A989300197D95 /* FunctionalTests.swift in Sources */,
 				49145C88217A721100197D95 /* StationModelTests.swift in Sources */,
+				49145C90217A97A200197D95 /* MiscTests.swift in Sources */,
+				49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */,
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

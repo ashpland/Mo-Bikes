@@ -10,7 +10,6 @@ import OHHTTPStubs
 import OHHTTPStubs.NSURLRequest_HTTPBodyTesting
 
 struct MockAPI {
-
     init() {
         stub(condition: isHost("vancouver-ca.smoove.pro") && isPath("/api-public/stations") && isMethodGET()) { response in
             if let path = Bundle.main.path(forResource: "Sample Data/stations", ofType: "json") {

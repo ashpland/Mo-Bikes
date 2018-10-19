@@ -26,10 +26,12 @@ enum JSONError: String, RawErrorEnum {
     case decoding = "JSON Decoding Error"
 }
 
-func doCatchPrint(_ function: (() throws -> Void)) {
+@discardableResult func doCatchPrint(_ function: (() throws -> Void)) -> Error? {
     do {
         try function()
+        return nil
     } catch {
         debugPrint("Error: \(error.localizedDescription)")
+        return error
     }
 }
