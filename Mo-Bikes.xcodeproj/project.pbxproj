@@ -13,20 +13,21 @@
 		4913FC242176584A00E590C8 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC212176584A00E590C8 /* bikeways.kml */; };
 		4913FC252176584A00E590C8 /* public_washrooms.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC222176584A00E590C8 /* public_washrooms.kml */; };
 		4913FC2721765B5800E590C8 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2621765B5800E590C8 /* Functional.swift */; };
-		4913FC29217664CD00E590C8 /* SupplementModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC28217664CD00E590C8 /* SupplementModels.swift */; };
 		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
 		494476D3216A648600051515 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494476D2216A648600051515 /* StationModelTests.swift */; };
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
 		494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D92177E0860017F289 /* MapViewDelegate.swift */; };
-		495998D721771DCD005B2887 /* SupplementViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495998D621771DCD005B2887 /* SupplementViewModels.swift */; };
+		49889421217954A50079E693 /* MapViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889420217954A50079E693 /* MapViewFunctions.swift */; };
+		49889424217956900079E693 /* SupplementMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889423217956900079E693 /* SupplementMarker.swift */; };
+		498894262179574C0079E693 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498894252179574C0079E693 /* Bikeway.swift */; };
 		49AD204E2035FA7400661B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204D2035FA7400661B0D /* AppDelegate.swift */; };
 		49AD20502035FA7400661B0D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD204F2035FA7400661B0D /* MapViewController.swift */; };
 		49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapViewController.storyboard */; };
 		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
 		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
 		49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* StationModel.swift */; };
-		49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapViewModel.swift */; };
+		49B00FE02035FF0A00028812 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapModel.swift */; };
 		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
 		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
@@ -59,13 +60,14 @@
 		4913FC212176584A00E590C8 /* bikeways.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bikeways.kml; sourceTree = "<group>"; };
 		4913FC222176584A00E590C8 /* public_washrooms.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = public_washrooms.kml; sourceTree = "<group>"; };
 		4913FC2621765B5800E590C8 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
-		4913FC28217664CD00E590C8 /* SupplementModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementModels.swift; sourceTree = "<group>"; };
 		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
 		494476D2216A648600051515 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		494B01D92177E0860017F289 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
-		495998D621771DCD005B2887 /* SupplementViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementViewModels.swift; sourceTree = "<group>"; };
+		49889420217954A50079E693 /* MapViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctions.swift; sourceTree = "<group>"; };
+		49889423217956900079E693 /* SupplementMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarker.swift; sourceTree = "<group>"; };
+		498894252179574C0079E693 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
 		49AD204A2035FA7400661B0D /* Mo-Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mo-Bikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD204D2035FA7400661B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49AD204F2035FA7400661B0D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 		49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mo-BikesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD20642035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B00FDD2035FEFC00028812 /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
-		49B00FDF2035FF0A00028812 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		49B00FDF2035FF0A00028812 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
@@ -117,6 +119,18 @@
 			path = "Spatial Data";
 			sourceTree = "<group>";
 		};
+		498894222179556E0079E693 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				49AD20512035FA7400661B0D /* MapViewController.storyboard */,
+				49AD204F2035FA7400661B0D /* MapViewController.swift */,
+				494B01D92177E0860017F289 /* MapViewDelegate.swift */,
+				49889420217954A50079E693 /* MapViewFunctions.swift */,
+				49B00FDF2035FF0A00028812 /* MapModel.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		49AD20412035FA7400661B0D = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
-				49AF7F442168324D00A88560 /* MapView */,
-				49AF7F452168325A00A88560 /* StationView */,
+				498894222179556E0079E693 /* MapView */,
+				49AF7F452168325A00A88560 /* Stations */,
 				49AF7F47216832DB00A88560 /* SupplementLayers */,
 				49AF7F462168328800A88560 /* Misc */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
@@ -166,34 +180,23 @@
 			path = "Mo-BikesTests";
 			sourceTree = "<group>";
 		};
-		49AF7F442168324D00A88560 /* MapView */ = {
-			isa = PBXGroup;
-			children = (
-				49AD204F2035FA7400661B0D /* MapViewController.swift */,
-				49AD20512035FA7400661B0D /* MapViewController.storyboard */,
-				49B00FDF2035FF0A00028812 /* MapViewModel.swift */,
-				494B01D92177E0860017F289 /* MapViewDelegate.swift */,
-			);
-			path = MapView;
-			sourceTree = "<group>";
-		};
-		49AF7F452168325A00A88560 /* StationView */ = {
+		49AF7F452168325A00A88560 /* Stations */ = {
 			isa = PBXGroup;
 			children = (
 				49B4B22C2164856C00112B4A /* StationView.swift */,
 				49B00FDD2035FEFC00028812 /* StationModel.swift */,
 			);
-			path = StationView;
+			path = Stations;
 			sourceTree = "<group>";
 		};
 		49AF7F462168328800A88560 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
 				49B4B22E216485DC00112B4A /* Styles.swift */,
-				49B00FE720360B5500028812 /* MockAPI.swift */,
 				4913FC2621765B5800E590C8 /* Functional.swift */,
 				4913FC2A217665DE00E590C8 /* Coordinates.swift */,
 				494B01D72177C1E10017F289 /* Buttons.swift */,
+				49B00FE720360B5500028812 /* MockAPI.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -201,9 +204,9 @@
 		49AF7F47216832DB00A88560 /* SupplementLayers */ = {
 			isa = PBXGroup;
 			children = (
+				49889423217956900079E693 /* SupplementMarker.swift */,
+				498894252179574C0079E693 /* Bikeway.swift */,
 				4913FC1D2176579800E590C8 /* KMLParser.swift */,
-				4913FC28217664CD00E590C8 /* SupplementModels.swift */,
-				495998D621771DCD005B2887 /* SupplementViewModels.swift */,
 			);
 			path = SupplementLayers;
 			sourceTree = "<group>";
@@ -432,15 +435,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49889424217956900079E693 /* SupplementMarker.swift in Sources */,
 				494B01D82177C1E10017F289 /* Buttons.swift in Sources */,
 				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
-				495998D721771DCD005B2887 /* SupplementViewModels.swift in Sources */,
 				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
 				494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */,
 				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
-				49B00FE02035FF0A00028812 /* MapViewModel.swift in Sources */,
+				49B00FE02035FF0A00028812 /* MapModel.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
-				4913FC29217664CD00E590C8 /* SupplementModels.swift in Sources */,
+				49889421217954A50079E693 /* MapViewFunctions.swift in Sources */,
+				498894262179574C0079E693 /* Bikeway.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
 				4913FC1E2176579800E590C8 /* KMLParser.swift in Sources */,
 				4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */,

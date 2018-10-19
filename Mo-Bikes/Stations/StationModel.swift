@@ -8,7 +8,7 @@
 
 import MapKit
 
-final class Station: NSObject, MKAnnotation, NameIndexable {
+class Station: NSObject, MKAnnotation, NameIndexable {
 
     var stationData: StationData
 

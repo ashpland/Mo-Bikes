@@ -37,7 +37,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let supplementPolyline = overlay as? SupplementPolyline {
-            return supplementPolyline |> configurePolylineRenderer
+            return supplementPolyline |> makePolylineRenderer
         } else {
             return MKOverlayRenderer(overlay: overlay)
         }

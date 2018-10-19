@@ -1,5 +1,5 @@
 //
-//  MapViewModel.swift
+//  MapModel.swift
 //  Mo-Bikes
 //
 //  Created by Andrew on 2018-02-15.
