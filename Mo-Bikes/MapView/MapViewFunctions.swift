@@ -15,14 +15,13 @@ func setupMapView(delegate: MKMapViewDelegate) -> (inout MKMapView) -> Void {
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SupplementPointType.self)")
         do {
             mapView.addOverlays(try loadBikeways(), level: .aboveRoads)
-        }
-        catch {
+        } catch {
             debugPrint(error.localizedDescription)
         }
     }
 }
 
-func setupLocationManager(_ locationManager: inout CLLocationManager) -> Void {
+func setupLocationManager(_ locationManager: inout CLLocationManager) {
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
     locationManager.requestWhenInUseAuthorization()
     locationManager.startUpdatingLocation()
@@ -33,7 +32,7 @@ func zoomTo(_ location: CLLocation?) -> (inout MKMapView) -> Void {
         guard let location = location else { return }
         let region = MKCoordinateRegion(center: location.coordinate,
                                         span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
-        
+
         mapView.setRegion(region, animated: true)
     }
 }

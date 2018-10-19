@@ -227,12 +227,14 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="fountainsButton" destination="qsv-dd-jWH" id="qua-S7-57C"/>
                         <outlet property="hamburgerButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>
                         <outlet property="mapView" destination="akK-qI-pPo" id="Pzz-6D-d1b"/>
                         <outlet property="trayBottomView" destination="nrx-YK-33A" id="a5o-HB-c8Z"/>
                         <outlet property="trayStackView" destination="s37-Ih-lfw" id="2mk-sC-d86"/>
                         <outlet property="trayView" destination="Qrm-wu-Gud" id="N3m-fz-UOR"/>
                         <outlet property="trayViewBottomConstraint" destination="Gau-XS-J2s" id="g9i-em-c5Q"/>
+                        <outlet property="washroomsButton" destination="omr-A2-YWZ" id="9CI-oe-3fU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

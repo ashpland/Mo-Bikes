@@ -23,7 +23,7 @@ func extractLineType(from description: String) -> SupplementLineType? {
         .first else {
             return nil
     }
-    
+
     switch typeString {
     case "Protected Bike Lanes", "Local Street":
         return .bikeRouteSolid
@@ -39,7 +39,7 @@ func extractLineType(from description: String) -> SupplementLineType? {
 struct Bikeway {
     let lineType: SupplementLineType
     let lines: [LineCoordinates]
-    
+
     static var fileURL: URL {
         return Bundle.main.url(forResource: "bikeways", withExtension: "kml")!
     }
@@ -60,7 +60,6 @@ class SupplementPolyline: MKPolyline {
     var lineType: SupplementLineType!
 }
 
-
 func loadBikeways() throws -> [MKPolyline] {
     return try Bikeway.fileURL
         |>  getXMLDocument
@@ -74,11 +73,11 @@ func makePolylineRenderer(for supplementPolyline: SupplementPolyline) -> MKPolyl
     let renderer = MKPolylineRenderer(polyline: supplementPolyline)
     renderer.strokeColor = Styles.Color.secondary
     renderer.lineWidth = 3.0
-    
+
     if let lineType = supplementPolyline.lineType,
         case .bikeRouteDashed = lineType {
         renderer.lineDashPattern =  [5, 5]
     }
-    
+
     return renderer
 }

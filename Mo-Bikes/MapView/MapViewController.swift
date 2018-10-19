@@ -18,17 +18,19 @@ class MapViewController: UIViewController {
     @IBOutlet weak var trayBottomView: UIStackView!
     @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var hamburgerButton: MoButtonHamburger!
-    
+    @IBOutlet weak var washroomsButton: MoButtonWashrooms!
+    @IBOutlet weak var fountainsButton: MoButtonFountains!
+
     private var bottomOffset: CGFloat {
         return (trayStackView.spacing + trayBottomView.frame.height + 20) * -1
     }
-    
+
     var bikesOrDocksState: BikesOrDocks = .bikes {
         didSet {
             mapView |> refreshStationViews(with: bikesOrDocksState)
         }
     }
-    
+
     var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -37,30 +39,30 @@ class MapViewController: UIViewController {
         setupView()
         startUpdatingStations()
     }
-    
+
     private func setupMap() {
         locationManager &|> setupLocationManager
         mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
     }
-    
+
     private func setupView() {
         trayViewBottomConstraint.constant = bottomOffset
         trayBottomView.alpha = 0.0
         trayView.layer.cornerRadius = 20
     }
-    
+
     private func startUpdatingStations() {
         updateStations()
-        
+
         Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
             self?.updateStations()
         }
     }
-    
+
     private func updateStations() {
         getStationData { self.processNewStationData($0) }
     }
-    
+
     private func processNewStationData(_ response: DataResponse<Data>) {
         do {
             try response |> decodeResponse
@@ -71,29 +73,20 @@ class MapViewController: UIViewController {
             debugPrint(error.localizedDescription)
         }
     }
-    
+
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
         hamburgerButton.isOn |> openBottomDrawer
         hamburgerButton.isOn.toggle()
     }
-    
+
     @IBAction func buttonPressed(_ sender: MoButton) {
-        do {
             switch sender.type {
             case .bikes:
                 bikesOrDocksState = .bikes
             case .docks:
                 bikesOrDocksState = .docks
-            case .fountains:
-                if var toggleButton = sender as? MoButtonToggle {
-                    toggleButton &|> updateToggleButton
-                    try mapView &|> displaySupplementAnnotations(.fountain, toggleButton.isOn)
-                }
-            case .washrooms:
-                if var toggleButton = sender as? MoButtonToggle {
-                    toggleButton &|> updateToggleButton
-                    try mapView &|> displaySupplementAnnotations(.washroom, toggleButton.isOn)
-                }
+            case .fountains, .washrooms:
+                handleSupplementAnnotations(for: sender)
             case .contact:
                 callMobi()
             case .compass:
@@ -104,11 +97,9 @@ class MapViewController: UIViewController {
             default:
                 return
             }
-        } catch {
-            debugPrint(error.localizedDescription)
-        }
+
     }
-    
+
     private func openBottomDrawer(_ shouldOpen: Bool) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) {
@@ -117,12 +108,45 @@ class MapViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
-}
 
-func updateToggleButton(_ button: inout MoButtonToggle) {
-    button.isOn.toggle()
-    button.tintColor = button.isOn ? Styles.Color.secondary : Styles.Color.inactive
+    private func handleSupplementAnnotations(for sender: MoButton) {
+        guard let toggleButton = sender as? MoButtonToggle else { return }
+        do {
+            switch (toggleButton.type, toggleButton.isOn) {
+            case (.fountains, true):
+                try fountainsOn(false)
+
+            case (.fountains, false):
+                try fountainsOn(true)
+                try washroomsOn(false)
+
+            case (.washrooms, true):
+                try washroomsOn(false)
+
+            case (.washrooms, false):
+                try washroomsOn(true)
+                try fountainsOn(false)
+
+            default:
+                return
+            }
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+
+    private func fountainsOn(_ isOn: Bool) throws {
+        try mapView &|> displaySupplementAnnotations(.fountain, isOn)
+        fountainsButton.isOn = isOn
+        fountainsButton.tintColor = secondaryTintColor(isOn)
+    }
+
+    private func washroomsOn(_ isOn: Bool) throws {
+        try mapView &|> displaySupplementAnnotations(.washroom, isOn)
+        washroomsButton.isOn = isOn
+        washroomsButton.tintColor = secondaryTintColor(isOn)
+    }
+
 }
 
 func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {

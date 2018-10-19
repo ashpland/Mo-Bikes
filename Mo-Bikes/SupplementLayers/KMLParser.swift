@@ -14,7 +14,7 @@ typealias LineCoordinates = [PointCoordinate]
 enum KMLError: String, LocalizedError {
     case conversionFailed = "KML conversion failed"
     case noPlacemarks = "No placemarks found in KML file"
-    
+
     var errorDescription: String? {
         return self.rawValue
     }
@@ -41,7 +41,7 @@ func getPointCoordinateString(_ element: AEXMLElement) -> PointCoordinate? {
     return element["Point"]["coordinates"].value
 }
 
-fileprivate func makeBikeway(of lineType: SupplementLineType) -> ([LineCoordinates]) -> Bikeway {
+private func makeBikeway(of lineType: SupplementLineType) -> ([LineCoordinates]) -> Bikeway {
     return { Bikeway(lineType: lineType, lines: $0) }
 }
 
@@ -51,7 +51,7 @@ func getBikeway(_ element: AEXMLElement) -> Bikeway? {
         let lines = element["MultiGeometry"]["LineString"].all else {
         return nil
     }
-    
+
     return lines |> compactMap(getLineCoordinatesString) >>> makeBikeway(of: lineType)
 }
 

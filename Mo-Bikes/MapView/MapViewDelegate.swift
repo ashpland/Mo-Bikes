@@ -11,30 +11,30 @@ import MapKit
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         switch annotation {
-        
+
         case let station as Station:
             return mapView |> dequeueStationView(with: station) >>> configureStationView(bikesOrDocksState)
-        
+
         case let supplement as SupplementAnnotation:
             return mapView |> dequeueSupplementView >>> configureMarker(for: supplement)
-        
+
         default:
             return nil
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let stationView = view as? StationView {
             stationView |> configureStationView(bikesOrDocksState)
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if let stationView = view as? StationView {
             stationView |> configureStationView(bikesOrDocksState)
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let supplementPolyline = overlay as? SupplementPolyline {
             return supplementPolyline |> makePolylineRenderer

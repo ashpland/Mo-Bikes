@@ -26,7 +26,7 @@ func configureStationView(_ bikesOrDocksState: BikesOrDocks) -> (StationView) ->
         view.glyphText = view.isSelected ? String(currentAvailable) : nil
         view.glyphImage = view.isSelected ? nil : bikesOrDocksState.glyph
         view.animatesWhenAdded = true
-        
+
         return view
     }
 }

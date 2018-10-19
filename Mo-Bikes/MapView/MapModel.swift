@@ -12,7 +12,7 @@ import Alamofire
 enum BikesOrDocks {
     case bikes
     case docks
-    
+
     var glyph: UIImage {
         switch self {
         case .bikes:
@@ -50,23 +50,23 @@ func update(existingStations: [Station]) -> ([StationData]) -> (current: [Statio
         var currentStations = existingStations.asDictionary
         let updatedStations = updatedStationData.asDictionary
         let keysToRemove = currentStations.asSetOfKeys.subtracting(updatedStations.asSetOfKeys)
-        
+
         let stationsToRemove = keysToRemove.compactMap { currentStations.removeValue(forKey: $0) }
-        
+
         for station in currentStations {
             if let updatedData = updatedStations[station.key] {
                 station.value.stationData = updatedData
             }
         }
-        
+
         let keysToAdd = updatedStations.asSetOfKeys.subtracting(currentStations.asSetOfKeys)
-        
+
         for key in keysToAdd {
             if let newStationData = updatedStations[key] {
                 currentStations[key] = Station(newStationData)
             }
         }
-        
+
         return (currentStations.map { $0.value}, stationsToRemove)
     }
 }

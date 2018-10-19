@@ -13,11 +13,11 @@ import MapKit
 enum SupplementPointType: String, CaseIterable {
     case fountain = "drinking_fountains"
     case washroom = "public_washrooms"
-    
+
     var fileURL: URL {
         return Bundle.main.url(forResource: self.rawValue, withExtension: "kml")!
     }
-    
+
     var glyphImage: UIImage {
         switch self {
         case .fountain:
@@ -40,7 +40,7 @@ func stringToAnnotation(of pointType: SupplementPointType) -> (String) -> Supple
 class SupplementAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let pointType: SupplementPointType
-    
+
     init(coordinate: CLLocationCoordinate2D, pointType: SupplementPointType) {
         self.coordinate = coordinate
         self.pointType = pointType
