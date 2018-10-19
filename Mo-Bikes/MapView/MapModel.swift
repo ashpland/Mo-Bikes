@@ -35,11 +35,7 @@ func getStationData(_ completionHandler: @escaping (DataResponse<Data>) -> Void)
 func decodeResponse(response: DataResponse<Data>) throws -> [StationData] {
     switch response.result {
     case .success(let data):
-        if let stationData = StationData.decode(from: data) {
-            return stationData
-        } else {
-            throw JSONError.decoding
-        }
+        return try StationData.decode(from: data)
     case .failure(let error):
         throw error
     }

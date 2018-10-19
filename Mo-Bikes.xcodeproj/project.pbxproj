@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
 		4913FC1E2176579800E590C8 /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC1D2176579800E590C8 /* KMLParser.swift */; };
 		4913FC232176584A00E590C8 /* drinking_fountains.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC202176584A00E590C8 /* drinking_fountains.kml */; };
 		4913FC242176584A00E590C8 /* bikeways.kml in Resources */ = {isa = PBXBuildFile; fileRef = 4913FC212176584A00E590C8 /* bikeways.kml */; };
@@ -15,8 +14,8 @@
 		4913FC2721765B5800E590C8 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2621765B5800E590C8 /* Functional.swift */; };
 		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
 		49145C86217A618000197D95 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C85217A618000197D95 /* Errors.swift */; };
+		49145C88217A721100197D95 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C87217A721100197D95 /* StationModelTests.swift */; };
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
-		494476D3216A648600051515 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494476D2216A648600051515 /* StationModelTests.swift */; };
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
 		494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D92177E0860017F289 /* MapViewDelegate.swift */; };
 		49889421217954A50079E693 /* MapViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889420217954A50079E693 /* MapViewFunctions.swift */; };
@@ -34,8 +33,6 @@
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
 		49B4B22D2164856C00112B4A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22C2164856C00112B4A /* StationView.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
-		49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */; };
-		49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,10 +48,8 @@
 
 /* Begin PBXFileReference section */
 		076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mo_Bikes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mo_BikesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
-		38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes.release.xcconfig"; sourceTree = "<group>"; };
 		4913FC1D2176579800E590C8 /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
 		4913FC202176584A00E590C8 /* drinking_fountains.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = drinking_fountains.kml; sourceTree = "<group>"; };
@@ -63,8 +58,8 @@
 		4913FC2621765B5800E590C8 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		49145C85217A618000197D95 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		49145C87217A721100197D95 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
-		494476D2216A648600051515 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		494B01D92177E0860017F289 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		49889420217954A50079E693 /* MapViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctions.swift; sourceTree = "<group>"; };
@@ -86,8 +81,6 @@
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		49B4B22C2164856C00112B4A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModelTests.swift; sourceTree = "<group>"; };
-		49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D0E3111FDE7159643E445A9 /* Pods_Mo_BikesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,10 +165,8 @@
 		49AD20612035FA7400661B0D /* Mo-BikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				49FD02FF216AA3CE008C37E3 /* MapViewModelTests.swift */,
-				49FD02FD216AA204008C37E3 /* StationViewModelTests.swift */,
-				494476D2216A648600051515 /* StationModelTests.swift */,
 				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
+				49145C87217A721100197D95 /* StationModelTests.swift */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
@@ -229,8 +219,6 @@
 			children = (
 				367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */,
 				46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */,
-				38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */,
-				117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -261,11 +249,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AD206A2035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-BikesTests" */;
 			buildPhases = (
-				735275EBFB2C023A6F9928CD /* [CP] Check Pods Manifest.lock */,
 				49AD205A2035FA7400661B0D /* Sources */,
 				49AD205B2035FA7400661B0D /* Frameworks */,
 				49AD205C2035FA7400661B0D /* Resources */,
-				9FD2BD0D728666D13C76F88F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,60 +343,16 @@
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		735275EBFB2C023A6F9928CD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mo-BikesTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FD2BD0D728666D13C76F88F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4BB11CE32559936CACE43B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -461,10 +403,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49145C88217A721100197D95 /* StationModelTests.swift in Sources */,
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
-				49FD02FE216AA204008C37E3 /* StationViewModelTests.swift in Sources */,
-				494476D3216A648600051515 /* StationModelTests.swift in Sources */,
-				49FD0300216AA3CE008C37E3 /* MapViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,7 +583,6 @@
 		};
 		49AD206B2035FA7400661B0D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38C4ECC2170837DFDDAAE413 /* Pods-Mo-BikesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -661,7 +600,6 @@
 		};
 		49AD206C2035FA7400661B0D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 117CD4FE819450FE42296417 /* Pods-Mo-BikesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

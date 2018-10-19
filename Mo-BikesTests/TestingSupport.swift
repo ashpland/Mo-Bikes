@@ -32,27 +32,15 @@ func generateStationData(_ name: String) -> StationData {
 
     return StationData(name: name,
                        coordinates: coordinateString,
-                       totalDocks: slots.total,
                        availableDocks: slots.free,
-                       availableBikes: slots.bikes,
-                       operative: true)
+                       availableBikes: slots.bikes)
 }
 
 func generateStationJSON(_ stationData: StationData) -> Data {
-    let jsonString =  "{\"result\":[{\"name\":\"\(stationData.name)\",\"coordinates\":\"\(stationData.coordinates)\",\"total_slots\":\(stationData.totalDocks),\"free_slots\":\(stationData.availableDocks),\"avl_bikes\":\(stationData.availableBikes),\"operative\":\(stationData.operative),\"style\":\"\"}]}"
+    let jsonString =  "{\"result\":[{\"name\":\"\(stationData.name)\",\"coordinates\":\"\(stationData.coordinates)\",\"total_slots\":0,\"free_slots\":\(stationData.availableDocks),\"avl_bikes\":\(stationData.availableBikes),\"operative\":true,\"style\":\"\"}]}"
 
     return jsonString.data(using: .utf8)!
 }
-
-//func generateLatLon(in region: MKCoordinateRegion) -> (lat: Double, lon: Double) {
-//    let latMax = UInt32(region.span.latitudeDelta * 1000000)
-//    let lat = Double(arc4random_uniform(latMax)) / 1000000 + region.center.latitude - region.span.latitudeDelta / 2
-//    let lonMax = UInt32(region.span.longitudeDelta * 1000000)
-//    let lon = Double(arc4random_uniform(lonMax)) / 1000000 + region.center.longitude - region.span.longitudeDelta / 2
-//    return (lat, lon)
-//}
-//
-//
 
 extension Array where Element: Comparable {
     func containsSameElements(as other: [Element]) -> Bool {
@@ -60,11 +48,11 @@ extension Array where Element: Comparable {
     }
 }
 
-extension Station: Comparable {
-    public static func <(lhs: Station, rhs: Station) -> Bool {
-        return lhs.name < rhs.name
-    }
-}
+//extension Station: Comparable {
+//    public static func <(lhs: Station, rhs: Station) -> Bool {
+//        return lhs.name < rhs.name
+//    }
+//}
 
 extension CLLocationCoordinate2D: Equatable {
     public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
@@ -76,13 +64,15 @@ class FakeMapView: MKMapView {
 
     var annotationHolder = [MKAnnotation]()
 
-    override func addAnnotation(_ annotation: MKAnnotation) {
-        annotationHolder.append(annotation)
+    override func addAnnotations(_ annotations: [MKAnnotation]) {
+        annotationHolder += annotations
     }
 
-    override func removeAnnotation(_ annotation: MKAnnotation) {
-        if let index = annotations.index(where: { $0.coordinate == annotation.coordinate }) {
-            annotationHolder.remove(at: index)
+    override func removeAnnotations(_ annotations: [MKAnnotation]) {
+        for annotation in annotations {
+            if let index = annotations.index(where: { $0.coordinate == annotation.coordinate }) {
+                annotationHolder.remove(at: index)
+            }
         }
     }
 }

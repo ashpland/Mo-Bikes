@@ -2,101 +2,45 @@
 //  StationModelTests.swift
 //  Mo-BikesTests
 //
-//  Created by Andrew on 2018-10-07.
+//  Created by Andrew on 2018-10-19.
 //  Copyright © 2018 hearthedge. All rights reserved.
 //
 
 import XCTest
-import RxSwift
-import RxCocoa
-import RxBlocking
 @testable import Mo_Bikes
 
-class StationDataTests: XCTestCase {
+class StationModelTests: XCTestCase {
 
-    func testStationDataDecodable() {
-        let stationData = generateStationData("Test Station")
-        let stationJSON = generateStationJSON(stationData)
-
-        let newStationData = StationData.decode(from: stationJSON)
-
-        guard let stations = newStationData,
-            let station = stations.first else {
-                XCTFail("Couldn't get decoded station.")
-                return
+    let testStationData1 = generateStationData("Test Station 1")
+    let testStationData2 = generateStationData("Test Station 2")
+    
+    func testDecodeStationData() {
+        let testJSON = generateStationJSON(testStationData1)
+        
+        if let result = try? StationData.decode(from: testJSON),
+            let first = result.first {
+            XCTAssertEqual(first, testStationData1)
         }
-
-        XCTAssertEqual(stationData.name, station.name)
-        XCTAssertEqual(stationData.coordinates, station.coordinates)
-        XCTAssertEqual(stationData.totalDocks, station.totalDocks)
-        XCTAssertEqual(stationData.availableDocks, station.availableDocks)
-        XCTAssertEqual(stationData.availableBikes, station.availableBikes)
-        XCTAssertEqual(stationData.operative, station.operative)
     }
-
-    func testStationDataDecodeFail() {
-        let badStationData = "Not JSON".data(using: .utf8)!
-        let failedDecode = StationData.decode(from: badStationData)
-        XCTAssertNil(failedDecode)
+    
+    func testDecodeStationDataThrows() {
+        let badJSON = "hey".data(using: .utf8)!
+        XCTAssertThrowsError(try StationData.decode(from: badJSON))
     }
-}
-
-class StationTests: XCTestCase {
-
-    let stationName = "Test Station"
-    var stationData0: StationData!
-    var stationData1: StationData!
-    var testStation: Station!
-    var disposeBag: DisposeBag = DisposeBag()
-
-        override func setUp() {
-            super.setUp()
-            stationData0 = generateStationData(stationName)
-            stationData1 = generateStationData(stationName)
-            testStation = Station(stationData0)
-        }
-
-        override func tearDown() {
-            disposeBag = DisposeBag()
-            super.tearDown()
-        }
-
-    func testStationInit() {
-        XCTAssertEqual(testStation.name, stationName)
+    
+    func testStationIsEqual() {
+        XCTAssertEqual(Station(testStationData1),
+                       Station(testStationData1))
     }
-
-    func testStationCoordinates() {
-        let coordinate = testStation.coordinate
-        let coordinatesString = "\(coordinate.latitude), \(coordinate.longitude)"
-        XCTAssertEqual(stationData0.coordinates, coordinatesString)
+    
+    func testStationNotEqual() {
+        XCTAssertNotEqual(Station(testStationData1),
+                          Station(testStationData2))
     }
-
-    func testStationAvailableBikesDriver() {
-        let expect = expectation(description: #function)
-        let results = try? testStation.availableBikesDriver
-            .asObservable()
-            .take(2)
-            .do(onNext: { _ in self.testStation.stationData = self.stationData1 },
-                onCompleted: { expect.fulfill() })
-            .toBlocking()
-            .toArray()
-
-        wait(for: [expect], timeout: 1.0)
-        XCTAssertEqual(results, [self.stationData0.availableBikes, self.stationData1.availableBikes])
+    
+    func testStationName() {
+        XCTAssertEqual(Station(testStationData1).name,
+                       testStationData1.name)
     }
-
-    func testStationAvailableDocksDriver() {
-        let expect = expectation(description: #function)
-        let results = try? testStation.availableDocksDriver
-            .asObservable()
-            .take(2)
-            .do(onNext: { _ in self.testStation.stationData = self.stationData1 },
-                onCompleted: { expect.fulfill() })
-            .toBlocking()
-            .toArray()
-
-        wait(for: [expect], timeout: 1.0)
-        XCTAssertEqual(results, [self.stationData0.availableDocks, self.stationData1.availableDocks])
-    }
-
+    
 }

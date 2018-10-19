@@ -57,8 +57,8 @@ struct StationData: Decodable, NameIndexable, Hashable, Equatable {
         let result: [StationData]
     }
 
-    static func decode(from data: Data) -> [StationData]? {
-        return try? JSONDecoder().decode(StationDataList.self, from: data).result
+    static func decode(from data: Data) throws -> [StationData] {
+        return try JSONDecoder().decode(StationDataList.self, from: data).result
     }
 
 }
