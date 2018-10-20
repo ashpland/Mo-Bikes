@@ -24,14 +24,14 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView |> configureStationView(bikesOrDocksState)
+        if var stationView = view as? StationView {
+            stationView &|> setText <> setColor
         }
     }
 
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView |> configureStationView(bikesOrDocksState)
+        if var stationView = view as? StationView {
+            stationView &|> setText <> setColor
         }
     }
 

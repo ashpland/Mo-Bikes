@@ -16,17 +16,16 @@ func generateLatLon() -> (lat: Double, lon: Double) {
     return (lat, lon)
 }
 
-func generateSlots() -> (total: Int, bikes: Int, free: Int) {
+func generateSlots() -> (bikes: Int, free: Int) {
     let uTotal = arc4random_uniform(99) + 1
     let total = Int(uTotal)
     let bikes = Int(arc4random_uniform(uTotal))
     let slots = total - bikes
 
-    return (total, bikes, slots)
+    return (bikes, slots)
 }
 
-func generateStationData(_ name: String) -> StationData {
-    let slots = generateSlots()
+func generateStationData(_ name: String, _ slots: (bikes: Int, free: Int) = generateSlots()) -> StationData {
     let coordinate = generateLatLon()
     let coordinateString = "\(coordinate.lat), \(coordinate.lon)"
 

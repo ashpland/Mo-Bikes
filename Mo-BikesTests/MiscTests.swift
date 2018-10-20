@@ -37,4 +37,11 @@ class StylesTests: XCTestCase {
         XCTAssertEqual(isOn,  Styles.Color.secondary)
         XCTAssertEqual(isOff, Styles.Color.inactive)
     }
+    
+    func testMarkerColor() {
+        let normal = markerColor(Styles.lowAvailable + 1)
+        let low    = markerColor(Styles.lowAvailable)
+        XCTAssertEqual(normal, Styles.Color.marker.normal)
+        XCTAssertEqual(low,    Styles.Color.marker.low)
+    }
 }

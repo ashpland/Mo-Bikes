@@ -65,6 +65,10 @@ func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
 
 infix operator &|>: ForwardApplication
 
+func &|> <A>(a: inout A, f: (inout A) -> Void) {
+    f(&a)
+}
+
 @discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {
     return f(&a)
 }
@@ -79,6 +83,23 @@ func <> <A>(
             g(&a)
         }
 }
+
+func >>> <A, B>(f: @escaping (A) -> B, g: @escaping (inout B) -> B) -> ((A) -> B) {
+    return { a in
+        var b = f(a)
+        return g(&b)
+    }
+}
+
+func map<Element: AnyObject, ElementOfResult>(_ transform: @escaping (inout Element) -> ElementOfResult) -> ([Element]) -> [ElementOfResult] {
+    return { elementArray in
+        return elementArray.map {
+            var element = $0
+            return transform(&element)
+        }
+    }
+}
+
 
 // MARK: - Overloads for throwing functions
 

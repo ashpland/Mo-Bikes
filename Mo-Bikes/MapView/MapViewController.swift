@@ -70,7 +70,7 @@ class MapViewController: UIViewController {
             try response |> decodeResponse
                 >>> update(existingStations: mapView |> getStations)
                 >>> update(mapView: &mapView)
-                >>> refreshStationViews(with: .bikes)
+                >>> refreshStationViews(with: bikesOrDocksState)
         }
     }
 

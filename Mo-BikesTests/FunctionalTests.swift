@@ -40,10 +40,27 @@ class FunctionalTests: XCTestCase {
         XCTAssertEqual(testObject.value, 1)
     }
     
+    func testInOutForwardApplicationReturn() {
+        var testObject = TestObject()
+        let result = testObject &|> aInOutToB
+        XCTAssertEqual(result, 0)
+    }
+    
     func testInOutSingleTypeComposition() {
         var testObject = TestObject()
         testObject &|> aToAInOut <> aToAInOut
         XCTAssertEqual(testObject.value, 2)
+    }
+    
+    func testInOutForwardComposition() {
+        let testObject = 0 |> TestObject.init >>> aToAInOutReturns
+        XCTAssertEqual(testObject.value, 1)
+    }
+    
+    func testInOutMap() {
+        let testObject = TestObject()
+        [testObject] |> map(aToAInOutReturns)
+        XCTAssertEqual(testObject.value, 1)
     }
     
     func testForwardApplicationThrows() {
@@ -67,11 +84,14 @@ class FunctionalTests: XCTestCase {
         XCTAssertThrowsError(try testObject &|> aToAInOut <> aToAInOutThrows)
         XCTAssertThrowsError(try testObject &|> aToAInOutThrows <> aToAInOutThrows)
     }
-    
 }
 
 class TestObject {
-    var value: Int = 0
+    var value: Int
+    
+    init(value: Int = 0) {
+        self.value = value
+    }
 }
 
 func aToA(_ a: Int) -> Int {
@@ -94,12 +114,21 @@ func aToAInOut(_ a: inout TestObject) {
     a.value += 1
 }
 
+func aToAInOutReturns(_ a: inout TestObject) -> TestObject {
+    a.value += 1
+    return a
+}
+
 func aToAInOutThrows(_ a: inout TestObject) throws {
     throw TestError.test
 }
 
 func aToB(_ a: Int) -> String {
     return String(a)
+}
+
+func aInOutToB(_ a: inout TestObject) -> Int {
+    return a.value
 }
 
 func bToC(_ b: String) -> [String] {

@@ -62,3 +62,29 @@ struct StationData: Decodable, NameIndexable, Hashable, Equatable {
     }
 
 }
+
+class StationView: MKMarkerAnnotationView {
+    var stationData: StationData!
+    var bikesOrDocks: BikesOrDocks!
+}
+
+@discardableResult func configureStationView(_ bikesOrDocks: BikesOrDocks) -> (inout StationView) -> StationView {
+    return { view in
+        view.bikesOrDocks = bikesOrDocks
+        view &|> setColor <> setText <> setImage
+        view.animatesWhenAdded = true
+        return view
+    }
+}
+
+func setColor(for view: inout StationView) {
+    view.markerTintColor = view[keyPath: view.bikesOrDocks.available] |> markerColor
+}
+
+func setText(for view: inout StationView) {
+    view.glyphText = view.isSelected ? String(view[keyPath: view.bikesOrDocks.available]) : nil
+}
+
+func setImage(for view: inout StationView) {
+    view.glyphImage = view.isSelected ? nil : view.bikesOrDocks.glyph
+}

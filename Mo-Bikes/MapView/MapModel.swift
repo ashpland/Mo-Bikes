@@ -12,13 +12,24 @@ import Alamofire
 enum BikesOrDocks {
     case bikes
     case docks
+}
 
+extension BikesOrDocks {
     var glyph: UIImage {
         switch self {
         case .bikes:
             return Styles.glyphs.bikes
         case .docks:
             return Styles.glyphs.docks
+        }
+    }
+    
+    var available: KeyPath<StationView, Int> {
+        switch self {
+        case .bikes:
+            return \StationView.stationData!.availableBikes
+        case .docks:
+            return \StationView.stationData!.availableDocks
         }
     }
 }

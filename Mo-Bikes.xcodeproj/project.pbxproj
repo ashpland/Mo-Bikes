@@ -14,7 +14,7 @@
 		4913FC2721765B5800E590C8 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2621765B5800E590C8 /* Functional.swift */; };
 		4913FC2B217665DE00E590C8 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4913FC2A217665DE00E590C8 /* Coordinates.swift */; };
 		49145C86217A618000197D95 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C85217A618000197D95 /* Errors.swift */; };
-		49145C88217A721100197D95 /* StationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C87217A721100197D95 /* StationModelTests.swift */; };
+		49145C88217A721100197D95 /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C87217A721100197D95 /* StationTests.swift */; };
 		49145C8A217A7B9B00197D95 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C89217A7B9B00197D95 /* main.swift */; };
 		49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C8B217A91D800197D95 /* CoordinatesTests.swift */; };
 		49145C90217A97A200197D95 /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49145C8F217A97A200197D95 /* MiscTests.swift */; };
@@ -30,12 +30,11 @@
 		49AD20532035FA7400661B0D /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20512035FA7400661B0D /* MapViewController.storyboard */; };
 		49AD20552035FA7400661B0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20542035FA7400661B0D /* Assets.xcassets */; };
 		49AD20582035FA7400661B0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AD20562035FA7400661B0D /* LaunchScreen.storyboard */; };
-		49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* StationModel.swift */; };
+		49B00FDE2035FEFC00028812 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDD2035FEFC00028812 /* Station.swift */; };
 		49B00FE02035FF0A00028812 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FDF2035FF0A00028812 /* MapModel.swift */; };
 		49B00FE42036092000028812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B00FE32036092000028812 /* MapKit.framework */; };
 		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
-		49B4B22D2164856C00112B4A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22C2164856C00112B4A /* StationView.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,7 @@
 		4913FC2621765B5800E590C8 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		4913FC2A217665DE00E590C8 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		49145C85217A618000197D95 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		49145C87217A721100197D95 /* StationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModelTests.swift; sourceTree = "<group>"; };
+		49145C87217A721100197D95 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
 		49145C89217A7B9B00197D95 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		49145C8B217A91D800197D95 /* CoordinatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesTests.swift; sourceTree = "<group>"; };
 		49145C8F217A97A200197D95 /* MiscTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscTests.swift; sourceTree = "<group>"; };
@@ -82,12 +81,11 @@
 		49AD20592035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49AD205E2035FA7400661B0D /* Mo-BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mo-BikesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD20642035FA7400661B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49B00FDD2035FEFC00028812 /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
+		49B00FDD2035FEFC00028812 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		49B00FDF2035FF0A00028812 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		49B00FE32036092000028812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
-		49B4B22C2164856C00112B4A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,8 +157,7 @@
 				49145C89217A7B9B00197D95 /* main.swift */,
 				49AD204D2035FA7400661B0D /* AppDelegate.swift */,
 				498894222179556E0079E693 /* MapView */,
-				49AF7F452168325A00A88560 /* Stations */,
-				49AF7F47216832DB00A88560 /* SupplementLayers */,
+				49AF7F47216832DB00A88560 /* MapElements */,
 				49AF7F462168328800A88560 /* Misc */,
 				49AD20542035FA7400661B0D /* Assets.xcassets */,
 				49AD20562035FA7400661B0D /* LaunchScreen.storyboard */,
@@ -175,22 +172,13 @@
 			isa = PBXGroup;
 			children = (
 				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
-				49145C87217A721100197D95 /* StationModelTests.swift */,
+				49145C87217A721100197D95 /* StationTests.swift */,
 				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
 				49145C8F217A97A200197D95 /* MiscTests.swift */,
 				49145C91217A989300197D95 /* FunctionalTests.swift */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
-			sourceTree = "<group>";
-		};
-		49AF7F452168325A00A88560 /* Stations */ = {
-			isa = PBXGroup;
-			children = (
-				49B4B22C2164856C00112B4A /* StationView.swift */,
-				49B00FDD2035FEFC00028812 /* StationModel.swift */,
-			);
-			path = Stations;
 			sourceTree = "<group>";
 		};
 		49AF7F462168328800A88560 /* Misc */ = {
@@ -206,14 +194,15 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		49AF7F47216832DB00A88560 /* SupplementLayers */ = {
+		49AF7F47216832DB00A88560 /* MapElements */ = {
 			isa = PBXGroup;
 			children = (
+				49B00FDD2035FEFC00028812 /* Station.swift */,
 				49889423217956900079E693 /* SupplementMarker.swift */,
 				498894252179574C0079E693 /* Bikeway.swift */,
 				4913FC1D2176579800E590C8 /* KMLParser.swift */,
 			);
-			path = SupplementLayers;
+			path = MapElements;
 			sourceTree = "<group>";
 		};
 		655ECDB840C28B867813189B /* Frameworks */ = {
@@ -396,10 +385,9 @@
 				494B01D82177C1E10017F289 /* Buttons.swift in Sources */,
 				49145C8A217A7B9B00197D95 /* main.swift in Sources */,
 				49B4B22F216485DC00112B4A /* Styles.swift in Sources */,
-				49B00FDE2035FEFC00028812 /* StationModel.swift in Sources */,
+				49B00FDE2035FEFC00028812 /* Station.swift in Sources */,
 				49145C86217A618000197D95 /* Errors.swift in Sources */,
 				494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */,
-				49B4B22D2164856C00112B4A /* StationView.swift in Sources */,
 				49B00FE02035FF0A00028812 /* MapModel.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
 				49889421217954A50079E693 /* MapViewFunctions.swift in Sources */,
@@ -417,7 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49145C92217A989300197D95 /* FunctionalTests.swift in Sources */,
-				49145C88217A721100197D95 /* StationModelTests.swift in Sources */,
+				49145C88217A721100197D95 /* StationTests.swift in Sources */,
 				49145C90217A97A200197D95 /* MiscTests.swift in Sources */,
 				49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */,
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,

@@ -27,3 +27,7 @@ enum Styles {
 func secondaryTintColor(_ isOn: Bool) -> UIColor {
     return isOn ? Styles.Color.secondary : Styles.Color.inactive
 }
+
+func markerColor(_ currentAvailable: Int) -> UIColor {
+    return currentAvailable > Styles.lowAvailable ? Styles.Color.marker.normal : Styles.Color.marker.low
+}
