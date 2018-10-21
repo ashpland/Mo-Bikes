@@ -23,7 +23,7 @@ extension BikesOrDocks {
             return Styles.glyphImage.docks
         }
     }
-    
+
     var available: KeyPath<StationView, Int> {
         switch self {
         case .bikes:

@@ -6,6 +6,14 @@
 //  Copyright © 2018 hearthedge. All rights reserved.
 //
 
+//
+//  Operators:
+//      |>      Forward Application: passes value lhs to function rhs
+//      >>>     Forward Composition: composes function (A) -> B with function (B) -> C to create new function (A) -> C
+//      <>      Single Type Composition: composes function (A) -> A with function (A) -> A to create new function (A) -> A
+//      &|>     InOut Forward Application: passes inout value lhs to function rhs
+//
+
 // MARK: Function application and composition
 
 precedencegroup ForwardApplication {
@@ -91,6 +99,13 @@ func >>> <A, B>(f: @escaping (A) -> B, g: @escaping (inout B) -> B) -> ((A) -> B
     }
 }
 
+func >>> <A>(f: @escaping (inout A) -> A, g: @escaping (inout A) -> A) -> ((inout A) -> A) {
+    return { a in
+        var b = f(&a)
+        return g(&b)
+    }
+}
+
 func map<Element: AnyObject, ElementOfResult>(_ transform: @escaping (inout Element) -> ElementOfResult) -> ([Element]) -> [ElementOfResult] {
     return { elementArray in
         return elementArray.map {
@@ -99,7 +114,6 @@ func map<Element: AnyObject, ElementOfResult>(_ transform: @escaping (inout Elem
         }
     }
 }
-
 
 // MARK: - Overloads for throwing functions
 
@@ -133,7 +147,7 @@ func <> <A>(
     f: @escaping (inout A) throws -> Void,
     g: @escaping (inout A) -> Void)
     -> ((inout A) throws -> Void) {
-        
+
         return { a in
             try f(&a)
             g(&a)
@@ -144,7 +158,7 @@ func <> <A>(
     f: @escaping (inout A) -> Void,
     g: @escaping (inout A) throws -> Void)
     -> ((inout A) throws -> Void) {
-        
+
         return { a in
             f(&a)
             try g(&a)
@@ -155,7 +169,7 @@ func <> <A>(
     f: @escaping (inout A) throws -> Void,
     g: @escaping (inout A) throws -> Void)
     -> ((inout A) throws -> Void) {
-        
+
         return { a in
             try f(&a)
             try g(&a)

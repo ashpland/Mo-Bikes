@@ -13,60 +13,64 @@ class FunctionalTests: XCTestCase {
     func testForwardApplication() {
         XCTAssertEqual(1 |> aToA, 2)
     }
-    
+
     func testForwardComposition() {
         XCTAssertEqual(1 |> aToB >>> bToC, ["1"])
     }
-    
+
     func testSingleTypeComposition() {
         XCTAssertEqual(1 |> aToA <> aToA, 3)
     }
-    
+
     func testMap() {
         XCTAssertEqual([1] |> map(aToA), [2])
     }
-    
+
     func testCompactMap() {
         XCTAssertEqual([1, 2] |> compactMap(aToAOptional), [3])
     }
-    
+
     func testFlattenArrays() {
         XCTAssertEqual([[1], [2]] |> flattenArrays, [1, 2])
     }
-    
+
     func testInOutForwardApplication() {
         var testObject = TestObject()
         testObject &|> aToAInOut
         XCTAssertEqual(testObject.value, 1)
     }
-    
+
     func testInOutForwardApplicationReturn() {
         var testObject = TestObject()
         let result = testObject &|> aInOutToB
         XCTAssertEqual(result, 0)
     }
-    
+
     func testInOutSingleTypeComposition() {
         var testObject = TestObject()
         testObject &|> aToAInOut <> aToAInOut
         XCTAssertEqual(testObject.value, 2)
     }
-    
+
     func testInOutForwardComposition() {
-        let testObject = 0 |> TestObject.init >>> aToAInOutReturns
-        XCTAssertEqual(testObject.value, 1)
+        let testObject1 = 0 |> TestObject.init >>> aToAInOutReturns
+        XCTAssertEqual(testObject1.value, 1)
+
+        var testObject2 = TestObject()
+        testObject2 &|> aToAInOutReturns >>> aToAInOutReturns
+        XCTAssertEqual(testObject2.value, 2)
     }
-    
+
     func testInOutMap() {
         let testObject = TestObject()
         [testObject] |> map(aToAInOutReturns)
         XCTAssertEqual(testObject.value, 1)
     }
-    
+
     func testForwardApplicationThrows() {
         XCTAssertThrowsError(try 1 |> aToAThrows)
     }
-    
+
     func testForwardCompositionThrows() {
         XCTAssertThrowsError(try 1 |> aToAThrows >>> aToA)
         XCTAssertThrowsError(try 1 |> aToA >>> aToAThrows)
@@ -88,7 +92,7 @@ class FunctionalTests: XCTestCase {
 
 class TestObject {
     var value: Int
-    
+
     init(value: Int = 0) {
         self.value = value
     }
@@ -134,5 +138,3 @@ func aInOutToB(_ a: inout TestObject) -> Int {
 func bToC(_ b: String) -> [String] {
     return [b]
 }
-
-

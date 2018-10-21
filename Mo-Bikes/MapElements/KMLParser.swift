@@ -11,15 +11,6 @@ import AEXML
 typealias PointCoordinate = String
 typealias LineCoordinates = [PointCoordinate]
 
-enum KMLError: String, LocalizedError {
-    case conversionFailed = "KML conversion failed"
-    case noPlacemarks = "No placemarks found in KML file"
-
-    var errorDescription: String? {
-        return self.rawValue
-    }
-}
-
 func getXMLDocument(xmlurl: URL) throws -> AEXMLDocument {
     if let xmlData = try? Data(contentsOf: xmlurl),
         let xmlDoc = try? AEXMLDocument(xml: xmlData) {

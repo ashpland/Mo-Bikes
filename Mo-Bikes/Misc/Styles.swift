@@ -14,7 +14,7 @@ enum Styles {
                              docks:    #imageLiteral(resourceName: "dockIcon"),
                              fountain: #imageLiteral(resourceName: "fountain"),
                              washroom: #imageLiteral(resourceName: "toilet"))
-    
+
     enum Color {
         static let primary = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
         static let secondary = #colorLiteral(red: 0.3018391927, green: 0.6276475694, blue: 1, alpha: 1)

@@ -26,6 +26,11 @@ enum JSONError: String, RawErrorEnum {
     case decoding = "JSON Decoding Error"
 }
 
+enum KMLError: String, RawErrorEnum {
+    case conversionFailed = "KML conversion failed"
+    case noPlacemarks = "No placemarks found in KML file"
+}
+
 @discardableResult func doCatchPrint(_ function: (() throws -> Void)) -> Error? {
     do {
         try function()

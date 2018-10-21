@@ -23,27 +23,27 @@ class BikewayTests: XCTestCase {
         let sharedString = "Shared Lanes<br>"
         let emptyString = ""
 
-        XCTAssertEqual(extractLineType(from: localString),     .bikeRouteSolid)
+        XCTAssertEqual(extractLineType(from: localString), .bikeRouteSolid)
         XCTAssertEqual(extractLineType(from: protectedString), .bikeRouteSolid)
-        XCTAssertEqual(extractLineType(from: paintedString),   .bikeRouteDashed)
-        XCTAssertEqual(extractLineType(from: sharedString),     nil)
-        XCTAssertEqual(extractLineType(from: emptyString),      nil)
+        XCTAssertEqual(extractLineType(from: paintedString), .bikeRouteDashed)
+        XCTAssertEqual(extractLineType(from: sharedString), nil)
+        XCTAssertEqual(extractLineType(from: emptyString), nil)
     }
-    
+
     func testBikewayToPolylines() {
         let testBikeway = Bikeway(lineType: .bikeRouteSolid, lines: [[pointCoordinate]])
         let polylines = testBikeway |> bikewayToPolylines
         if let points = polylines.first?.points() {
-            XCTAssertEqual(points[0].coordinate.latitude,  clCoordinate.latitude,  accuracy: 0.0000001)
+            XCTAssertEqual(points[0].coordinate.latitude, clCoordinate.latitude, accuracy: 0.0000001)
             XCTAssertEqual(points[0].coordinate.longitude, clCoordinate.longitude, accuracy: 0.0000001)
         }
     }
-    
+
     func testMakePolylineRenderer() {
         XCTAssertNil(.bikeRouteSolid |> dashPattern)
         XCTAssertEqual(.bikeRouteDashed |> dashPattern, [5, 5])
     }
-    
+
     func dashPattern(_ lineType: SupplementLineType) -> [NSNumber]? {
         let testBikeway = Bikeway(lineType: lineType, lines: [[pointCoordinate]])
         let polylines = testBikeway |> bikewayToPolylines
@@ -55,13 +55,12 @@ class BikewayTests: XCTestCase {
             return nil
         }
     }
-    
-//    func testLoadBikeways() {
-//        if let bikeways = try? loadBikeways() {
-//            XCTAssertNotNil(bikeways.first)
-//        } else {
-//            XCTFail("Could not load bikeways.")
-//        }
-//    }
-}
 
+    func testLoadBikeways() {
+        if let bikeways = try? loadBikeways() {
+            XCTAssertNotNil(bikeways.first)
+        } else {
+            XCTFail("Could not load bikeways.")
+        }
+    }
+}

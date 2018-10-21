@@ -19,17 +19,17 @@ class CoordinatesTests: XCTestCase {
         XCTAssertEqual(stringToCLLocationCoordinate2D(kmlString),
                        clCoordinate)
     }
-    
+
     func testJSONString() {
         XCTAssertEqual(stringToCLLocationCoordinate2D(jsonString),
                        clCoordinate)
     }
-    
+
     func testInvalidString() {
         XCTAssertEqual(stringToCLLocationCoordinate2D("hey"),
                        kCLLocationCoordinate2DInvalid)
     }
-    
+
     func testLineStrings() {
         XCTAssertEqual(lineStringsToCLLocationCoordinate2D([jsonString]),
                        [clCoordinate])

@@ -18,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        mockAPI = MockAPI()
 
         let storyboard = UIStoryboard(name: "\(MapViewController.self)", bundle: nil) // Main is the name of storyboard
-        
+
         window = UIWindow()
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
         self.window?.makeKeyAndVisible()
-        
+
         return true
 
-        
     }
 }

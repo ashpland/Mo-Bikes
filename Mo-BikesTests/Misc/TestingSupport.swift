@@ -89,18 +89,42 @@ func imagesAreSame(lhs: UIImage?, rhs: UIImage?) -> Bool {
 
 func makeXMLDoc() -> AEXMLDocument {
     let xmlDoc = AEXMLDocument(root: AEXMLElement(name: "kml"))
-    
-    xmlDoc.root
-        |>  addChild("Document")
+    var root = xmlDoc.root
+
+    root
+        &|> addChild("Document")
         >>> addChild("Folder")
-    
+
     return xmlDoc
 }
 
-func addChild(_ name: String) -> (AEXMLElement) -> AEXMLElement {
+func addChild(_ name: String, value: String? = nil) -> (inout AEXMLElement) -> AEXMLElement {
     return { parent in
-        let child = AEXMLElement(name: name)
+        let child = AEXMLElement(name: name, value: value)
         parent.addChild(child)
         return child
     }
+}
+
+func addChild(_ element: AEXMLElement) -> (inout AEXMLElement) -> AEXMLElement {
+    return { parent in
+        parent.addChild(element)
+        return element
+    }
+}
+
+func makePointPlacemark() -> AEXMLElement {
+    var placemark = AEXMLElement(name: "Placemark")
+    placemark &|> addChild("Point") >>> addChild("coordinates", value: "-123.125914,49.2663411,0.0")
+    return placemark
+}
+
+func makeBikewayPlacemark() -> AEXMLElement {
+    var placemark = AEXMLElement(name: "Placemark")
+    placemark &|> addChild("description", value: "Local Street<br>")
+    placemark
+        &|> addChild("MultiGeometry")
+        >>> addChild("LineString")
+        >>> addChild("coordinates", value: "-123.166270453668,49.2710157338192,0.0 -123.166270454964,49.2710157104298,0.0 -123.16630123224,49.2701228944955,0.0 -123.166315536304,49.2696909217319,0.0 -123.166331107411,49.2692315180453,0.0")
+    return placemark
 }
