@@ -33,16 +33,16 @@ class SupplementMarkerTests: XCTestCase {
         XCTAssertEqual(justFountains.first!.pointType, .fountain)
     }
     
-    func testLoadSupplementAnnotations() {
-        for pointType in SupplementPointType.allCases {
-            if let annotations = try? loadSupplementAnnotations(of: pointType),
-                let first = annotations.first as? SupplementAnnotation {
-                XCTAssertEqual(first.pointType, pointType)
-            } else {
-                XCTFail("Could not load \(pointType.rawValue).")
-            }
-        }
-    }
+//    func testLoadSupplementAnnotations() {
+//        for pointType in SupplementPointType.allCases {
+//            if let annotations = try? loadSupplementAnnotations(of: pointType),
+//                let first = annotations.first as? SupplementAnnotation {
+//                XCTAssertEqual(first.pointType, pointType)
+//            } else {
+//                XCTFail("Could not load \(pointType.rawValue).")
+//            }
+//        }
+//    }
     
     func testConfigureMarker() {
         let annotation = pointCoordinate |> stringToAnnotation(of: .fountain)

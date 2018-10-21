@@ -23,6 +23,8 @@
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
 		494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D92177E0860017F289 /* MapViewDelegate.swift */; };
 		495C840D217BF8A900978E6D /* SupplementMarkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */; };
+		495C8412217C035200978E6D /* BikewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C8411217C035200978E6D /* BikewayTests.swift */; };
+		495C8414217C2CEC00978E6D /* KMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C8413217C2CEC00978E6D /* KMLParserTests.swift */; };
 		49889421217954A50079E693 /* MapViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889420217954A50079E693 /* MapViewFunctions.swift */; };
 		49889424217956900079E693 /* SupplementMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889423217956900079E693 /* SupplementMarker.swift */; };
 		498894262179574C0079E693 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498894252179574C0079E693 /* Bikeway.swift */; };
@@ -38,6 +40,7 @@
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
+		ED9AC1013F10FAAB2095349A /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,8 @@
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		494B01D92177E0860017F289 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarkerTests.swift; sourceTree = "<group>"; };
+		495C8411217C035200978E6D /* BikewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikewayTests.swift; sourceTree = "<group>"; };
+		495C8413217C2CEC00978E6D /* KMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParserTests.swift; sourceTree = "<group>"; };
 		49889420217954A50079E693 /* MapViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctions.swift; sourceTree = "<group>"; };
 		49889423217956900079E693 /* SupplementMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarker.swift; sourceTree = "<group>"; };
 		498894252179574C0079E693 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
@@ -89,6 +94,8 @@
 		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		D64EC92DC83E5D70A8978515 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1EC2E77DED7ADE1BA6FF05A /* Pods-Mo-BikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9AC1013F10FAAB2095349A /* Pods_Mo_BikesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +127,35 @@
 				4913FC222176584A00E590C8 /* public_washrooms.kml */,
 			);
 			path = "Spatial Data";
+			sourceTree = "<group>";
+		};
+		495C840E217C030800978E6D /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
+				49145C8F217A97A200197D95 /* MiscTests.swift */,
+				49145C91217A989300197D95 /* FunctionalTests.swift */,
+				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		495C840F217C031F00978E6D /* MapElements */ = {
+			isa = PBXGroup;
+			children = (
+				49145C87217A721100197D95 /* StationTests.swift */,
+				495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */,
+				495C8411217C035200978E6D /* BikewayTests.swift */,
+				495C8413217C2CEC00978E6D /* KMLParserTests.swift */,
+			);
+			path = MapElements;
+			sourceTree = "<group>";
+		};
+		495C8410217C033900978E6D /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		498894222179556E0079E693 /* MapView */ = {
@@ -173,12 +210,9 @@
 		49AD20612035FA7400661B0D /* Mo-BikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
-				49145C87217A721100197D95 /* StationTests.swift */,
-				495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */,
-				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
-				49145C8F217A97A200197D95 /* MiscTests.swift */,
-				49145C91217A989300197D95 /* FunctionalTests.swift */,
+				495C8410217C033900978E6D /* MapView */,
+				495C840F217C031F00978E6D /* MapElements */,
+				495C840E217C030800978E6D /* Misc */,
 				49AD20642035FA7400661B0D /* Info.plist */,
 			);
 			path = "Mo-BikesTests";
@@ -223,6 +257,8 @@
 			children = (
 				367C8F8EAE02F9E39B606D26 /* Pods-Mo-Bikes.debug.xcconfig */,
 				46EFB982B154C098784D289B /* Pods-Mo-Bikes.release.xcconfig */,
+				D64EC92DC83E5D70A8978515 /* Pods-Mo-BikesTests.debug.xcconfig */,
+				E1EC2E77DED7ADE1BA6FF05A /* Pods-Mo-BikesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -253,6 +289,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AD206A2035FA7400661B0D /* Build configuration list for PBXNativeTarget "Mo-BikesTests" */;
 			buildPhases = (
+				B7FEFF50FC0C10C833339F5D /* [CP] Check Pods Manifest.lock */,
 				49AD205A2035FA7400661B0D /* Sources */,
 				49AD205B2035FA7400661B0D /* Frameworks */,
 				49AD205C2035FA7400661B0D /* Resources */,
@@ -359,6 +396,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B7FEFF50FC0C10C833339F5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mo-BikesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4BB11CE32559936CACE43B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,7 +465,9 @@
 				495C840D217BF8A900978E6D /* SupplementMarkerTests.swift in Sources */,
 				49145C92217A989300197D95 /* FunctionalTests.swift in Sources */,
 				49145C88217A721100197D95 /* StationTests.swift in Sources */,
+				495C8414217C2CEC00978E6D /* KMLParserTests.swift in Sources */,
 				49145C90217A97A200197D95 /* MiscTests.swift in Sources */,
+				495C8412217C035200978E6D /* BikewayTests.swift in Sources */,
 				49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */,
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
 			);
@@ -591,6 +648,7 @@
 		};
 		49AD206B2035FA7400661B0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D64EC92DC83E5D70A8978515 /* Pods-Mo-BikesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -608,6 +666,7 @@
 		};
 		49AD206C2035FA7400661B0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1EC2E77DED7ADE1BA6FF05A /* Pods-Mo-BikesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

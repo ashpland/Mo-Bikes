@@ -8,6 +8,10 @@ target "Mo-Bikes" do
   pod 'Alamofire',  '4.7'
   pod 'AEXML',      '4.3.3'
 
+  target "Mo-BikesTests" do
+      inherit! :search_paths
+  end
+  
 end
 
 

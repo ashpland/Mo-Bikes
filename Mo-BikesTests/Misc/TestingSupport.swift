@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import AEXML
 @testable import Mo_Bikes
 
 func generateLatLon() -> (lat: Double, lon: Double) {
@@ -84,4 +85,22 @@ func imagesAreSame(lhs: UIImage?, rhs: UIImage?) -> Bool {
         return lhsData == rhsData
     }
     return false
+}
+
+func makeXMLDoc() -> AEXMLDocument {
+    let xmlDoc = AEXMLDocument(root: AEXMLElement(name: "kml"))
+    
+    xmlDoc.root
+        |>  addChild("Document")
+        >>> addChild("Folder")
+    
+    return xmlDoc
+}
+
+func addChild(_ name: String) -> (AEXMLElement) -> AEXMLElement {
+    return { parent in
+        let child = AEXMLElement(name: name)
+        parent.addChild(child)
+        return child
+    }
 }
