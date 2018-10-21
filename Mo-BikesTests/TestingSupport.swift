@@ -75,3 +75,13 @@ class FakeMapView: MKMapView {
         }
     }
 }
+
+func imagesAreSame(lhs: UIImage?, rhs: UIImage?) -> Bool {
+    if let lhs = lhs,
+        let rhs = rhs,
+        let lhsData = lhs.pngData(),
+        let rhsData = rhs.pngData() {
+        return lhsData == rhsData
+    }
+    return false
+}

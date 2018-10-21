@@ -87,15 +87,7 @@ class StationViewTests: XCTestCase {
         
         view.isSelected = false
         view &|> setImage
-        let lhs = view.glyphImage!
-        let rhs = Styles.glyphs.bikes
-        
-        XCTAssert({ () -> Bool in
-            if let lhsData = lhs.pngData(), let rhsData = rhs.pngData() {
-                return lhsData == rhsData
-            }
-            return false
-        }())
+        XCTAssert(imagesAreSame(lhs: view.glyphImage, rhs: Styles.glyphImage.bikes))
     }
     
     func testConfigureStationView() {
@@ -105,5 +97,9 @@ class StationViewTests: XCTestCase {
         XCTAssertEqual(view.glyphText, String(stationNormal.stationData.availableBikes))
         view &|> configureStationView(.docks)
         XCTAssertEqual(view.glyphText, String(stationNormal.stationData.availableDocks))
+    }
+    
+    func testStationGlyphImage() {
+        XCTAssertEqual(BikesOrDocks.docks.glyphImage, Styles.glyphImage.docks)
     }
 }

@@ -22,6 +22,7 @@
 		491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6911203F4E6C00C79C53 /* TestingSupport.swift */; };
 		494B01D82177C1E10017F289 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D72177C1E10017F289 /* Buttons.swift */; };
 		494B01DA2177E0860017F289 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B01D92177E0860017F289 /* MapViewDelegate.swift */; };
+		495C840D217BF8A900978E6D /* SupplementMarkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */; };
 		49889421217954A50079E693 /* MapViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889420217954A50079E693 /* MapViewFunctions.swift */; };
 		49889424217956900079E693 /* SupplementMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889423217956900079E693 /* SupplementMarker.swift */; };
 		498894262179574C0079E693 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498894252179574C0079E693 /* Bikeway.swift */; };
@@ -69,6 +70,7 @@
 		491C6911203F4E6C00C79C53 /* TestingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSupport.swift; sourceTree = "<group>"; };
 		494B01D72177C1E10017F289 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		494B01D92177E0860017F289 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarkerTests.swift; sourceTree = "<group>"; };
 		49889420217954A50079E693 /* MapViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctions.swift; sourceTree = "<group>"; };
 		49889423217956900079E693 /* SupplementMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarker.swift; sourceTree = "<group>"; };
 		498894252179574C0079E693 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				491C6911203F4E6C00C79C53 /* TestingSupport.swift */,
 				49145C87217A721100197D95 /* StationTests.swift */,
+				495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */,
 				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
 				49145C8F217A97A200197D95 /* MiscTests.swift */,
 				49145C91217A989300197D95 /* FunctionalTests.swift */,
@@ -404,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495C840D217BF8A900978E6D /* SupplementMarkerTests.swift in Sources */,
 				49145C92217A989300197D95 /* FunctionalTests.swift in Sources */,
 				49145C88217A721100197D95 /* StationTests.swift in Sources */,
 				49145C90217A97A200197D95 /* MiscTests.swift in Sources */,

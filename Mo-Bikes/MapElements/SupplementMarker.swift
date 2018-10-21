@@ -21,14 +21,14 @@ enum SupplementPointType: String, CaseIterable {
     var glyphImage: UIImage {
         switch self {
         case .fountain:
-            return #imageLiteral(resourceName: "fountain")
+            return Styles.glyphImage.fountain
         case .washroom:
-            return #imageLiteral(resourceName: "toilet")
+            return Styles.glyphImage.washroom
         }
     }
 }
 
-func stringToAnnotation(of pointType: SupplementPointType) -> (String) -> SupplementAnnotation {
+func stringToAnnotation(of pointType: SupplementPointType) -> (PointCoordinate) -> SupplementAnnotation {
     return { string in
         return SupplementAnnotation(coordinate: string |> stringToCLLocationCoordinate2D,
                                     pointType: pointType)
@@ -69,7 +69,7 @@ func loadSupplementAnnotations(of pointType: SupplementPointType) throws -> [MKA
 
 // MARK: - Marker
 
-func configureMarker(for annotation: SupplementAnnotation) -> (MKMarkerAnnotationView) -> MKMarkerAnnotationView {
+func configureMarker(for annotation: SupplementAnnotation) -> (inout MKMarkerAnnotationView) -> MKMarkerAnnotationView {
     return { marker in
         marker.glyphImage = annotation.pointType.glyphImage
         marker.markerTintColor = Styles.Color.secondary

@@ -20,7 +20,7 @@ func stringToCLLocationCoordinate2D(_ coordinateString: PointCoordinate) -> CLLo
     }
 
     // Coordinate strings are different based on the source
-    // KML:  -123.041381,49.257924,0.0
+    // KML:  -123.121817,49.274566,0.0
     // JSON: 49.274566,  -123.121817
     return (first, second) |> (split.count == 2 ? latFirst : lonFirst)
 }

@@ -15,12 +15,12 @@ enum BikesOrDocks {
 }
 
 extension BikesOrDocks {
-    var glyph: UIImage {
+    var glyphImage: UIImage {
         switch self {
         case .bikes:
-            return Styles.glyphs.bikes
+            return Styles.glyphImage.bikes
         case .docks:
-            return Styles.glyphs.docks
+            return Styles.glyphImage.docks
         }
     }
     

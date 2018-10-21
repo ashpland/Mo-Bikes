@@ -86,5 +86,5 @@ func setText(for view: inout StationView) {
 }
 
 func setImage(for view: inout StationView) {
-    view.glyphImage = view.isSelected ? nil : view.bikesOrDocks.glyph
+    view.glyphImage = view.isSelected ? nil : view.bikesOrDocks.glyphImage
 }
