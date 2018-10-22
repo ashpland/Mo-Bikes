@@ -13,17 +13,15 @@ import Alamofire
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var trayView: UIView!
+    @IBOutlet weak var trayView: TrayView!
     @IBOutlet weak var trayStackView: UIStackView!
-    @IBOutlet weak var trayBottomView: UIStackView!
+    @IBOutlet weak var trayBottomView: UIView!
     @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var paddingHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var hamburgerButton: MoButtonHamburger!
     @IBOutlet weak var washroomsButton: MoButtonWashrooms!
     @IBOutlet weak var fountainsButton: MoButtonFountains!
-
-    private var bottomOffset: CGFloat {
-        return (trayStackView.spacing + trayBottomView.frame.height + 20) * -1
-    }
 
     var bikesOrDocksState: BikesOrDocks = .bikes {
         didSet {
@@ -33,6 +31,39 @@ class MapViewController: UIViewController {
 
     var locationManager = CLLocationManager()
 
+    // MARK: - TrayView math
+    
+    
+    private var safeOffset: CGFloat {
+        return view?.safeAreaInsets.bottom ?? 0.0
+    }
+    
+    private let bounceHeight: CGFloat = 50
+    
+    private let trayCornerRadius: CGFloat = 20
+    
+    private var padding: CGFloat {
+        return safeOffset + bounceHeight + trayCornerRadius
+    }
+    
+    private var bounceOpen: CGFloat {
+        return -(trayCornerRadius + safeOffset)
+    }
+    
+    private var open: CGFloat {
+        return bounceOpen - bounceHeight - trayStackView.spacing
+    }
+    
+    private var closed: CGFloat {
+        return -(padding + trayStackView.spacing + trayBottomView.frame.height)
+    }
+    
+    private var threshold: CGFloat {
+        return ((open - closed) / 2) + closed
+    }
+    
+    // MARK: - Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
@@ -46,11 +77,13 @@ class MapViewController: UIViewController {
             try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
     }
-
+    
     private func setupView() {
-        trayViewBottomConstraint.constant = bottomOffset
+        trayView.delegate = self
+        paddingHeightConstraint.constant = padding
+        trayViewBottomConstraint.constant = closed
         trayBottomView.alpha = 0.0
-        trayView.layer.cornerRadius = 20
+        trayView.layer.cornerRadius = trayCornerRadius
     }
 
     private func startUpdatingStations() {
@@ -75,8 +108,8 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
-        hamburgerButton.isOn |> openBottomDrawer
         hamburgerButton.isOn.toggle()
+        hamburgerButton.isOn |> openBottomDrawer
     }
 
     @IBAction func buttonPressed(_ sender: MoButton) {
@@ -94,8 +127,8 @@ class MapViewController: UIViewController {
                     try self.mapView &|> zoomTo(locationManager.location)
                 }
             case .hamburger:
-                hamburgerButton.isOn |> openBottomDrawer
                 hamburgerButton.isOn.toggle()
+                hamburgerButton.isOn |> openBottomDrawer
             default:
                 return
             }
@@ -105,8 +138,8 @@ class MapViewController: UIViewController {
     private func openBottomDrawer(_ shouldOpen: Bool) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) {
-            self.trayViewBottomConstraint.constant = shouldOpen ? self.bottomOffset : 0
-            self.trayBottomView.alpha = shouldOpen ? 0.0 : 1.0
+            self.trayViewBottomConstraint.constant = shouldOpen ? self.open : self.closed
+            self.trayBottomView.alpha = shouldOpen ? 1.0 : 0.0
             self.view.layoutIfNeeded()
         }
     }
@@ -146,19 +179,57 @@ class MapViewController: UIViewController {
         washroomsButton.isOn = isOn
         washroomsButton.tintColor = secondaryTintColor(isOn)
     }
-
+    
+    
 }
+
+extension MapViewController: TrayViewDelegate {
+
+    func trayViewTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let firstTouch = touches.first else { return }
+        let deltaY = firstTouch.location(in: self.view).y - firstTouch.previousLocation(in: self.view).y
+        let newConstant = trayViewBottomConstraint.constant - deltaY
+        let newAlpha = (closed - newConstant) / closed
+        switch newConstant {
+        case bounceOpen...:
+            trayViewBottomConstraint.constant = bounceOpen
+            trayBottomView.alpha = 1
+        case ..<closed:
+            trayViewBottomConstraint.constant = closed
+            trayBottomView.alpha = 0
+        default:
+            trayViewBottomConstraint.constant = newConstant
+            trayBottomView.alpha = newAlpha
+        }
+    }
+    
+    func trayViewTouchesEnded() {
+        let currentConstant = trayViewBottomConstraint.constant
+        let endConstant = currentConstant < threshold ? closed : open
+        let endAlpha: CGFloat = currentConstant < threshold ? 0 : 1
+        UIView.animate(withDuration: 0.2) {
+            self.trayViewBottomConstraint.constant = endConstant
+            self.trayBottomView.alpha = endAlpha
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+}
+
+let addAnnotationsTo = MKMapView.addAnnotations
+let removeAnnotationsFrom = MKMapView.removeAnnotations
+
 
 func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {
     return { mapView in
         if turnOn {
             try pointType
                 |> loadSupplementAnnotations
-                >>> mapView.addAnnotations
+                >>> addAnnotationsTo(mapView)
         } else {
             mapView.annotations
                 .compactMap(justAnnotations(of: pointType))
-                |> mapView.removeAnnotations
+                |> removeAnnotationsFrom(mapView)
         }
     }
 }

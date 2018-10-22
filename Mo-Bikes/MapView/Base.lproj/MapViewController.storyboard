@@ -23,11 +23,11 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akK-qI-pPo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrm-wu-Gud">
-                                <rect key="frame" x="0.0" y="481" width="375" height="186"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrm-wu-Gud" customClass="TrayView" customModule="Mo_Bikes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="423" width="375" height="244"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s37-Ih-lfw">
-                                        <rect key="frame" x="20" y="8" width="335" height="158"/>
+                                        <rect key="frame" x="20" y="8" width="335" height="216"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qr5-vf-zoR" userLabel="Top">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -89,116 +89,133 @@
                                                     <outletCollection property="gestureRecognizers" destination="rdT-ez-bjK" appends="YES" id="OWJ-gI-Pki"/>
                                                 </connections>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrx-YK-33A" userLabel="Bottom">
-                                                <rect key="frame" x="0.0" y="58" width="335" height="100"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XH1-pi-9N7">
+                                                <rect key="frame" x="0.0" y="58" width="335" height="116"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6G-eR-uUI" userLabel="Line">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="1"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="Rzg-Af-wAo"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-aH-eQZ">
-                                                        <rect key="frame" x="0.0" y="9" width="335" height="91"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrx-YK-33A" userLabel="Bottom">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="amI-xC-XSR" userLabel="Buttons">
-                                                                <rect key="frame" x="0.0" y="0.0" width="170.5" height="91"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhV-WS-FNx" customClass="MoButtonContact" customModule="Mo_Bikes" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="25"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <state key="normal" title="   Contact Mobi" image="phone"/>
-                                                                        <connections>
-                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j42-ud-TA5"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omr-A2-YWZ" customClass="MoButtonWashrooms" customModule="Mo_Bikes" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="33" width="160" height="25"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                                        <color key="tintColor" name="Inactive"/>
-                                                                        <state key="normal" title="  Public Washrooms" image="toilet"/>
-                                                                        <connections>
-                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQE-w0-PTx"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qsv-dd-jWH" customClass="MoButtonFountains" customModule="Mo_Bikes" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="66" width="161" height="25"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                                        <color key="tintColor" name="Inactive"/>
-                                                                        <state key="normal" title="  Drinking Fountains" image="fountain"/>
-                                                                        <connections>
-                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zo0-K0-J5g"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNY-dj-sYP" userLabel="Spacer">
-                                                                <rect key="frame" x="178.5" y="0.0" width="50" height="91"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6G-eR-uUI" userLabel="Line">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="1"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="5UU-iE-evu"/>
-                                                                    <constraint firstAttribute="height" constant="91" id="9Tl-k3-bbM"/>
+                                                                    <constraint firstAttribute="height" constant="1" id="Rzg-Af-wAo"/>
                                                                 </constraints>
                                                             </view>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-q5-7OD" userLabel="Legend">
-                                                                <rect key="frame" x="236.5" y="0.0" width="98.5" height="91"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fev-aH-eQZ">
+                                                                <rect key="frame" x="0.0" y="9" width="335" height="91"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwB-G9-Fpy">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="25"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m02-47-gtm" userLabel="Bikeway">
-                                                                        <rect key="frame" x="0.0" y="33" width="98.5" height="25"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="amI-xC-XSR" userLabel="Buttons">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="170.5" height="91"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bikeway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-jC-8Id" userLabel="Bikeway">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhV-WS-FNx" customClass="MoButtonContact" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="25"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="——" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-vR-eWj">
-                                                                                <rect key="frame" x="64" y="0.0" width="34.5" height="25"/>
-                                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                                                                <color key="textColor" name="Secondary"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
+                                                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <state key="normal" title="   Contact Mobi" image="phone"/>
+                                                                                <connections>
+                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j42-ud-TA5"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omr-A2-YWZ" customClass="MoButtonWashrooms" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="33" width="160" height="25"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                <color key="tintColor" name="Inactive"/>
+                                                                                <state key="normal" title="  Public Washrooms" image="toilet"/>
+                                                                                <connections>
+                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQE-w0-PTx"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qsv-dd-jWH" customClass="MoButtonFountains" customModule="Mo_Bikes" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="66" width="161" height="25"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                <color key="tintColor" name="Inactive"/>
+                                                                                <state key="normal" title="  Drinking Fountains" image="fountain"/>
+                                                                                <connections>
+                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zo0-K0-J5g"/>
+                                                                                </connections>
+                                                                            </button>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="48W-1M-QR0" userLabel="Bike Lane">
-                                                                        <rect key="frame" x="0.0" y="66" width="98.5" height="25"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNY-dj-sYP" userLabel="Spacer">
+                                                                        <rect key="frame" x="178.5" y="0.0" width="50" height="91"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="5UU-iE-evu"/>
+                                                                            <constraint firstAttribute="height" constant="91" id="9Tl-k3-bbM"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YxS-q5-7OD" userLabel="Legend">
+                                                                        <rect key="frame" x="236.5" y="0.0" width="98.5" height="91"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bike Lane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbJ-7k-yly" userLabel="Bike Lane">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="25"/>
-                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwB-G9-Fpy">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="98.5" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="tcY-xL-1wf">
-                                                                                <rect key="frame" x="74.5" y="0.0" width="24" height="25"/>
-                                                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                                                                <color key="textColor" name="Secondary"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m02-47-gtm" userLabel="Bikeway">
+                                                                                <rect key="frame" x="0.0" y="33" width="98.5" height="25"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bikeway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEg-jC-8Id" userLabel="Bikeway">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="25"/>
+                                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="——" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-vR-eWj">
+                                                                                        <rect key="frame" x="64" y="0.0" width="34.5" height="25"/>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                                                                        <color key="textColor" name="Secondary"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                            </stackView>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="48W-1M-QR0" userLabel="Bike Lane">
+                                                                                <rect key="frame" x="0.0" y="66" width="98.5" height="25"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bike Lane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbJ-7k-yly" userLabel="Bike Lane">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="66.5" height="25"/>
+                                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="tcY-xL-1wf">
+                                                                                        <rect key="frame" x="74.5" y="0.0" width="24" height="25"/>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                                                                        <color key="textColor" name="Secondary"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                            </stackView>
                                                                         </subviews>
                                                                     </stackView>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="cwB-G9-Fpy" firstAttribute="bottom" secondItem="jhV-WS-FNx" secondAttribute="bottom" id="0bx-NX-OE3"/>
+                                                                    <constraint firstItem="m02-47-gtm" firstAttribute="bottom" secondItem="omr-A2-YWZ" secondAttribute="bottom" id="9DP-8V-3eB"/>
+                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="cwB-G9-Fpy" firstAttribute="bottom" secondItem="jhV-WS-FNx" secondAttribute="bottom" id="0bx-NX-OE3"/>
-                                                            <constraint firstItem="m02-47-gtm" firstAttribute="bottom" secondItem="omr-A2-YWZ" secondAttribute="bottom" id="9DP-8V-3eB"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
-                                            </stackView>
+                                                <constraints>
+                                                    <constraint firstItem="nrx-YK-33A" firstAttribute="leading" secondItem="XH1-pi-9N7" secondAttribute="leading" id="7zf-lj-mPh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nrx-YK-33A" secondAttribute="trailing" id="IFQ-FJ-yAL"/>
+                                                    <constraint firstItem="nrx-YK-33A" firstAttribute="top" secondItem="XH1-pi-9N7" secondAttribute="top" id="LXO-wL-bTJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nrx-YK-33A" secondAttribute="bottom" constant="16" id="XDT-X5-ph8"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0c-yx-3vU" userLabel="Padding">
+                                                <rect key="frame" x="0.0" y="182" width="335" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="Whc-xK-wne"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <gestureRecognizers/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.94217956849999995" green="0.54362026220000004" blue="0.081932168030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="s37-Ih-lfw" firstAttribute="top" secondItem="Qrm-wu-Gud" secondAttribute="top" constant="8" id="IF1-ct-8Ac"/>
@@ -212,7 +229,7 @@
                         <constraints>
                             <constraint firstAttribute="top" secondItem="akK-qI-pPo" secondAttribute="top" id="7eg-Q1-85G"/>
                             <constraint firstAttribute="bottom" secondItem="akK-qI-pPo" secondAttribute="bottom" id="G3G-Pj-ye5"/>
-                            <constraint firstAttribute="bottom" secondItem="Qrm-wu-Gud" secondAttribute="bottom" id="Gau-XS-J2s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qrm-wu-Gud" secondAttribute="bottom" id="Gau-XS-J2s"/>
                             <constraint firstItem="Qrm-wu-Gud" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lpv-2E-Ohc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s37-Ih-lfw" secondAttribute="bottom" constant="16" id="YkB-5H-RFb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="akK-qI-pPo" secondAttribute="trailing" id="bjK-qf-Q8o"/>
@@ -230,10 +247,11 @@
                         <outlet property="fountainsButton" destination="qsv-dd-jWH" id="qua-S7-57C"/>
                         <outlet property="hamburgerButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>
                         <outlet property="mapView" destination="akK-qI-pPo" id="Pzz-6D-d1b"/>
-                        <outlet property="trayBottomView" destination="nrx-YK-33A" id="a5o-HB-c8Z"/>
+                        <outlet property="paddingHeightConstraint" destination="Whc-xK-wne" id="kmr-XK-9I8"/>
+                        <outlet property="trayBottomView" destination="XH1-pi-9N7" id="oTD-1J-QcE"/>
                         <outlet property="trayStackView" destination="s37-Ih-lfw" id="2mk-sC-d86"/>
                         <outlet property="trayView" destination="Qrm-wu-Gud" id="N3m-fz-UOR"/>
-                        <outlet property="trayViewBottomConstraint" destination="Gau-XS-J2s" id="g9i-em-c5Q"/>
+                        <outlet property="trayViewBottomConstraint" destination="Gau-XS-J2s" id="Cqu-se-3Qu"/>
                         <outlet property="washroomsButton" destination="omr-A2-YWZ" id="9CI-oe-3fU"/>
                     </connections>
                 </viewController>

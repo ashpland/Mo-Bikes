@@ -39,6 +39,7 @@
 		49B00FE620360B2200028812 /* Sample Data in Resources */ = {isa = PBXBuildFile; fileRef = 49B00FE520360B2200028812 /* Sample Data */; };
 		49B00FE820360B5500028812 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B00FE720360B5500028812 /* MockAPI.swift */; };
 		49B4B22F216485DC00112B4A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B4B22E216485DC00112B4A /* Styles.swift */; };
+		49B76D90217D0B1C001F9AB6 /* TrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B76D8F217D0B1C001F9AB6 /* TrayView.swift */; };
 		DB98676ADBABA2487CC96D31 /* Pods_Mo_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076AD8D020E3F865543C6925 /* Pods_Mo_Bikes.framework */; };
 		ED9AC1013F10FAAB2095349A /* Pods_Mo_BikesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2D1E41CA3456635CC282DD /* Pods_Mo_BikesTests.framework */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		49B00FE520360B2200028812 /* Sample Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample Data"; sourceTree = SOURCE_ROOT; };
 		49B00FE720360B5500028812 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		49B4B22E216485DC00112B4A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		49B76D8F217D0B1C001F9AB6 /* TrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrayView.swift; sourceTree = "<group>"; };
 		D64EC92DC83E5D70A8978515 /* Pods-Mo-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1EC2E77DED7ADE1BA6FF05A /* Pods-Mo-BikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mo-BikesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mo-BikesTests/Pods-Mo-BikesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +165,7 @@
 			children = (
 				49AD20512035FA7400661B0D /* MapViewController.storyboard */,
 				49AD204F2035FA7400661B0D /* MapViewController.swift */,
+				49B76D8F217D0B1C001F9AB6 /* TrayView.swift */,
 				494B01D92177E0860017F289 /* MapViewDelegate.swift */,
 				49889420217954A50079E693 /* MapViewFunctions.swift */,
 				49B00FDF2035FF0A00028812 /* MapModel.swift */,
@@ -449,6 +452,7 @@
 				49B00FE02035FF0A00028812 /* MapModel.swift in Sources */,
 				49B00FE820360B5500028812 /* MockAPI.swift in Sources */,
 				49889421217954A50079E693 /* MapViewFunctions.swift in Sources */,
+				49B76D90217D0B1C001F9AB6 /* TrayView.swift in Sources */,
 				498894262179574C0079E693 /* Bikeway.swift in Sources */,
 				49AD20502035FA7400661B0D /* MapViewController.swift in Sources */,
 				4913FC1E2176579800E590C8 /* KMLParser.swift in Sources */,
