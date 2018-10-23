@@ -46,16 +46,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mUH-NN-7e9">
                                                         <rect key="frame" x="127" y="0.0" width="120" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-tX-4qu" customClass="MoButtonBikes" customModule="Mo_Bikes" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-tX-4qu" customClass="MoButtonBikes" customModule="Mo_Bikes" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="50"/>
-                                                                <color key="backgroundColor" name="Primary"/>
-                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" image="bikeIcon"/>
+                                                                <color key="tintColor" name="Primary"/>
+                                                                <state key="normal" image="bikeIcon-invert"/>
                                                                 <connections>
                                                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pLI-q6-pBw"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-Eg-zdM" customClass="MoButtonDocks" customModule="Mo_Bikes" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-Eg-zdM" customClass="MoButtonDocks" customModule="Mo_Bikes" customModuleProvider="target">
                                                                 <rect key="frame" x="68" y="0.0" width="52" height="50"/>
                                                                 <color key="tintColor" name="Primary"/>
                                                                 <state key="normal" image="dockIcon"/>
@@ -269,7 +268,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bikeIcon" width="500" height="500"/>
+        <image name="bikeIcon-invert" width="500" height="500"/>
         <image name="compass" width="25" height="25"/>
         <image name="dockIcon" width="500" height="500"/>
         <image name="fountain" width="25" height="25"/>

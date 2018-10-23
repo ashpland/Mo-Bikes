@@ -54,12 +54,3 @@ func setRotate(_ radians: CGFloat) -> (UIView) -> Void {
         view.transform = view.transform.rotated(by: radians - current)
     }
 }
-
-func setButtonColorsSelected(_ isOn: Bool) -> (inout UIButton) -> Void {
-    return { button in
-        button
-            |> prop(\.tintColor, value: isOn ? UIColor.white : Styles.Color.primary)
-            <> prop(\.backgroundColor, value: isOn ? Styles.Color.primary : UIColor.clear)
-        return
-    }
-}

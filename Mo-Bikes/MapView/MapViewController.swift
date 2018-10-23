@@ -89,7 +89,7 @@ class MapViewController: UIViewController {
         doCatchPrint {
             try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleMapTap))
         tap.cancelsTouchesInView = false
         mapView.addGestureRecognizer(tap)
@@ -105,9 +105,6 @@ class MapViewController: UIViewController {
             &|> blurBackground
             <> roundCorners(trayCornerRadius)
             <> addBorder(Styles.border)
-
-        [bikesButton, docksButton]
-            |> map(roundCorners(Styles.buttonCorners))
 
         setBikesAndDocsButtons(selected: .bikes)
     }
@@ -176,11 +173,11 @@ class MapViewController: UIViewController {
     @discardableResult func setBikesAndDocsButtons(selected state: BikesOrDocks) -> BikesOrDocks {
         switch state {
         case .bikes:
-            bikesButton &|> setButtonColorsSelected(true)
-            docksButton &|> setButtonColorsSelected(false)
+            bikesButton.setImage(#imageLiteral(resourceName: "bikeIcon-invert"), for: .normal)
+            docksButton.setImage(#imageLiteral(resourceName: "dockIcon"), for: .normal)
         case .docks:
-            docksButton &|> setButtonColorsSelected(true)
-            bikesButton &|> setButtonColorsSelected(false)
+            bikesButton.setImage(#imageLiteral(resourceName: "bikeIcon"), for: .normal)
+            docksButton.setImage(#imageLiteral(resourceName: "dockIcon-invert"), for: .normal)
         }
         return state
     }

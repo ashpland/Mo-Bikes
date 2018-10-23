@@ -11,13 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var mockAPI: MockAPI!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-//        mockAPI = MockAPI()
-
-        let storyboard = UIStoryboard(name: "\(MapViewController.self)", bundle: nil) // Main is the name of storyboard
+        let storyboard = UIStoryboard(name: "\(MapViewController.self)", bundle: nil)
 
         window = UIWindow()
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
