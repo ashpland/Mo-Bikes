@@ -39,7 +39,7 @@ private func makeBikeway(of lineType: SupplementLineType) -> ([LineCoordinates])
 func getBikeway(_ element: AEXMLElement) -> Bikeway? {
     guard let description = element["description"].value,
         let lineType = extractLineType(from: description),
-        let lines = element["MultiGeometry"]["LineString"].all else {
+        let lines = element["MultiGeometry"]["LineString"].all ?? element["LineString"].all else {
         return nil
     }
 
