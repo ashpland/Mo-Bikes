@@ -102,9 +102,8 @@ func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value>)
     -> (@escaping (Value) -> Value)
     -> (Root)
     -> Root {
-        
-        return { update in
-            { root in
+
+        return { update in { root in
                 var copy = root
                 copy[keyPath: kp] = update(copy[keyPath: kp])
                 return copy
@@ -116,9 +115,8 @@ func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>)
     -> (@escaping (Value?) -> Value)
     -> (Root)
     -> Root {
-        
-        return { update in
-            { root in
+
+        return { update in { root in
                 var copy = root
                 copy[keyPath: kp] = update(copy[keyPath: kp])
                 return copy
@@ -144,6 +142,14 @@ func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>, value: Value)
             copy[keyPath: kp] = value
             return copy
         }
+}
+
+func set<Root, Element>(_ kp: WritableKeyPath<Root, Element>, on object: Root) -> (Element) -> Element {
+    return { value in
+        var object = object
+        object[keyPath: kp] = value
+        return value
+    }
 }
 
 // MARK: - Inout

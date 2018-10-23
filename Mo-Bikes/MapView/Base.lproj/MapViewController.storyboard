@@ -46,15 +46,16 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mUH-NN-7e9">
                                                         <rect key="frame" x="127" y="0.0" width="120" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-tX-4qu" customClass="MoButtonBikes" customModule="Mo_Bikes" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-tX-4qu" customClass="MoButtonBikes" customModule="Mo_Bikes" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="50"/>
-                                                                <color key="tintColor" name="Primary"/>
+                                                                <color key="backgroundColor" name="Primary"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" image="bikeIcon"/>
                                                                 <connections>
                                                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pLI-q6-pBw"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-Eg-zdM" customClass="MoButtonDocks" customModule="Mo_Bikes" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-Eg-zdM" customClass="MoButtonDocks" customModule="Mo_Bikes" customModuleProvider="target">
                                                                 <rect key="frame" x="68" y="0.0" width="52" height="50"/>
                                                                 <color key="tintColor" name="Primary"/>
                                                                 <state key="normal" image="dockIcon"/>
@@ -244,6 +245,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bikesButton" destination="Afc-tX-4qu" id="hCe-Ty-CDY"/>
+                        <outlet property="docksButton" destination="ahN-Eg-zdM" id="lpd-27-FM5"/>
                         <outlet property="fountainsButton" destination="qsv-dd-jWH" id="qua-S7-57C"/>
                         <outlet property="mapView" destination="akK-qI-pPo" id="Pzz-6D-d1b"/>
                         <outlet property="menuButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>

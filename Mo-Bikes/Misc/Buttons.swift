@@ -21,8 +21,6 @@ enum MoButtonType {
 
 class MoButton: UIButton { var type: MoButtonType { return .generic } }
 
-class MoButtonBikes: MoButton { override var type: MoButtonType { return .bikes } }
-class MoButtonDocks: MoButton { override var type: MoButtonType { return .docks } }
 class MoButtonContact: MoButton { override var type: MoButtonType { return .contact } }
 class MoButtonCompass: MoButton { override var type: MoButtonType { return .compass } }
 
@@ -31,3 +29,5 @@ class MoButtonToggle: MoButton { var isOn = false }
 class MoButtonMenu: MoButtonToggle { override var type: MoButtonType { return .menu } }
 class MoButtonWashrooms: MoButtonToggle { override var type: MoButtonType { return .washrooms } }
 class MoButtonFountains: MoButtonToggle { override var type: MoButtonType { return .fountains } }
+class MoButtonBikes: MoButtonToggle { override var type: MoButtonType { return .bikes } }
+class MoButtonDocks: MoButtonToggle { override var type: MoButtonType { return .docks } }

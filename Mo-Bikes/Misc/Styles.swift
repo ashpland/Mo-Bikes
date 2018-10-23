@@ -15,8 +15,10 @@ enum Styles {
                              fountain: #imageLiteral(resourceName: "fountain"),
                              washroom: #imageLiteral(resourceName: "toilet"))
 
+    static let buttonCorners: CGFloat = 11.25
+
     static let border: (color: CGColor, width: CGFloat) = (Color.border.cgColor, 1.0)
-    
+
     enum Color {
         static let primary = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
         static let secondary = #colorLiteral(red: 0.3018391927, green: 0.6276475694, blue: 1, alpha: 1)

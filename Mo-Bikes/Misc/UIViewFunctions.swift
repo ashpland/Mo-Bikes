@@ -17,9 +17,9 @@ func blurBackground(_ view: inout UIView) {
 
 func fillSuperView(_ view: inout UIView) {
     guard let superview = view.superview else { return }
-    
+
     view.translatesAutoresizingMaskIntoConstraints = false
-    
+
     [view.topAnchor.constraint(equalTo: superview.topAnchor),
      view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
      view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
@@ -57,10 +57,19 @@ func inRadians(_ degrees: CGFloat) -> CGFloat {
     return degrees / 180 * CGFloat.pi
 }
 
-func setRotate(_ radians: CGFloat) -> (UIView) -> Void{
+func setRotate(_ radians: CGFloat) -> (UIView) -> Void {
     return { view in
         let current = CGFloat(atan2f(Float(view.transform.b), Float(view.transform.a)))
         print("current: \(current), new: \(radians)")
         view.transform = view.transform.rotated(by: radians - current)
+    }
+}
+
+func setButtonColorsSelected(_ isOn: Bool) -> (inout UIButton) -> Void {
+    return { button in
+        button
+            |> prop(\.tintColor, value: isOn ? UIColor.white : Styles.Color.primary)
+            <> prop(\.backgroundColor, value: isOn ? Styles.Color.primary : UIColor.clear)
+        return
     }
 }

@@ -22,6 +22,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var menuButton: MoButtonMenu!
     @IBOutlet weak var washroomsButton: MoButtonWashrooms!
     @IBOutlet weak var fountainsButton: MoButtonFountains!
+    @IBOutlet weak var bikesButton: MoButtonBikes!
+    @IBOutlet weak var docksButton: MoButtonDocks!
 
     var bikesOrDocksState: BikesOrDocks = .bikes {
         didSet {
@@ -100,6 +102,15 @@ class MapViewController: UIViewController {
             <> addShadow
             <> roundCorners(trayCornerRadius)
             <> addBorder(Styles.border)
+
+        [bikesButton, docksButton]
+            |> map(roundCorners(Styles.buttonCorners))
+
+        setBikesAndDocsButtons(selected: .bikes)
+    }
+
+    func disableHighlighting(_ button: inout UIButton) {
+        button.adjustsImageWhenHighlighted = false
     }
 
     private func startUpdatingStations() {
@@ -130,9 +141,13 @@ class MapViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: MoButton) {
             switch sender.type {
             case .bikes:
-                bikesOrDocksState = .bikes
+                .bikes
+                    |> setBikesAndDocsButtons
+                    >>> set(\.bikesOrDocksState, on: self)
             case .docks:
-                bikesOrDocksState = .docks
+                .docks
+                    |> setBikesAndDocsButtons
+                    >>> set(\.bikesOrDocksState, on: self)
             case .fountains, .washrooms:
                 handleSupplementAnnotations(for: sender)
             case .contact:
@@ -146,9 +161,20 @@ class MapViewController: UIViewController {
             default:
                 return
             }
-
     }
-    
+
+    @discardableResult func setBikesAndDocsButtons(selected state: BikesOrDocks) -> BikesOrDocks {
+        switch state {
+        case .bikes:
+            bikesButton &|> setButtonColorsSelected(true)
+            docksButton &|> setButtonColorsSelected(false)
+        case .docks:
+            docksButton &|> setButtonColorsSelected(true)
+            bikesButton &|> setButtonColorsSelected(false)
+        }
+        return state
+    }
+
     func handleMenuButton() {
         menuButton.isOn.toggle()
         menuButton.isOn |> openBottomDrawer
@@ -214,7 +240,7 @@ extension MapViewController: TrayViewDelegate {
         let newConstant = trayViewBottomConstraint.constant - deltaY
         let newAlpha = (closedHeight - newConstant) / closedHeight
         let newRotation = newAlpha * 90
-        
+
         switch newConstant {
         case bounceOpenHeight...:
             setTrayValues(.bounceOpen(self))
@@ -226,7 +252,7 @@ extension MapViewController: TrayViewDelegate {
                                    iconRotation: newRotation))
         }
     }
-    
+
     func trayViewTouchesEnded() {
         self.trayViewBottomConstraint.constant > self.threshold
             |> openBottomDrawer
@@ -238,7 +264,7 @@ enum TrayState {
     case open(_ mvc: MapViewController)
     case closed(_ mvc: MapViewController)
     case partial(bottomConstant: CGFloat, alpha: CGFloat, iconRotation: CGFloat)
-    
+
     var constant: CGFloat {
         switch self {
         case .bounceOpen(let mvc):
@@ -251,7 +277,7 @@ enum TrayState {
             return bottomConstant
         }
     }
-    
+
     var alpha: CGFloat {
         switch self {
         case .bounceOpen, .open:
@@ -262,7 +288,7 @@ enum TrayState {
             return alpha
         }
     }
-    
+
     var rotation: CGFloat {
         switch self {
         case .bounceOpen, .open:
