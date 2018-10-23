@@ -96,6 +96,7 @@ class MapViewController: UIViewController {
         trayViewBottomConstraint.constant = closed
         trayBottomView.alpha = 0.0
         trayView.layer.cornerRadius = trayCornerRadius
+        blurBackground(trayView)
     }
 
     private func startUpdatingStations() {
@@ -250,4 +251,23 @@ func callMobi() {
     if let url = URL(string: "tel://7786551800") {
         UIApplication.shared.open(url)
     }
+}
+
+func blurBackground(_ view: UIView) {
+    view.backgroundColor = UIColor.clear
+    let blurEffectView = UIBlurEffect(style: .light) |> UIVisualEffectView.init
+    view.insertSubview(blurEffectView, at: 0)
+    blurEffectView |> fillSuperView
+}
+
+func fillSuperView(_ view: UIView) {
+    guard let superview = view.superview else { return }
+    
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    [view.topAnchor.constraint(equalTo: superview.topAnchor),
+     view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+     view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+     view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)]
+        |> NSLayoutConstraint.activate
 }
