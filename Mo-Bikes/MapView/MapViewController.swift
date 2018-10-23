@@ -89,6 +89,10 @@ class MapViewController: UIViewController {
         doCatchPrint {
             try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleMapTap))
+        tap.cancelsTouchesInView = false
+        mapView.addGestureRecognizer(tap)
     }
 
     private func setupView() {
@@ -130,6 +134,13 @@ class MapViewController: UIViewController {
                 >>> update(existingStations: mapView |> getStations)
                 >>> update(mapView: &mapView)
                 >>> refreshStationViews(with: bikesOrDocksState)
+        }
+    }
+
+    @objc func handleMapTap() {
+        if menuButton.isOn == true {
+            menuButton.isOn = false
+            openBottomDrawer(false)
         }
     }
 
@@ -219,15 +230,11 @@ class MapViewController: UIViewController {
     }
 
     private func fountainsOn(_ isOn: Bool) throws {
-        try mapView &|> displaySupplementAnnotations(.fountain, isOn)
-        fountainsButton.isOn = isOn
-        fountainsButton.tintColor = secondaryTintColor(isOn)
+        try mapView &|> annotations(pointType: .fountain, isOn: isOn, button: fountainsButton)
     }
 
     private func washroomsOn(_ isOn: Bool) throws {
-        try mapView &|> displaySupplementAnnotations(.washroom, isOn)
-        washroomsButton.isOn = isOn
-        washroomsButton.tintColor = secondaryTintColor(isOn)
+        try mapView &|> annotations(pointType: .washroom, isOn: isOn, button: washroomsButton)
     }
 
 }
@@ -254,7 +261,8 @@ extension MapViewController: TrayViewDelegate {
 
     func trayViewTouchesEnded() {
         self.trayViewBottomConstraint.constant > self.threshold
-            |> openBottomDrawer
+            |> set(\.menuButton!.isOn, on: self)
+            >>> openBottomDrawer
     }
 }
 
