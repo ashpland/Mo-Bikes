@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var trayBottomView: UIView!
     @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var paddingHeightConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var hamburgerButton: MoButtonHamburger!
     @IBOutlet weak var washroomsButton: MoButtonWashrooms!
     @IBOutlet weak var fountainsButton: MoButtonFountains!
@@ -32,32 +32,31 @@ class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
 
     // MARK: - TrayView math
-    
-    
+
     private var safeOffset: CGFloat {
         return view?.safeAreaInsets.bottom ?? 0.0
     }
-    
+
     private let bounceHeight: CGFloat = 50
-    
+
     private let trayCornerRadius: CGFloat = 20
-    
+
     private var minimumClippedHeight: CGFloat {
         return trayCornerRadius + safeOffset
     }
-    
+
     private var padding: CGFloat {
         return minimumClippedHeight + bounceHeight + safeOffset
     }
-    
+
     private var bounceOpen: CGFloat {
         return -minimumClippedHeight
     }
-    
+
     private var open: CGFloat {
         return bounceOpen - bounceHeight
     }
-    
+
     private var closed: CGFloat {
         let numberOfViews = CGFloat(trayStackView.arrangedSubviews.count - 1)
         let spacing = trayStackView.spacing * numberOfViews
@@ -69,13 +68,13 @@ class MapViewController: UIViewController {
 
         return sum * -1
     }
-    
+
     private var threshold: CGFloat {
         return ((open - closed) / 2) + closed
     }
-    
+
     // MARK: - Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMap()
@@ -89,14 +88,18 @@ class MapViewController: UIViewController {
             try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
     }
-    
+
     private func setupView() {
         trayView.delegate = self
         paddingHeightConstraint.constant = padding
         trayViewBottomConstraint.constant = closed
         trayBottomView.alpha = 0.0
-        trayView.layer.cornerRadius = trayCornerRadius
-        blurBackground(trayView)
+
+        trayView
+            &|> blurBackground
+            <> addShadow
+            <> roundCorners(trayCornerRadius)
+            <> addBorder(Styles.border)
     }
 
     private func startUpdatingStations() {
@@ -192,8 +195,7 @@ class MapViewController: UIViewController {
         washroomsButton.isOn = isOn
         washroomsButton.tintColor = secondaryTintColor(isOn)
     }
-    
-    
+
 }
 
 extension MapViewController: TrayViewDelegate {
@@ -215,7 +217,7 @@ extension MapViewController: TrayViewDelegate {
             trayBottomView.alpha = newAlpha
         }
     }
-    
+
     func trayViewTouchesEnded() {
         let currentConstant = trayViewBottomConstraint.constant
         let endConstant = currentConstant < threshold ? closed : open
@@ -226,12 +228,11 @@ extension MapViewController: TrayViewDelegate {
             self.view.layoutIfNeeded()
         }
     }
-    
+
 }
 
 let addAnnotationsTo = MKMapView.addAnnotations
 let removeAnnotationsFrom = MKMapView.removeAnnotations
-
 
 func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {
     return { mapView in
@@ -251,23 +252,4 @@ func callMobi() {
     if let url = URL(string: "tel://7786551800") {
         UIApplication.shared.open(url)
     }
-}
-
-func blurBackground(_ view: UIView) {
-    view.backgroundColor = UIColor.clear
-    let blurEffectView = UIBlurEffect(style: .light) |> UIVisualEffectView.init
-    view.insertSubview(blurEffectView, at: 0)
-    blurEffectView |> fillSuperView
-}
-
-func fillSuperView(_ view: UIView) {
-    guard let superview = view.superview else { return }
-    
-    view.translatesAutoresizingMaskIntoConstraints = false
-    
-    [view.topAnchor.constraint(equalTo: superview.topAnchor),
-     view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-     view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-     view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)]
-        |> NSLayoutConstraint.activate
 }

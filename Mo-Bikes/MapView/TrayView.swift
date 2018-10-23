@@ -1,4 +1,3 @@
-
 //
 //  TrayView.swift
 //  Mo-Bikes
@@ -10,19 +9,19 @@
 import UIKit
 
 class TrayView: UIView {
-    
+
     var delegate: TrayViewDelegate?
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         delegate?.trayViewTouchesMoved(touches, with: event)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         delegate?.trayViewTouchesEnded()
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         delegate?.trayViewTouchesEnded()

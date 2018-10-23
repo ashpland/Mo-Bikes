@@ -55,6 +55,18 @@ func <> <A>(
         return f >>> g
 }
 
+precedencegroup BackwardsComposition {
+    associativity: right
+}
+
+infix operator <<<: BackwardsComposition
+
+func <<< <A, B, C>(g: @escaping (B) -> C, f: @escaping (A) -> B) -> (A) -> C {
+    return { x in
+        g(f(x))
+    }
+}
+
 // MARK: - Function Manipulation
 
 func curry<A, B, C>(_ f: @escaping (A, B) -> C) -> (A) -> (B) -> C {
@@ -83,12 +95,68 @@ func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
     return sequence.flatMap { $0 }
 }
 
+// MARK: - Prop
+
+func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value>)
+    -> (@escaping (Value) -> Value)
+    -> (Root)
+    -> Root {
+        
+        return { update in
+            { root in
+                var copy = root
+                copy[keyPath: kp] = update(copy[keyPath: kp])
+                return copy
+            }
+        }
+}
+
+func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>)
+    -> (@escaping (Value?) -> Value)
+    -> (Root)
+    -> Root {
+        
+        return { update in
+            { root in
+                var copy = root
+                copy[keyPath: kp] = update(copy[keyPath: kp])
+                return copy
+            }
+        }
+}
+
+func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value>, value: Value)
+    -> (Root)
+    -> Root {
+        return { root in
+            var copy = root
+            copy[keyPath: kp] = value
+            return copy
+        }
+}
+
+func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>, value: Value)
+    -> (Root)
+    -> Root {
+        return { root in
+            var copy = root
+            copy[keyPath: kp] = value
+            return copy
+        }
+}
+
 // MARK: - Inout
 
 infix operator &|>: ForwardApplication
 
 func &|> <A>(a: inout A, f: (inout A) -> Void) {
     f(&a)
+}
+
+func &|> <A>(a: A?, f: (inout A) -> Void) {
+    if var a = a {
+        f(&a)
+    }
 }
 
 @discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {

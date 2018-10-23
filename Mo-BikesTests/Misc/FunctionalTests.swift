@@ -21,19 +21,19 @@ class FunctionalTests: XCTestCase {
     func testSingleTypeComposition() {
         XCTAssertEqual(1 |> aToA <> aToA, 3)
     }
-    
+
     func testCurry() {
         let a = 2, b = 1
         let curried = curry(aAndBToC)
         XCTAssertEqual(aAndBToC(a: a, b: b), curried(a)(b))
     }
-    
+
     func testFlip() {
         let a = 2, b = 1
         let flipped = flip(curry(aAndBToC))
         XCTAssertEqual(aAndBToC(a: a, b: b), flipped(b)(a))
     }
-    
+
     func testZurry() {
         let zurried = zurry(voidToA)
         XCTAssertEqual(voidToA(), zurried)
