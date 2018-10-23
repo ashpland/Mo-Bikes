@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
     }
     
     private var padding: CGFloat {
-        return minimumClippedHeight + bounceHeight
+        return minimumClippedHeight + bounceHeight + safeOffset
     }
     
     private var bounceOpen: CGFloat {
@@ -55,7 +55,7 @@ class MapViewController: UIViewController {
     }
     
     private var open: CGFloat {
-        return bounceOpen - padding
+        return bounceOpen - bounceHeight
     }
     
     private var closed: CGFloat {
@@ -65,6 +65,7 @@ class MapViewController: UIViewController {
             + spacing
             + trayBottomView.frame.height
             + minimumClippedHeight
+            - 3 * safeOffset
 
         return sum * -1
     }
