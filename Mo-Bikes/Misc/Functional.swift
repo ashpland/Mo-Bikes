@@ -19,6 +19,7 @@
 precedencegroup ForwardApplication {
     associativity: left
     higherThan: AssignmentPrecedence
+    lowerThan: TernaryPrecedence
 }
 
 infix operator |>: ForwardApplication

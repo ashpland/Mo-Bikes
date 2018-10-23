@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var paddingHeightConstraint: NSLayoutConstraint!
 
-    @IBOutlet weak var hamburgerButton: MoButtonHamburger!
+    @IBOutlet weak var menuButton: MoButtonMenu!
     @IBOutlet weak var washroomsButton: MoButtonWashrooms!
     @IBOutlet weak var fountainsButton: MoButtonFountains!
 
@@ -49,15 +49,15 @@ class MapViewController: UIViewController {
         return minimumClippedHeight + bounceHeight + safeOffset
     }
 
-    private var bounceOpen: CGFloat {
+    var bounceOpenHeight: CGFloat {
         return -minimumClippedHeight
     }
 
-    private var open: CGFloat {
-        return bounceOpen - bounceHeight
+    var openHeight: CGFloat {
+        return bounceOpenHeight - bounceHeight
     }
 
-    private var closed: CGFloat {
+    var closedHeight: CGFloat {
         let numberOfViews = CGFloat(trayStackView.arrangedSubviews.count - 1)
         let spacing = trayStackView.spacing * numberOfViews
         let sum = padding
@@ -70,7 +70,7 @@ class MapViewController: UIViewController {
     }
 
     private var threshold: CGFloat {
-        return ((open - closed) / 2) + closed
+        return ((openHeight - closedHeight) / 2) + closedHeight
     }
 
     // MARK: - Methods
@@ -92,7 +92,7 @@ class MapViewController: UIViewController {
     private func setupView() {
         trayView.delegate = self
         paddingHeightConstraint.constant = padding
-        trayViewBottomConstraint.constant = closed
+        trayViewBottomConstraint.constant = closedHeight
         trayBottomView.alpha = 0.0
 
         trayView
@@ -124,8 +124,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
-        hamburgerButton.isOn.toggle()
-        hamburgerButton.isOn |> openBottomDrawer
+        handleMenuButton()
     }
 
     @IBAction func buttonPressed(_ sender: MoButton) {
@@ -142,22 +141,32 @@ class MapViewController: UIViewController {
                 doCatchPrint {
                     try self.mapView &|> zoomTo(locationManager.location)
                 }
-            case .hamburger:
-                hamburgerButton.isOn.toggle()
-                hamburgerButton.isOn |> openBottomDrawer
+            case .menu:
+                handleMenuButton()
             default:
                 return
             }
 
     }
+    
+    func handleMenuButton() {
+        menuButton.isOn.toggle()
+        menuButton.isOn |> openBottomDrawer
+    }
 
     private func openBottomDrawer(_ shouldOpen: Bool) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) {
-            self.trayViewBottomConstraint.constant = shouldOpen ? self.open : self.closed
-            self.trayBottomView.alpha = shouldOpen ? 1.0 : 0.0
+            shouldOpen ? .open(self) : .closed(self)
+                |> self.setTrayValues
             self.view.layoutIfNeeded()
         }
+    }
+
+    private func setTrayValues(_ trayState: TrayState) {
+        trayViewBottomConstraint.constant = trayState.constant
+        trayBottomView.alpha = trayState.alpha
+        menuButton |> setRotate(trayState.rotation |> inRadians)
     }
 
     private func handleSupplementAnnotations(for sender: MoButton) {
@@ -199,36 +208,71 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: TrayViewDelegate {
-
     func trayViewTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else { return }
         let deltaY = firstTouch.location(in: self.view).y - firstTouch.previousLocation(in: self.view).y
         let newConstant = trayViewBottomConstraint.constant - deltaY
-        let newAlpha = (closed - newConstant) / closed
+        let newAlpha = (closedHeight - newConstant) / closedHeight
+        let newRotation = newAlpha * 90
+        
         switch newConstant {
-        case bounceOpen...:
-            trayViewBottomConstraint.constant = bounceOpen
-            trayBottomView.alpha = 1
-        case ..<closed:
-            trayViewBottomConstraint.constant = closed
-            trayBottomView.alpha = 0
+        case bounceOpenHeight...:
+            setTrayValues(.bounceOpen(self))
+        case ..<closedHeight:
+            setTrayValues(.closed(self))
         default:
-            trayViewBottomConstraint.constant = newConstant
-            trayBottomView.alpha = newAlpha
+            setTrayValues(.partial(bottomConstant: newConstant,
+                                   alpha: newAlpha,
+                                   iconRotation: newRotation))
         }
     }
-
+    
     func trayViewTouchesEnded() {
-        let currentConstant = trayViewBottomConstraint.constant
-        let endConstant = currentConstant < threshold ? closed : open
-        let endAlpha: CGFloat = currentConstant < threshold ? 0 : 1
-        UIView.animate(withDuration: 0.2) {
-            self.trayViewBottomConstraint.constant = endConstant
-            self.trayBottomView.alpha = endAlpha
-            self.view.layoutIfNeeded()
+        self.trayViewBottomConstraint.constant > self.threshold
+            |> openBottomDrawer
+    }
+}
+
+enum TrayState {
+    case bounceOpen(_ mvc: MapViewController)
+    case open(_ mvc: MapViewController)
+    case closed(_ mvc: MapViewController)
+    case partial(bottomConstant: CGFloat, alpha: CGFloat, iconRotation: CGFloat)
+    
+    var constant: CGFloat {
+        switch self {
+        case .bounceOpen(let mvc):
+            return mvc.bounceOpenHeight
+        case .open(let mvc):
+            return mvc.openHeight
+        case .closed(let mvc):
+            return mvc.closedHeight
+        case .partial(let bottomConstant, _, _):
+            return bottomConstant
         }
     }
-
+    
+    var alpha: CGFloat {
+        switch self {
+        case .bounceOpen, .open:
+            return 1.0
+        case .closed:
+            return 0.0
+        case .partial(_, let alpha, _):
+            return alpha
+        }
+    }
+    
+    var rotation: CGFloat {
+        switch self {
+        case .bounceOpen, .open:
+            return 90.0
+        case .closed:
+            return 0.0
+        case .partial(_, _, let iconRotation):
+            return iconRotation
+        }
+    }
 }
 
 let addAnnotationsTo = MKMapView.addAnnotations

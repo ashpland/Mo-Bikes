@@ -16,7 +16,7 @@ enum MoButtonType {
     case fountains
     case contact
     case compass
-    case hamburger
+    case menu
 }
 
 class MoButton: UIButton { var type: MoButtonType { return .generic } }
@@ -28,6 +28,6 @@ class MoButtonCompass: MoButton { override var type: MoButtonType { return .comp
 
 class MoButtonToggle: MoButton { var isOn = false }
 
-class MoButtonHamburger: MoButtonToggle { override var type: MoButtonType { return .hamburger } }
+class MoButtonMenu: MoButtonToggle { override var type: MoButtonType { return .menu } }
 class MoButtonWashrooms: MoButtonToggle { override var type: MoButtonType { return .washrooms } }
 class MoButtonFountains: MoButtonToggle { override var type: MoButtonType { return .fountains } }

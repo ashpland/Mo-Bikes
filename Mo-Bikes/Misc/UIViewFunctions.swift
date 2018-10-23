@@ -51,3 +51,16 @@ func addBorder(_ color: CGColor, _ width: CGFloat) -> (inout UIView) -> Void {
 func addBorder(_ style: (color: CGColor, width: CGFloat)) -> (inout UIView) -> Void {
     return addBorder(style.color, style.width)
 }
+
+func inRadians(_ degrees: CGFloat) -> CGFloat {
+    print("degrees: \(degrees)")
+    return degrees / 180 * CGFloat.pi
+}
+
+func setRotate(_ radians: CGFloat) -> (UIView) -> Void{
+    return { view in
+        let current = CGFloat(atan2f(Float(view.transform.b), Float(view.transform.a)))
+        print("current: \(current), new: \(radians)")
+        view.transform = view.transform.rotated(by: radians - current)
+    }
+}

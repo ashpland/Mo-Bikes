@@ -32,7 +32,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qr5-vf-zoR" userLabel="Top">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-rd-2KU" customClass="MoButtonHamburger" customModule="Mo_Bikes" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awZ-rd-2KU" customClass="MoButtonMenu" customModule="Mo_Bikes" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
                                                         <color key="tintColor" name="Primary"/>
                                                         <state key="normal" image="menu"/>
@@ -245,8 +245,8 @@
                     </view>
                     <connections>
                         <outlet property="fountainsButton" destination="qsv-dd-jWH" id="qua-S7-57C"/>
-                        <outlet property="hamburgerButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>
                         <outlet property="mapView" destination="akK-qI-pPo" id="Pzz-6D-d1b"/>
+                        <outlet property="menuButton" destination="awZ-rd-2KU" id="v7y-c3-aKM"/>
                         <outlet property="paddingHeightConstraint" destination="Whc-xK-wne" id="kmr-XK-9I8"/>
                         <outlet property="trayBottomView" destination="XH1-pi-9N7" id="oTD-1J-QcE"/>
                         <outlet property="trayStackView" destination="s37-Ih-lfw" id="2mk-sC-d86"/>
