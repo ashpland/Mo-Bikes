@@ -99,7 +99,6 @@ class MapViewController: UIViewController {
 
         trayView
             &|> blurBackground
-            <> addShadow
             <> roundCorners(trayCornerRadius)
             <> addBorder(Styles.border)
 

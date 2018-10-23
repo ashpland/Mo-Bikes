@@ -27,14 +27,6 @@ func fillSuperView(_ view: inout UIView) {
         |> NSLayoutConstraint.activate
 }
 
-func addShadow(view: inout UIView) {
-    view.layer
-        |> prop(\.shadowColor, value: UIColor.black.cgColor)
-        <> prop(\.shadowOpacity, value: 1.0)
-        <> prop(\.shadowRadius, value: 1.0)
-        <> prop(\.shadowOffset, value: CGSize(width: 1.0, height: 1.0))
-}
-
 func roundCorners(_ radius: CGFloat) -> (inout UIView) -> Void {
     return { $0.layer |> prop(\.cornerRadius, value: radius); return }
 }
@@ -53,14 +45,12 @@ func addBorder(_ style: (color: CGColor, width: CGFloat)) -> (inout UIView) -> V
 }
 
 func inRadians(_ degrees: CGFloat) -> CGFloat {
-    print("degrees: \(degrees)")
     return degrees / 180 * CGFloat.pi
 }
 
 func setRotate(_ radians: CGFloat) -> (UIView) -> Void {
     return { view in
         let current = CGFloat(atan2f(Float(view.transform.b), Float(view.transform.a)))
-        print("current: \(current), new: \(radians)")
         view.transform = view.transform.rotated(by: radians - current)
     }
 }
