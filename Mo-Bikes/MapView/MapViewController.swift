@@ -42,20 +42,31 @@ class MapViewController: UIViewController {
     
     private let trayCornerRadius: CGFloat = 20
     
+    private var minimumClippedHeight: CGFloat {
+        return trayCornerRadius + safeOffset
+    }
+    
     private var padding: CGFloat {
-        return safeOffset + bounceHeight + trayCornerRadius
+        return minimumClippedHeight + bounceHeight
     }
     
     private var bounceOpen: CGFloat {
-        return -(trayCornerRadius + safeOffset)
+        return -minimumClippedHeight
     }
     
     private var open: CGFloat {
-        return bounceOpen - bounceHeight - trayStackView.spacing
+        return bounceOpen - padding
     }
     
     private var closed: CGFloat {
-        return -(padding + trayStackView.spacing + trayBottomView.frame.height)
+        let numberOfViews = CGFloat(trayStackView.arrangedSubviews.count - 1)
+        let spacing = trayStackView.spacing * numberOfViews
+        let sum = padding
+            + spacing
+            + trayBottomView.frame.height
+            + minimumClippedHeight
+
+        return sum * -1
     }
     
     private var threshold: CGFloat {
