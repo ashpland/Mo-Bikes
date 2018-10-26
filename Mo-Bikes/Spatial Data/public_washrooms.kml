@@ -1,0 +1,2640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>public_washrooms</name>
+	<Style id="KMLStyler_park_toilet">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.gstatic.com/mapfiles/ms2/micons/green.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+		</LineStyle>
+		<PolyStyle>
+		</PolyStyle>
+	</Style>
+	<Style id="KMLStyler_Automated_toilet">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.gstatic.com/mapfiles/ms2/micons/purple.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+		</LineStyle>
+		<PolyStyle>
+		</PolyStyle>
+	</Style>
+	<Style id="KMLStyler_Community_centre">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.gstatic.com/mapfiles/ms2/micons/blue.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+		</LineStyle>
+		<PolyStyle>
+		</PolyStyle>
+	</Style>
+	<Style id="KMLStyler_Comfort_station">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.gstatic.com/mapfiles/ms2/micons/yellow.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+		</LineStyle>
+		<PolyStyle>
+		</PolyStyle>
+	</Style>
+	<Folder id="kml_ft_public_washrooms">
+		<name>public_washrooms</name>
+		<Placemark id="1">
+			<name>Adanac Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.024071960319,49.2758809677686,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2">
+			<name>Andy Livingstone Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side, fieldhouse<br>
+Summer hours:  10:00 am - 11:00 pm<br>
+Winter hours:  10:00 am - 11:00 pm<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.103599022256,49.2778209665246,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="3">
+			<name>Balaclava Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.175460949361,49.2452339943975,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="4">
+			<name>Barclay Heritage Square</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Barclay Manor (WECC)<br>
+Summer hours:  Hours of the centre<br>
+Winter hours:  Hours of the centre<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.132560510918,49.2872148697549,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="5">
+			<name>Beaconsfield Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.049933959326,49.2552329902121,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="6">
+			<name>Bobolink Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.056414955041,49.2156069867489,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="7">
+			<name>Braemar Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East edge, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.124483021671,49.2474209947128,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="8">
+			<name>Brewers Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Closed<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.065425949078,49.24785499067071,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="9">
+			<name>Burrard View Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.049648970845,49.2903639621952,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="10">
+			<name>CRAB Park at Portside</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side at fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.101835004137,49.284592007311,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="11">
+			<name>Carnarvon Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West side, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.172609010381,49.2567420168862,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="12">
+			<name>Chaldecott Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East side fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.19112496205,49.24942696008371,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="13">
+			<name>Clinton Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.049782027867,49.27114503289931,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="14">
+			<name>Collingwood Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.036715960679,49.2365299637476,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="15">
+			<name>Columbia Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  <br>
+Summer hours:  Dawn to Dusk Weekends only<br>
+Winter hours:  Dawn to Dusk Weekends only<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.112908974023,49.23152299787699,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="16">
+			<name>David Lam Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West side<br>
+Summer hours:  10:00 am - Dusk<br>
+Winter hours:  10:00 am - Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.125415035162,49.2723830073375,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="17">
+			<name>Elm Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.163283944614,49.23343197922449,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="18">
+			<name>English Bay Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Bathhouse<br>
+Summer hours:  7:00 am - Dusk<br>
+Winter hours:  10:00 am - Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.142804967084,49.28615404002569,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="19">
+			<name>Falaise Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Community Hall<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.029405986745,49.2551230346758,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="20">
+			<name>Fraser River Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West corner<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Closed<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.149856004532,49.20739499859819,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="21">
+			<name>Fraserview Golf Course</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Kerr Road @13th hole<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.042299667586,49.2112953517694,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="22">
+			<name>Garden Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.058333994001,49.26828599843861,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="23">
+			<name>Gordon Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East side<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.069499978534,49.2238700450659,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="24">
+			<name>Grandview Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.069954446436,49.2737616313216,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="25">
+			<name>Granville Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.14196994988,49.2584930114999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="26">
+			<name>Grays Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Centre west by parking lot<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Closed<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.084887032665,49.24078700460129,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="27">
+			<name>Hadden Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West, caretaker house (actually in Kits)<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.15030998211,49.27746099308931,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="28">
+			<name>Harbour Green Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.121466998595,49.2898040141255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="29">
+			<name>Hastings Community Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Closed<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.03787394911,49.2806479707568,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="30">
+			<name>Jericho Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Concession/fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.191658959557,49.27158002127109,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.20280599872,49.2744279889871,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="31">
+			<name>Jericho Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Service Yard - public exterior attached to service building<br>
+Summer hours:  Dawn - 11:00 pm<br>
+Winter hours:  Dawn - 11:00 pm<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.191658959557,49.27158002127109,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.20280599872,49.2744279889871,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="32">
+			<name>John Hendry (Trout Lake) Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  At Trout Lake<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.061387988851,49.2539260388866,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="33">
+			<name>Jonathan Rogers Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.107620016125,49.2644980299255,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="34">
+			<name>Jones Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North west corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.068328027105,49.23620495899659,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="35">
+			<name>Kitsilano Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Lifeguard station<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.157542967602,49.2730140340116,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.153702974672,49.2744719935869,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="36">
+			<name>Kitsilano Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Kitsilano Showboat concession<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.157542967602,49.2730140340116,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.153702974672,49.2744719935869,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="37">
+			<name>Locarno Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Concession at fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.206555013072,49.27506599232319,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="38">
+			<name>MacLean Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North west corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.0893660404,49.27900702288,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="39">
+			<name>Maple Grove Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.159582974748,49.22338402151409,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="40">
+			<name>McBride Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.180140962198,49.2681069665443,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="41">
+			<name>Memorial South Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Oval<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.084388002617,49.2307380348496,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="42">
+			<name>Memorial West Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.188455003096,49.2433349852208,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="43">
+			<name>Moberly Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South west corner at Community Hall<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.087354978911,49.21525299594609,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="44">
+			<name>Montgomery Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.129240986478,49.2318260466293,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="45">
+			<name>Nanaimo Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.057429042023,49.22824199904479,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="46">
+			<name>New Brighton Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.036308,49.289293,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.036025007443,49.2893339699629,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="47">
+			<name>New Brighton Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side of pool building<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.036308,49.289293,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.036025007443,49.2893339699629,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="48">
+			<name>Norquay Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West side, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.051424959911,49.2379749903438,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="49">
+			<name>Oak Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East side field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.127640978659,49.216285995094,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="50">
+			<name>Oppenheimer Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner<br>
+Summer hours:  Tue - Sat 9:00 am - 8:00 pm<br>
+Winter hours:  Tue - Sat 9:00 am - 5:00 pm<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.094181035354,49.28293796817621,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="51">
+			<name>Pandora Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side, fieldhouse<br>
+Summer hours:  9:00 am - 7:00 pm<br>
+Winter hours:  Closed<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.057478049186,49.2822799986755,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="52">
+			<name>Prince Edward Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Sout east corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.097056994174,49.2511909721127,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="53">
+			<name>Queen Elizabeth Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.111577056628,49.2389380178008,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112919003359,49.2421839651063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112844975315,49.24221101766669,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="54">
+			<name>Queen Elizabeth Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Lookout<br>
+Summer hours:  7:30 am - 9:00 pm<br>
+Winter hours:  7:30 am - 9:00 pm<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.111577056628,49.2389380178008,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112919003359,49.2421839651063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112844975315,49.24221101766669,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="55">
+			<name>Queen Elizabeth Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Under "Seasons"<br>
+Summer hours:  7:30 am - 9:00 pm<br>
+Winter hours:  7:30 am - 9:00 pm<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.111577056628,49.2389380178008,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112919003359,49.2421839651063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.112844975315,49.24221101766669,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="56">
+			<name>Quilchena Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North east corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.148723944856,49.2446430482962,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="57">
+			<name>Riverfront Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.051846970695,49.2057680376434,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="58">
+			<name>Robson Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  <br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.092848986795,49.2586270164444,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="59">
+			<name>Ross Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South west corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.082798035022,49.21669998067749,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="60">
+			<name>Rupert Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.030682959269,49.2730500015562,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.030604979627,49.2701350041925,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="61">
+			<name>Rupert Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Pitch & Putt (north side)<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.030682959269,49.2730500015562,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.030604979627,49.2701350041925,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="62">
+			<name>Slocan Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.047952017189,49.2444379784009,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="63">
+			<name>Spanish Banks Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  East, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.21492003747,49.2762439755221,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.222679055401,49.2774719860241,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="64">
+			<name>Spanish Banks Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.21492003747,49.2762439755221,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.222679055401,49.2774719860241,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="65">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Aquarium plaza<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="66">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Lumberman's Arch<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="67">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Info Booth<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="68">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Fish House<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="69">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Chilco<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="70">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Ceperley Picnic Shelter<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="71">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Brockton Oval<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="72">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Park Board Main office<br>
+Summer hours:  Weekdays only 8:30 am - 5:00 pm<br>
+Winter hours:  Weekdays only 8:30 am - 5:00 pm<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="73">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  2nd Beach, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="74">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  3rd Beach, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="75">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Pavilion<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="76">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Pitch & Putt Golf Course<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="77">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Prospect Point<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="78">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Prospect Point Picnic, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="79">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Totems<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="80">
+			<name>Stanley Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Train, Picnic Shelter<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.150733000629,49.29562699256711,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.155931048676,49.3031529920237,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.13070000487,49.29986799598309,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.126023002581,49.2996259645902,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148714956707,49.2936169900948,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.138591029397,49.2939220383499,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146580040925,49.2922930215573,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.131432966091,49.2977530146591,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.130707978951,49.3029259847063,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.145354964422,49.2908669672286,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.134051016088,49.2995490315169,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.146599024764,49.29303503730119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.142649989276,49.3124120320746,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.148388039898,49.31055002836119,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.136682951249,49.2999400358462,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.12127801962,49.2994400235276,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.132923042179,49.3020690032254,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="81">
+			<name>Strathcona Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.086188991758,49.2745570066112,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="82">
+			<name>Sunrise Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North west corner, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.03601798246,49.2669229919436,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="83">
+			<name>Sunset Beach Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Concession<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  7:00 am - Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.137950043494,49.2788370147886,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="84">
+			<name>Tatlow Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  South, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.169511949678,49.269476011815,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="85">
+			<name>Trafalgar Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  North side, fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.163471973425,49.25155496641209,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="86">
+			<name>Trillium Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  <br>
+Summer hours:  Dawn to 10:15 pm<br>
+Winter hours:  Dawn to 10:15 pm<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.092911042306,49.2748,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="87">
+			<name>VanDusen Botanical Garden</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Floral hall<br>
+<a href='http://vandusengarden.org/plan-your-visit/hours-admission/' target="_blank">Summer and Winter</a><br>
+<a href='http://vandusengarden.org/plan-your-visit/hours-admission/' target="_blank">Hours of operation</a><br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.129557645767,49.2386594327158,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.128638340165,49.2385104498556,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="88">
+			<name>VanDusen Botanical Garden</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  At front entrance<br>
+<a href='http://vandusengarden.org/plan-your-visit/hours-admission/' target="_blank">Summer and Winter</a><br>
+<a href='http://vandusengarden.org/plan-your-visit/hours-admission/' target="_blank">Hours of operation</a><br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<MultiGeometry>
+				<Point>
+					<coordinates>-123.129557645767,49.2386594327158,0</coordinates>
+				</Point>
+				<Point>
+					<coordinates>-123.128638340165,49.2385104498556,0</coordinates>
+				</Point>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="89">
+			<name>Vanier Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Burrard Civic Marina<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.139855943743,49.27519601182161,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="90">
+			<name>Victoria Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  West side<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.067413016488,49.2717440428088,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="91">
+			<name>West Point Grey Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Centre<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.204579564378,49.2665415433898,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="92">
+			<name>Winona Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Fieldhouse<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.112948945253,49.2157179803502,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="93">
+			<name>Woodland Park</name>
+			<address>Park</address>
+			<description><![CDATA[Public Toilet in Park<br>
+Location:  Central, field house<br>
+Summer hours:  Dawn to Dusk<br>
+Winter hours:  Dawn to Dusk<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_park_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.073220004653,49.2783689722403,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="199">
+			<name>Main at Hastings</name>
+			<address>Comfort</address>
+			<description><![CDATA[Comfort Station<br>
+Location:  SW corner of intersection<br>
+Summer and winter hours <br>
+Female:  8am to Midnight <br>
+Male:  6am to Midnight <br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Comfort_station</styleUrl>
+			<Point>
+				<coordinates>-123.09985,49.281107,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="200">
+			<name>Victory Square</name>
+			<address>Comfort</address>
+			<description><![CDATA[Comfort Station<br>
+Location:  N/A<br>
+Summer and winter hours <br>
+Female:  8am to Midnight <br>
+Male:  6am to Midnight <br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Comfort_station</styleUrl>
+			<Point>
+				<coordinates>-123.110132,49.2825906,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="201">
+			<name>Bute at Davie</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NE corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.133141,49.28185409999999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="202">
+			<name>Hastings at Carral - Pigeon Park</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NW corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.104602,49.2816384,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="203">
+			<name>Main at Terminal</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NE corner of intersection<br>
+Summer Hours:  8am to 3pm to N/A<br>
+Winter Hours: 8am to 3pm to N/A<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.099778,49.2731387,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="204">
+			<name>Nelson Park</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  West side of park<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.130677,49.283378,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="205">
+			<name>Nelson at Howe</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NE corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.123516,49.2796964,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="206">
+			<name>Powell at Main</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NW corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.099849,49.2832763,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="207">
+			<name>Richards at Davie - Emery Barnes Park</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NW corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.124114,49.2760544,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="208">
+			<name>Robson at Granville</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NW corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.120082,49.2816325,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="209">
+			<name>Robson at Richards</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NW corner of intersection<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  No]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.118054,49.2803243,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="210">
+			<name>Vancouver Art Gallary</name>
+			<address>Automated</address>
+			<description><![CDATA[Automated Public Toilet<br>
+Location:  NE Side of VAG Building<br>
+Summer Hours:  24 hrs<br>
+Winter Hours: 24 hrs<br>
+Wheelchair access:  Yes]]></description>
+			<styleUrl>#KMLStyler_Automated_toilet</styleUrl>
+			<Point>
+				<coordinates>-123.119864,49.282961,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="239">
+			<name>Britannia</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  1661 Napier St<br>
+<a href='http://vancouver.ca/parks/cc/britannia/index.htm' target="_blank">Britannia Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/britannia-community-services-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.073771672447,49.2756486033504,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="240">
+			<name>Carnegie Centre</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  401 Main St<br>
+<a href='http://vancouver.ca/commsvcs/CARNEGIECENTRE/index.htm' target="_blank">Carnegie Centre Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/carnegie-hours-location-contact.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.100127212685,49.2810519846146,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="241">
+			<name>Champlain Heights</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  3350 Maquinna Drive<br>
+<a href='http://vancouver.ca/parks/cc/champla/index.htm' target="_blank">Champlain Heights Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/champlain-heights-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.032066348148,49.21444806249691,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="242">
+			<name>Coal Harbour</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  480 Broughton St<br>
+<a href='http://vancouver.ca/parks/cc/westend/index.htm' target="_blank">Coal Harbour Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/coal-harbour-comm-centre-hours-location-contact.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.125885091572,49.2901651976341,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="243">
+			<name>Creekside</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  1 Athletes Way<br>
+<a href='http://vancouver.ca/parks/cc/creekside/index.htm' target="_blank">Creekside Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/creekside-community-recreation-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.105586,49.271787,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="244">
+			<name>Douglas Park</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  801 W 22nd Av<br>
+<a href='http://vancouver.ca/parks/cc/douglas/index.htm' target="_blank">Douglas Park Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/douglas-park-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.121277422182,49.2529172469768,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="245">
+			<name>Dunbar</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  4747 Dunbar St<br>
+<a href='http://vancouver.ca/parks/cc/dunbar/index.htm' target="_blank">Dunbar Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/dunbar-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.188251960704,49.2428154263277,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="246">
+			<name>Evelyne Saller Centre</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  320 Alexander St<br>
+<a href='http://vancouver.ca/parks-recreation-culture/evelyne-saller-centre.aspx' target="_blank">Evelyne Saller Centre Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/evelyne-saller-centre-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.097084307133,49.28387451428961,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="247">
+			<name>False Creek</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  1318 Cartwright St<br>
+<a href='http://vancouver.ca/parks/cc/falsecreek/index.htm' target="_blank">False Creek Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/false-creek-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.134020271425,49.269397070325,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="248">
+			<name>Gathering Place</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  609 Helmcken St<br>
+<a href='http://vancouver.ca/parks-recreation-culture/gathering-place-community-centre.aspx' target="_blank">Gathering Place Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/gathering-place-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.123482164411,49.2779899922119,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="249">
+			<name>Hastings</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  3096 E Hastings St<br>
+<a href='http://vancouver.ca/parks/cc/hastings/index.htm' target="_blank">Hastings Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/hastings-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.03931,49.28091299999999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="250">
+			<name>Hillcrest</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  4575 Clancy Loranger Way<br>
+<a href='http://vancouver.ca/parks-recreation-culture/hillcrest-centre.aspx' target="_blank">Hillcrest Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/hillcrest-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.107892,49.2437993,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="251">
+			<name>Kensington</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  5175 Dumfries St<br>
+<a href='http://vancouver.ca/parks/cc/kensington/index.htm' target="_blank">Kensington Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/kensington-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.075480182997,49.2384815559383,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="252">
+			<name>Kerrisdale</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  5851 West Boulevard<br>
+<a href='http://vancouver.ca/parks/cc/kerrisdale/index.htm' target="_blank">Kerrisdale Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/kerrisdale-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.157092907213,49.2331853554205,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="253">
+			<name>Killarney</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  6260 Killarney St<br>
+<a href='http://vancouver.ca/parks/cc/killarney/index.htm' target="_blank">Killarney Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/killarney-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.04439061748,49.2274099228807,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="254">
+			<name>Kitsilano War Memorial</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  2690 Larch St<br>
+<a href='http://vancouver.ca/parks/cc/kitsilano/index.htm' target="_blank">Kitsilano War Memorial Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/kitsilano-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.160105613733,49.2620553391672,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="255">
+			<name>Marpole-Oakridge</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  990 W 59th Av<br>
+<a href='http://vancouver.ca/parks/cc/marpole/index.htm' target="_blank">Marpole-Oakridge Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/marpole-oakridge-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.127481913823,49.2144740996897,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="256">
+			<name>Mount Pleasant</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  1 Kingsway<br>
+<a href='http://vancouver.ca/parks/cc/mtpleasant/index.htm' target="_blank">Mount Pleasant Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/mount-pleasant-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.100221039816,49.2643146495987,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="257">
+			<name>Ray-Cam Co-Operative Center</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  920 E Hastings St<br>
+<a href='http://vancouver.ca/parks/cc/raycam/index.htm' target="_blank">Ray-Cam Co-Operative Center Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/ray-cam-co-operative-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.084089333259,49.2807361611339,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="258">
+			<name>Renfrew Park</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  2929 E 22nd Av<br>
+<a href='http://vancouver.ca/parks/cc/renfrew/index.htm' target="_blank">Renfrew Park Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/renfrew-park-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.042958058734,49.2524249068635,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="259">
+			<name>Roundhouse</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  181 Roundhouse Mews<br>
+<a href='http://vancouver.ca/parks/cc/roundhouse/index.htm' target="_blank">Roundhouse Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/roundhouse-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.121747155605,49.2733083633066,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="260">
+			<name>Strathcona</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  601 Keefer St<br>
+<a href='http://vancouver.ca/parks/cc/strathcona/index.htm' target="_blank">Strathcona Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/strathcona-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.091546208357,49.27977979262601,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="261">
+			<name>Sunset</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  6810 Main St<br>
+<a href='http://vancouver.ca/parks/cc/sunset/index.htm' target="_blank">Sunset Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/sunset-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.100610434694,49.22286659427,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="262">
+			<name>Thunderbird</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  2311 Cassiar St<br>
+<a href='http://vancouver.ca/parks/cc/thunderbird/index.htm' target="_blank">Thunderbird Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/thunderbird-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.032103721071,49.26360783613549,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="263">
+			<name>Trout Lake</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  3360 Victoria Drive<br>
+<a href='http://vancouver.ca/parks/cc/troutlake/index.htm' target="_blank">Trout Lake Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/trout-lake-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.065528276721,49.2552920321377,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="264">
+			<name>West End</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  870 Denman St<br>
+<a href='http://vancouver.ca/parks/cc/westend/index.htm' target="_blank">West End Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/west-end-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.136073777706,49.289912961681,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="265">
+			<name>West Point Grey</name>
+			<address>Community</address>
+			<description><![CDATA[Community Centre<br>
+Location:  4397 W 2nd Av<br>
+<a href='http://vancouver.ca/parks/cc/westptgrey/index.htm' target="_blank">West Point Grey Community Centre</a><br>
+<a href='http://vancouver.ca/parks-recreation-culture/west-point-grey-community-centre-hours-location.aspx' target="_blank">Hours of Operation</a>]]></description>
+			<styleUrl>#KMLStyler_Community_centre</styleUrl>
+			<Point>
+				<coordinates>-123.204533477913,49.27179716038641,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

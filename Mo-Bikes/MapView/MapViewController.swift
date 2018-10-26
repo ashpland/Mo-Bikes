@@ -8,117 +8,259 @@
 
 import UIKit
 import MapKit
-import RxSwift
-import RxCocoa
+import Alamofire
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var bikesDocksControl: UISegmentedControl!
+    @IBOutlet weak var trayView: TrayView!
+    @IBOutlet weak var trayStackView: UIStackView!
+    @IBOutlet weak var trayBottomView: UIView!
+    @IBOutlet weak var trayViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var paddingHeightConstraint: NSLayoutConstraint!
 
-    let locationManager = CLLocationManager()
-    let viewModel = MapViewModel()
-    let disposeBag = DisposeBag()
+    @IBOutlet weak var menuButton: MoButtonMenu!
+    @IBOutlet weak var washroomsButton: MoButtonWashrooms!
+    @IBOutlet weak var fountainsButton: MoButtonFountains!
+    @IBOutlet weak var bikesButton: MoButtonBikes!
+    @IBOutlet weak var docksButton: MoButtonDocks!
+
+    var bikesOrDocksState: BikesOrDocks = .bikes {
+        didSet {
+            mapView |> refreshStationViews(with: bikesOrDocksState)
+        }
+    }
+
+    var locationManager = CLLocationManager()
+
+    // MARK: - TrayView math
+
+    private let bounceHeight = Styles.bounceHeight
+    private let trayCornerRadius = Styles.trayCornerRadius
+
+    private var safeOffset: CGFloat {
+        return view?.safeAreaInsets.bottom ?? 0.0
+    }
+
+    private var minimumClippedHeight: CGFloat {
+        return trayCornerRadius + safeOffset
+    }
+
+    private var padding: CGFloat {
+        return minimumClippedHeight + bounceHeight + safeOffset
+    }
+
+    var bounceOpenHeight: CGFloat {
+        return -minimumClippedHeight
+    }
+
+    var openHeight: CGFloat {
+        return bounceOpenHeight - bounceHeight
+    }
+
+    var closedHeight: CGFloat {
+        let numberOfViews = CGFloat(trayStackView.arrangedSubviews.count - 1)
+        let spacing = trayStackView.spacing * numberOfViews
+        let sum = padding
+            + spacing
+            + trayBottomView.frame.height
+            + minimumClippedHeight
+            - 3 * safeOffset
+
+        return sum * -1
+    }
+
+    private var threshold: CGFloat {
+        return ((openHeight - closedHeight) / 2) + closedHeight
+    }
+
+    // MARK: - Setup
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-        setupLocation()
         setupMap()
-        setupRx()
+        setupView()
+        startUpdatingStations()
     }
 
-    func setupLocation() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
-        mapView.showsPointsOfInterest = false
-        zoomToCurrent()
-    }
-
-    func zoomToCurrent() {
-        guard let currentLocation = self.locationManager.location else {
-            debugPrint("Can't get current location")
-            return
+    private func setupMap() {
+        locationManager &|> setupLocationManager
+        doCatchPrint {
+            try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
 
-        let currentRegion = MKCoordinateRegion(center: currentLocation.coordinate,
-                                               span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
-
-        mapView.setRegion(currentRegion, animated: true)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleMapTap))
+        tap.cancelsTouchesInView = false
+        mapView.addGestureRecognizer(tap)
     }
 
-    func setupMap() {
-        mapView.register(StationView.self, forAnnotationViewWithReuseIdentifier: "\(StationView.self)")
+    private func setupView() {
+        trayView.delegate = self
+        paddingHeightConstraint.constant = padding
+        trayViewBottomConstraint.constant = closedHeight
+        trayBottomView.alpha = 0.0
 
+        trayView
+            &|> blurBackground
+            <> roundCorners(trayCornerRadius)
+            <> addBorder(Styles.border)
+
+        setBikesAndDocsButtons(selected: .bikes)
     }
 
-    func setupRx() {
-        bikesDocksControl.rx.selectedSegmentIndex.asDriver()
-            .map { return $0 == 0 ? .bikes : .docks }
-            .drive(viewModel.bikesOrDocks)
-            .disposed(by: disposeBag)
+    // MARK: - Station Updating
 
-        viewModel.stationsToAddDriver
-            .drive(mapView.rx.addAnnotations)
-            .disposed(by: disposeBag)
-
-        viewModel.stationsToRemoveSignal
-            .emit(to: mapView.rx.removeAnnotation)
-            .disposed(by: disposeBag)
-
-        Signal<Int>
-            .timer(0, period: 60)
-            .asObservable()
-            .flatMap { _ in self.updateStations() }
-            .bind(to: viewModel.rx.updateStations)
-            .disposed(by: disposeBag)
-    }
-
-    @IBAction func compassButtonPressed(_ sender: Any) {
-        zoomToCurrent()
-    }
-
-    @IBAction func refreshPressed(_ sender: Any) {
+    private func startUpdatingStations() {
         updateStations()
-            .bind(to: viewModel.rx.updateStations)
-            .disposed(by: disposeBag)
+
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            self?.updateStations()
+        }
     }
 
-    private func updateStations() -> Observable<[StationData]> {
-        return viewModel
-            .getStationData()
-            .asDriver(onErrorRecover: { error -> SharedSequence<DriverSharingStrategy, [StationData]> in
-                print(error.localizedDescription) // TODO: User facing error handling
-                return Driver.just([StationData]())
-            })
-            .asObservable()
+    private func updateStations() {
+        getStationData { self.processNewStationData($0) }
+    }
+
+    private func processNewStationData(_ response: DataResponse<Data>) {
+        doCatchPrint {
+            try response |> decodeResponse
+                >>> update(existingStations: mapView |> getStations)
+                >>> update(mapView: &mapView)
+                >>> refreshStationViews(with: bikesOrDocksState)
+        }
+    }
+
+    // MARK: - UI Handling
+
+    @objc func handleMapTap() {
+        if menuButton.isOn == true {
+            menuButton.isOn = false
+            setTrayOpen(false)
+        }
+    }
+
+    @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
+        handleMenuButton()
+    }
+
+    @IBAction func buttonPressed(_ sender: MoButton) {
+            switch sender.type {
+            case .bikes:
+                .bikes
+                    |> setBikesAndDocsButtons
+                    >>> set(\.bikesOrDocksState, on: self)
+            case .docks:
+                .docks
+                    |> setBikesAndDocsButtons
+                    >>> set(\.bikesOrDocksState, on: self)
+            case .fountains, .washrooms:
+                handleSupplementAnnotations(for: sender)
+            case .contact:
+                callMobi()
+            case .compass:
+                doCatchPrint {
+                    try self.mapView &|> zoomTo(locationManager.location)
+                }
+            case .menu:
+                handleMenuButton()
+            default:
+                return
+            }
+    }
+
+    // MARK: - State management
+
+    @discardableResult func setBikesAndDocsButtons(selected state: BikesOrDocks) -> BikesOrDocks {
+        switch state {
+        case .bikes:
+            bikesButton |> setButtonImage(to: \.bikesSelected)
+            docksButton |> setButtonImage(to: \.docksUnselected )
+        case .docks:
+            bikesButton |> setButtonImage(to: \.bikesUnselected)
+            docksButton |> setButtonImage(to: \.docksSelected )
+        }
+        return state
+    }
+
+    func handleMenuButton() {
+        menuButton.isOn.toggle()
+        menuButton.isOn |> setTrayOpen
+    }
+
+    private func setTrayOpen(_ shouldOpen: Bool) {
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) {
+            shouldOpen ? .open(self) : .closed(self) |> self.setTrayState
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func setTrayState(_ trayState: TrayState) {
+        trayViewBottomConstraint.constant = trayState.constant
+        trayBottomView.alpha = trayState.alpha
+        menuButton |> setRotate(trayState.rotation |> inRadians)
+    }
+
+    private func handleSupplementAnnotations(for sender: MoButton) {
+        guard let toggleButton = sender as? MoButtonToggle else { return }
+        doCatchPrint {
+            switch (toggleButton.type, toggleButton.isOn) {
+            case (.fountains, true):
+                try fountainsOn(false)
+
+            case (.fountains, false):
+                try fountainsOn(true)
+                try washroomsOn(false)
+
+            case (.washrooms, true):
+                try washroomsOn(false)
+
+            case (.washrooms, false):
+                try washroomsOn(true)
+                try fountainsOn(false)
+
+            default:
+                return
+            }
+        }
+    }
+
+    private func fountainsOn(_ isOn: Bool) throws {
+        try mapView &|> annotations(pointType: .fountain, isOn: isOn, button: fountainsButton)
+    }
+
+    private func washroomsOn(_ isOn: Bool) throws {
+        try mapView &|> annotations(pointType: .washroom, isOn: isOn, button: washroomsButton)
     }
 
 }
 
-extension MapViewController: MKMapViewDelegate {
+// MARK: - TrayViewDelegate
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let station = annotation as? Station {
-            let stationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(StationView.self)") as! StationView
-            stationView.viewModel = StationViewModel(station: station,
-                                                     bikesOrDocksState: viewModel.bikesOrDocks.asDriver())
-            return stationView
+extension MapViewController: TrayViewDelegate {
+    func trayViewTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let firstTouch = touches.first else { return }
+        let deltaY = firstTouch.location(in: self.view).y - firstTouch.previousLocation(in: self.view).y
+        let newConstant = trayViewBottomConstraint.constant - deltaY
+        let newAlpha = (closedHeight - newConstant) / closedHeight
+        let newRotation = newAlpha * 90
+
+        switch newConstant {
+        case bounceOpenHeight...:
+            setTrayState(.bounceOpen(self))
+        case ..<closedHeight:
+            setTrayState(.closed(self))
+        default:
+            setTrayState(.partial(bottomConstant: newConstant,
+                                   alpha: newAlpha,
+                                   iconRotation: newRotation))
         }
-        return nil
     }
 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(true)
-        }
-    }
-
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if let stationView = view as? StationView {
-            stationView.viewModel.stationIsSelected.accept(false)
-        }
+    func trayViewTouchesEnded() {
+        self.trayViewBottomConstraint.constant > self.threshold
+            |> set(\.menuButton!.isOn, on: self)
+            >>> setTrayOpen
     }
 }
