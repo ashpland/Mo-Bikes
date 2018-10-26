@@ -61,3 +61,26 @@ func annotations(pointType: SupplementPointType, isOn: Bool, button: MoButtonTog
         button.tintColor = secondaryTintColor(isOn)
     }
 }
+
+let addAnnotationsTo = MKMapView.addAnnotations
+let removeAnnotationsFrom = MKMapView.removeAnnotations
+
+func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {
+    return { mapView in
+        if turnOn {
+            try pointType
+                |> loadSupplementAnnotations
+                >>> addAnnotationsTo(mapView)
+        } else {
+            mapView.annotations
+                .compactMap(justAnnotations(of: pointType))
+                |> removeAnnotationsFrom(mapView)
+        }
+    }
+}
+
+func callMobi() {
+    if let url = URL(string: "tel://7786551800") {
+        UIApplication.shared.open(url)
+    }
+}

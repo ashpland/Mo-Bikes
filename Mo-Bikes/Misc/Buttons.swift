@@ -31,3 +31,9 @@ class MoButtonWashrooms: MoButtonToggle { override var type: MoButtonType { retu
 class MoButtonFountains: MoButtonToggle { override var type: MoButtonType { return .fountains } }
 class MoButtonBikes: MoButtonToggle { override var type: MoButtonType { return .bikes } }
 class MoButtonDocks: MoButtonToggle { override var type: MoButtonType { return .docks } }
+
+func setButtonImage(to imageKP: KeyPath<Styles.ButtonImages, UIImage>) -> (UIButton) -> Void {
+    return { button in
+        button.setImage(Styles.ButtonImages()[keyPath: imageKP], for: .normal)
+    }
+}

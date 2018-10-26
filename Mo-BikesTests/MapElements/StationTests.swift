@@ -61,8 +61,8 @@ class StationViewTests: XCTestCase {
         var normalView = makeStationView(from: stationNormal)
         var lowView = makeStationView(from: stationLow)
 
-        normalView &|> setColor
-        lowView &|> setColor
+        normalView &|> setStationViewColor
+        lowView &|> setStationViewColor
 
         XCTAssertEqual(normalView.markerTintColor, Styles.Color.marker.normal)
         XCTAssertEqual(lowView.markerTintColor, Styles.Color.marker.low)
@@ -71,22 +71,22 @@ class StationViewTests: XCTestCase {
     func testSetText() {
         var view = makeStationView(from: stationNormal)
         view.isSelected = false
-        view &|> setText
+        view &|> setStationViewText
         XCTAssertNil(view.glyphText)
 
         view.isSelected = true
-        view &|> setText
+        view &|> setStationViewText
         XCTAssertEqual(view.glyphText, String(stationNormal.stationData.availableBikes))
     }
 
     func testSetImage() {
         var view = makeStationView(from: stationNormal)
         view.isSelected = true
-        view &|> setImage
+        view &|> setStationViewImage
         XCTAssertNil(view.glyphImage)
 
         view.isSelected = false
-        view &|> setImage
+        view &|> setStationViewImage
         XCTAssert(imagesAreSame(lhs: view.glyphImage, rhs: Styles.glyphImage.bikes))
     }
 

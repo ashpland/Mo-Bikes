@@ -35,13 +35,12 @@ class MapViewController: UIViewController {
 
     // MARK: - TrayView math
 
+    private let bounceHeight = Styles.bounceHeight
+    private let trayCornerRadius = Styles.trayCornerRadius
+
     private var safeOffset: CGFloat {
         return view?.safeAreaInsets.bottom ?? 0.0
     }
-
-    private let bounceHeight: CGFloat = 50
-
-    private let trayCornerRadius: CGFloat = 20
 
     private var minimumClippedHeight: CGFloat {
         return trayCornerRadius + safeOffset
@@ -75,7 +74,7 @@ class MapViewController: UIViewController {
         return ((openHeight - closedHeight) / 2) + closedHeight
     }
 
-    // MARK: - Methods
+    // MARK: - Setup
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,9 +108,7 @@ class MapViewController: UIViewController {
         setBikesAndDocsButtons(selected: .bikes)
     }
 
-    func disableHighlighting(_ button: inout UIButton) {
-        button.adjustsImageWhenHighlighted = false
-    }
+    // MARK: - Station Updating
 
     private func startUpdatingStations() {
         updateStations()
@@ -134,10 +131,12 @@ class MapViewController: UIViewController {
         }
     }
 
+    // MARK: - UI Handling
+
     @objc func handleMapTap() {
         if menuButton.isOn == true {
             menuButton.isOn = false
-            openBottomDrawer(false)
+            setTrayOpen(false)
         }
     }
 
@@ -170,33 +169,34 @@ class MapViewController: UIViewController {
             }
     }
 
+    // MARK: - State management
+
     @discardableResult func setBikesAndDocsButtons(selected state: BikesOrDocks) -> BikesOrDocks {
         switch state {
         case .bikes:
-            bikesButton.setImage(#imageLiteral(resourceName: "bikeIcon-invert"), for: .normal)
-            docksButton.setImage(#imageLiteral(resourceName: "dockIcon"), for: .normal)
+            bikesButton |> setButtonImage(to: \.bikesSelected)
+            docksButton |> setButtonImage(to: \.docksUnselected )
         case .docks:
-            bikesButton.setImage(#imageLiteral(resourceName: "bikeIcon"), for: .normal)
-            docksButton.setImage(#imageLiteral(resourceName: "dockIcon-invert"), for: .normal)
+            bikesButton |> setButtonImage(to: \.bikesUnselected)
+            docksButton |> setButtonImage(to: \.docksSelected )
         }
         return state
     }
 
     func handleMenuButton() {
         menuButton.isOn.toggle()
-        menuButton.isOn |> openBottomDrawer
+        menuButton.isOn |> setTrayOpen
     }
 
-    private func openBottomDrawer(_ shouldOpen: Bool) {
+    private func setTrayOpen(_ shouldOpen: Bool) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5) {
-            shouldOpen ? .open(self) : .closed(self)
-                |> self.setTrayValues
+            shouldOpen ? .open(self) : .closed(self) |> self.setTrayState
             self.view.layoutIfNeeded()
         }
     }
 
-    private func setTrayValues(_ trayState: TrayState) {
+    private func setTrayState(_ trayState: TrayState) {
         trayViewBottomConstraint.constant = trayState.constant
         trayBottomView.alpha = trayState.alpha
         menuButton |> setRotate(trayState.rotation |> inRadians)
@@ -236,6 +236,8 @@ class MapViewController: UIViewController {
 
 }
 
+// MARK: - TrayViewDelegate
+
 extension MapViewController: TrayViewDelegate {
     func trayViewTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else { return }
@@ -246,11 +248,11 @@ extension MapViewController: TrayViewDelegate {
 
         switch newConstant {
         case bounceOpenHeight...:
-            setTrayValues(.bounceOpen(self))
+            setTrayState(.bounceOpen(self))
         case ..<closedHeight:
-            setTrayValues(.closed(self))
+            setTrayState(.closed(self))
         default:
-            setTrayValues(.partial(bottomConstant: newConstant,
+            setTrayState(.partial(bottomConstant: newConstant,
                                    alpha: newAlpha,
                                    iconRotation: newRotation))
         }
@@ -259,71 +261,6 @@ extension MapViewController: TrayViewDelegate {
     func trayViewTouchesEnded() {
         self.trayViewBottomConstraint.constant > self.threshold
             |> set(\.menuButton!.isOn, on: self)
-            >>> openBottomDrawer
-    }
-}
-
-enum TrayState {
-    case bounceOpen(_ mvc: MapViewController)
-    case open(_ mvc: MapViewController)
-    case closed(_ mvc: MapViewController)
-    case partial(bottomConstant: CGFloat, alpha: CGFloat, iconRotation: CGFloat)
-
-    var constant: CGFloat {
-        switch self {
-        case .bounceOpen(let mvc):
-            return mvc.bounceOpenHeight
-        case .open(let mvc):
-            return mvc.openHeight
-        case .closed(let mvc):
-            return mvc.closedHeight
-        case .partial(let bottomConstant, _, _):
-            return bottomConstant
-        }
-    }
-
-    var alpha: CGFloat {
-        switch self {
-        case .bounceOpen, .open:
-            return 1.0
-        case .closed:
-            return 0.0
-        case .partial(_, let alpha, _):
-            return alpha
-        }
-    }
-
-    var rotation: CGFloat {
-        switch self {
-        case .bounceOpen, .open:
-            return 90.0
-        case .closed:
-            return 0.0
-        case .partial(_, _, let iconRotation):
-            return iconRotation
-        }
-    }
-}
-
-let addAnnotationsTo = MKMapView.addAnnotations
-let removeAnnotationsFrom = MKMapView.removeAnnotations
-
-func displaySupplementAnnotations(_ pointType: SupplementPointType, _ turnOn: Bool) -> (inout MKMapView) throws -> Void {
-    return { mapView in
-        if turnOn {
-            try pointType
-                |> loadSupplementAnnotations
-                >>> addAnnotationsTo(mapView)
-        } else {
-            mapView.annotations
-                .compactMap(justAnnotations(of: pointType))
-                |> removeAnnotationsFrom(mapView)
-        }
-    }
-}
-
-func callMobi() {
-    if let url = URL(string: "tel://7786551800") {
-        UIApplication.shared.open(url)
+            >>> setTrayOpen
     }
 }

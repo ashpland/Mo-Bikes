@@ -32,3 +32,45 @@ protocol TrayViewDelegate {
     func trayViewTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     func trayViewTouchesEnded()
 }
+
+enum TrayState {
+    case bounceOpen(_ mvc: MapViewController)
+    case open(_ mvc: MapViewController)
+    case closed(_ mvc: MapViewController)
+    case partial(bottomConstant: CGFloat, alpha: CGFloat, iconRotation: CGFloat)
+
+    var constant: CGFloat {
+        switch self {
+        case .bounceOpen(let mvc):
+            return mvc.bounceOpenHeight
+        case .open(let mvc):
+            return mvc.openHeight
+        case .closed(let mvc):
+            return mvc.closedHeight
+        case .partial(let bottomConstant, _, _):
+            return bottomConstant
+        }
+    }
+
+    var alpha: CGFloat {
+        switch self {
+        case .bounceOpen, .open:
+            return 1.0
+        case .closed:
+            return 0.0
+        case .partial(_, let alpha, _):
+            return alpha
+        }
+    }
+
+    var rotation: CGFloat {
+        switch self {
+        case .bounceOpen, .open:
+            return 90.0
+        case .closed:
+            return 0.0
+        case .partial(_, _, let iconRotation):
+            return iconRotation
+        }
+    }
+}
