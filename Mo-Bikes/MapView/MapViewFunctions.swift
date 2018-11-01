@@ -56,7 +56,7 @@ func refreshStationViews(with bikesOrDocks: BikesOrDocks) -> (MKMapView) -> Void
 
 func annotations(pointType: SupplementPointType, isOn: Bool, button: MoButtonToggle) -> (inout MKMapView) throws -> Void {
     return { mapView in
-        try mapView &|> displaySupplementAnnotations(pointType, isOn)
+        try mapView &> displaySupplementAnnotations(pointType, isOn)
         button.isOn = isOn
         button.tintColor = secondaryTintColor(isOn)
     }

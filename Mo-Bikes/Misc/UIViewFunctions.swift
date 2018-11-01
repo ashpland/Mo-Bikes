@@ -12,7 +12,7 @@ func blurBackground(_ view: inout UIView) {
     view.backgroundColor = UIColor.clear
     let blurEffectView = UIBlurEffect(style: UIBlurEffect.Style.light) |> UIVisualEffectView.init
     view.insertSubview(blurEffectView, at: 0)
-    blurEffectView &|> fillSuperView
+    blurEffectView &> fillSuperView
 }
 
 func fillSuperView(_ view: inout UIView) {
@@ -28,15 +28,14 @@ func fillSuperView(_ view: inout UIView) {
 }
 
 func roundCorners(_ radius: CGFloat) -> (inout UIView) -> Void {
-    return { $0.layer |> prop(\.cornerRadius, value: radius); return }
+    return { $0.layer &> set(\.cornerRadius, to: radius); return }
 }
 
 func addBorder(_ color: CGColor, _ width: CGFloat) -> (inout UIView) -> Void {
-    return { view in
-        view.layer
-            |> prop(\.borderColor, value: color)
-            <> prop(\.borderWidth, value: width)
-        return
+    return {
+        $0.layer
+            &> set(\.borderColor, to: color)
+            <> set(\.borderWidth, to: width)
     }
 }
 

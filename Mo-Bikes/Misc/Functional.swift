@@ -11,7 +11,7 @@
 //      |>      Forward Application: passes value lhs to function rhs
 //      >>>     Forward Composition: composes function (A) -> B with function (B) -> C to create new function (A) -> C
 //      <>      Single Type Composition: composes function (A) -> A with function (A) -> A to create new function (A) -> A
-//      &|>     InOut Forward Application: passes inout value lhs to function rhs
+//      &>     InOut Forward Application: passes inout value lhs to function rhs
 //
 
 // MARK: Function application and composition
@@ -56,18 +56,6 @@ func <> <A>(
         return f >>> g
 }
 
-precedencegroup BackwardsComposition {
-    associativity: right
-}
-
-infix operator <<<: BackwardsComposition
-
-func <<< <A, B, C>(g: @escaping (B) -> C, f: @escaping (A) -> B) -> (A) -> C {
-    return { x in
-        g(f(x))
-    }
-}
-
 // MARK: - Function Manipulation
 
 func curry<A, B, C>(_ f: @escaping (A, B) -> C) -> (A) -> (B) -> C {
@@ -96,52 +84,12 @@ func flattenArrays<Element>(_ sequence: [[Element]]) -> [Element] {
     return sequence.flatMap { $0 }
 }
 
-// MARK: - Prop
+// MARK: - Setters
 
-func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value>)
-    -> (@escaping (Value) -> Value)
-    -> (Root)
-    -> Root {
-
-        return { update in { root in
-                var copy = root
-                copy[keyPath: kp] = update(copy[keyPath: kp])
-                return copy
-            }
-        }
-}
-
-func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>)
-    -> (@escaping (Value?) -> Value)
-    -> (Root)
-    -> Root {
-
-        return { update in { root in
-                var copy = root
-                copy[keyPath: kp] = update(copy[keyPath: kp])
-                return copy
-            }
-        }
-}
-
-func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value>, value: Value)
-    -> (Root)
-    -> Root {
-        return { root in
-            var copy = root
-            copy[keyPath: kp] = value
-            return copy
-        }
-}
-
-func prop<Root, Value>(_ kp: WritableKeyPath<Root, Value?>, value: Value)
-    -> (Root)
-    -> Root {
-        return { root in
-            var copy = root
-            copy[keyPath: kp] = value
-            return copy
-        }
+func set<Root, Element>(_ kp: WritableKeyPath<Root, Element>, to value: Element) -> (inout Root) -> Void {
+    return { object in
+        object[keyPath: kp] = value
+    }
 }
 
 func set<Root, Element>(_ kp: WritableKeyPath<Root, Element>, on object: Root) -> (Element) -> Element {
@@ -154,19 +102,19 @@ func set<Root, Element>(_ kp: WritableKeyPath<Root, Element>, on object: Root) -
 
 // MARK: - Inout
 
-infix operator &|>: ForwardApplication
+infix operator &>: ForwardApplication
 
-func &|> <A>(a: inout A, f: (inout A) -> Void) {
+func &> <A>(a: inout A, f: (inout A) -> Void) {
     f(&a)
 }
 
-func &|> <A>(a: A?, f: (inout A) -> Void) {
+func &> <A>(a: A?, f: (inout A) -> Void) {
     if var a = a {
         f(&a)
     }
 }
 
-@discardableResult func &|> <A, B>(a: inout A, f: (inout A) -> B) -> B {
+@discardableResult func &> <A, B>(a: inout A, f: (inout A) -> B) -> B {
     return f(&a)
 }
 
@@ -228,7 +176,7 @@ func >>> <A, B, C>(f: @escaping (A) throws -> B, g: @escaping (B) throws -> C) -
     }
 }
 
-@discardableResult func &|> <A, B>(a: inout A, f: (inout A) throws -> B) throws -> B {
+@discardableResult func &> <A, B>(a: inout A, f: (inout A) throws -> B) throws -> B {
     return try f(&a)
 }
 

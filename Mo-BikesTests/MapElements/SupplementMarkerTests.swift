@@ -48,7 +48,7 @@ class SupplementMarkerTests: XCTestCase {
         let annotation = pointCoordinate |> stringToAnnotation(of: .fountain)
         var marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "ID")
         XCTAssertTrue(marker.isEnabled)
-        marker &|> configureMarker(for: annotation)
+        marker &> configureMarker(for: annotation)
         XCTAssertFalse(marker.isEnabled)
         XCTAssert(imagesAreSame(lhs: marker.glyphImage, rhs: Styles.glyphImage.fountain))
     }

@@ -71,7 +71,7 @@ class StationView: MKMarkerAnnotationView {
 @discardableResult func configureStationView(_ bikesOrDocks: BikesOrDocks) -> (inout StationView) -> StationView {
     return { view in
         view.bikesOrDocks = bikesOrDocks
-        view &|> setStationViewColor <> setStationViewText <> setStationViewImage
+        view &> setStationViewColor <> setStationViewText <> setStationViewImage
         view.animatesWhenAdded = true
         return view
     }

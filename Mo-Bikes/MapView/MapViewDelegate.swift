@@ -25,13 +25,13 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if var stationView = view as? StationView {
-            stationView &|> setStationViewText
+            stationView &> setStationViewText
         }
     }
 
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if var stationView = view as? StationView {
-            stationView &|> setStationViewImage <> setStationViewText
+            stationView &> setStationViewImage <> setStationViewText
         }
     }
 

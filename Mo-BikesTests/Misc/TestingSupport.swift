@@ -92,7 +92,7 @@ func makeXMLDoc() -> AEXMLDocument {
     var root = xmlDoc.root
 
     root
-        &|> addChild("Document")
+        &> addChild("Document")
         >>> addChild("Folder")
 
     return xmlDoc
@@ -115,15 +115,15 @@ func addChild(_ element: AEXMLElement) -> (inout AEXMLElement) -> AEXMLElement {
 
 func makePointPlacemark() -> AEXMLElement {
     var placemark = AEXMLElement(name: "Placemark")
-    placemark &|> addChild("Point") >>> addChild("coordinates", value: "-123.125914,49.2663411,0.0")
+    placemark &> addChild("Point") >>> addChild("coordinates", value: "-123.125914,49.2663411,0.0")
     return placemark
 }
 
 func makeBikewayPlacemark() -> AEXMLElement {
     var placemark = AEXMLElement(name: "Placemark")
-    placemark &|> addChild("description", value: "Local Street<br>")
+    placemark &> addChild("description", value: "Local Street<br>")
     placemark
-        &|> addChild("MultiGeometry")
+        &> addChild("MultiGeometry")
         >>> addChild("LineString")
         >>> addChild("coordinates", value: "-123.166270453668,49.2710157338192,0.0 -123.166270454964,49.2710157104298,0.0 -123.16630123224,49.2701228944955,0.0 -123.166315536304,49.2696909217319,0.0 -123.166331107411,49.2692315180453,0.0")
     return placemark

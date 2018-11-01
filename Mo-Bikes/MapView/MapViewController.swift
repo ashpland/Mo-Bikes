@@ -84,9 +84,9 @@ class MapViewController: UIViewController {
     }
 
     private func setupMap() {
-        locationManager &|> setupLocationManager
+        locationManager &> setupLocationManager
         doCatchPrint {
-            try mapView &|> setupMapView(delegate: self) <> zoomTo(locationManager.location)
+            try mapView &> setupMapView(delegate: self) <> zoomTo(locationManager.location)
         }
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleMapTap))
@@ -101,7 +101,7 @@ class MapViewController: UIViewController {
         trayBottomView.alpha = 0.0
 
         trayView
-            &|> blurBackground
+            &> blurBackground
             <> roundCorners(trayCornerRadius)
             <> addBorder(Styles.border)
 
@@ -160,7 +160,7 @@ class MapViewController: UIViewController {
                 callMobi()
             case .compass:
                 doCatchPrint {
-                    try self.mapView &|> zoomTo(locationManager.location)
+                    try self.mapView &> zoomTo(locationManager.location)
                 }
             case .menu:
                 handleMenuButton()
@@ -227,11 +227,11 @@ class MapViewController: UIViewController {
     }
 
     private func fountainsOn(_ isOn: Bool) throws {
-        try mapView &|> annotations(pointType: .fountain, isOn: isOn, button: fountainsButton)
+        try mapView &> annotations(pointType: .fountain, isOn: isOn, button: fountainsButton)
     }
 
     private func washroomsOn(_ isOn: Bool) throws {
-        try mapView &|> annotations(pointType: .washroom, isOn: isOn, button: washroomsButton)
+        try mapView &> annotations(pointType: .washroom, isOn: isOn, button: washroomsButton)
     }
 
 }
