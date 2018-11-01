@@ -108,6 +108,7 @@ func &> <A>(a: inout A, f: (inout A) -> Void) {
     f(&a)
 }
 
+// Used for inout Forward Application on explicitly unwrapped UIViews.
 func &> <A>(a: A?, f: (inout A) -> Void) {
     if var a = a {
         f(&a)

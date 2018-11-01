@@ -26,7 +26,11 @@ func generateSlots() -> (bikes: Int, free: Int) {
     return (bikes, slots)
 }
 
-func generateStationData(_ name: String, _ slots: (bikes: Int, free: Int) = generateSlots()) -> StationData {
+func generateStationData(_ name: String) -> StationData {
+    return generateStationData(named: name)
+}
+
+func generateStationData(named name: String, _ slots: (bikes: Int, free: Int) = generateSlots()) -> StationData {
     let coordinate = generateLatLon()
     let coordinateString = "\(coordinate.lat), \(coordinate.lon)"
 
@@ -42,38 +46,43 @@ func generateStationJSON(_ stationData: StationData) -> Data {
     return jsonString.data(using: .utf8)!
 }
 
-extension Array where Element: Comparable {
+extension Array where Element: Hashable {
     func containsSameElements(as other: [Element]) -> Bool {
-        return self.count == other.count && self.sorted() == other.sorted()
+        return Set(self) == Set(other)
     }
 }
 
-//extension Station: Comparable {
-//    public static func <(lhs: Station, rhs: Station) -> Bool {
-//        return lhs.name < rhs.name
-//    }
-//}
+extension SupplementAnnotation {
+    override open func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? SupplementAnnotation,
+            self.coordinate == other.coordinate,
+            self.pointType == other.pointType {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    override open var hash: Int {
+        struct AnnotationHash: Hashable {
+            let pointType: SupplementPointType
+            let lat: Double
+            let lon: Double
+
+            init(_ coordinate: CLLocationCoordinate2D, _ pointType: SupplementPointType) {
+                self.pointType = pointType
+                self.lat = coordinate.latitude
+                self.lon = coordinate.longitude
+            }
+        }
+
+        return AnnotationHash(self.coordinate, self.pointType).hashValue
+    }
+}
 
 extension CLLocationCoordinate2D: Equatable {
     public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
-    }
-}
-
-class FakeMapView: MKMapView {
-
-    var annotationHolder = [MKAnnotation]()
-
-    override func addAnnotations(_ annotations: [MKAnnotation]) {
-        annotationHolder += annotations
-    }
-
-    override func removeAnnotations(_ annotations: [MKAnnotation]) {
-        for annotation in annotations {
-            if let index = annotations.index(where: { $0.coordinate == annotation.coordinate }) {
-                annotationHolder.remove(at: index)
-            }
-        }
     }
 }
 

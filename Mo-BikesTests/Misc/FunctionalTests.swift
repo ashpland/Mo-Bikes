@@ -10,9 +10,9 @@ import XCTest
 @testable import Mo_Bikes
 
 class FunctionalTests: XCTestCase {
-    
+
     // MARK: - Function application and composition
-    
+
     func testForwardApplication() {
         XCTAssertEqual(1 |> aToA, 2)
     }
@@ -24,7 +24,7 @@ class FunctionalTests: XCTestCase {
     func testSingleTypeComposition() {
         XCTAssertEqual(1 |> aToA <> aToA, 3)
     }
-    
+
     // MARK: - Function Manipulation
 
     func testCurry() {
@@ -43,7 +43,7 @@ class FunctionalTests: XCTestCase {
         let zurried = zurry(voidToA)
         XCTAssertEqual(voidToA(), zurried)
     }
-    
+
     // MARK: - Mapping
 
     func testMap() {
@@ -57,16 +57,31 @@ class FunctionalTests: XCTestCase {
     func testFlattenArrays() {
         XCTAssertEqual([[1], [2]] |> flattenArrays, [1, 2])
     }
-    
-    // MARK: - Prop
 
-    
-    
-    
+    // MARK: - Setters
+
+    func testSetValueTo() {
+        var testObject = TestObject()
+        testObject &> set(\.value, to: 1)
+        XCTAssertEqual(testObject.value, 1)
+    }
+
+    func testSetValueOn() {
+        let testObject = TestObject()
+        1 |> set(\.value, on: testObject)
+        XCTAssertEqual(testObject.value, 1)
+    }
+
     // MARK: - Inout
 
     func testInOutForwardApplication() {
         var testObject = TestObject()
+        testObject &> aToAInOut
+        XCTAssertEqual(testObject.value, 1)
+    }
+
+    func testInOutOptionalForwardApplication() {
+        let testObject: TestObject! = TestObject()
         testObject &> aToAInOut
         XCTAssertEqual(testObject.value, 1)
     }
@@ -97,7 +112,7 @@ class FunctionalTests: XCTestCase {
         [testObject] |> map(aToAInOutReturns)
         XCTAssertEqual(testObject.value, 1)
     }
-    
+
     // MARK: - Overloads for throwing functions
 
     func testForwardApplicationThrows() {

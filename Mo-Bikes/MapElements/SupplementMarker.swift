@@ -65,6 +65,11 @@ func loadSupplementAnnotations(of pointType: SupplementPointType) throws -> [MKA
         >>> getPlacemarkElements
         >>> compactMap(getPointCoordinateString)
         >>> map(stringToAnnotation(of: pointType))
+        >>> removeDuplicates
+}
+
+func removeDuplicates<Element: Hashable>(_ array: [Element]) -> [Element] {
+    return Array(Set(array))
 }
 
 // MARK: - Marker

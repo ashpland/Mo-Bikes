@@ -18,8 +18,8 @@ class KMLParserTests: XCTestCase {
         xmlDoc = makeXMLDoc()
     }
 
-    func testGetXMLDocument() {
-        // TODO: Implement with Global
+    func testGetXMLDocumentThrows() {
+        XCTAssertThrowsError(try getXMLDocument(xmlurl: URL(fileURLWithPath: "fail")))
     }
 
     func testGetPlacemarkElements() {

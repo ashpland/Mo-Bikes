@@ -25,6 +25,8 @@
 		495C840D217BF8A900978E6D /* SupplementMarkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */; };
 		495C8412217C035200978E6D /* BikewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C8411217C035200978E6D /* BikewayTests.swift */; };
 		495C8414217C2CEC00978E6D /* KMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C8413217C2CEC00978E6D /* KMLParserTests.swift */; };
+		495EFF90218A826A00FE5955 /* MapViewFunctionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EFF8F218A826A00FE5955 /* MapViewFunctionsTests.swift */; };
+		495EFF92218A936600FE5955 /* UIViewFunctionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EFF91218A936600FE5955 /* UIViewFunctionsTests.swift */; };
 		49889421217954A50079E693 /* MapViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889420217954A50079E693 /* MapViewFunctions.swift */; };
 		49889424217956900079E693 /* SupplementMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889423217956900079E693 /* SupplementMarker.swift */; };
 		498894262179574C0079E693 /* Bikeway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498894252179574C0079E693 /* Bikeway.swift */; };
@@ -78,6 +80,8 @@
 		495C840C217BF8A900978E6D /* SupplementMarkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarkerTests.swift; sourceTree = "<group>"; };
 		495C8411217C035200978E6D /* BikewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikewayTests.swift; sourceTree = "<group>"; };
 		495C8413217C2CEC00978E6D /* KMLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParserTests.swift; sourceTree = "<group>"; };
+		495EFF8F218A826A00FE5955 /* MapViewFunctionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctionsTests.swift; sourceTree = "<group>"; };
+		495EFF91218A936600FE5955 /* UIViewFunctionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFunctionsTests.swift; sourceTree = "<group>"; };
 		49889420217954A50079E693 /* MapViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFunctions.swift; sourceTree = "<group>"; };
 		49889423217956900079E693 /* SupplementMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementMarker.swift; sourceTree = "<group>"; };
 		498894252179574C0079E693 /* Bikeway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bikeway.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				49145C8F217A97A200197D95 /* MiscTests.swift */,
 				49145C91217A989300197D95 /* FunctionalTests.swift */,
 				49145C8B217A91D800197D95 /* CoordinatesTests.swift */,
+				495EFF91218A936600FE5955 /* UIViewFunctionsTests.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 		495C8410217C033900978E6D /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				495EFF8F218A826A00FE5955 /* MapViewFunctionsTests.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -476,7 +482,9 @@
 				495C8414217C2CEC00978E6D /* KMLParserTests.swift in Sources */,
 				49145C90217A97A200197D95 /* MiscTests.swift in Sources */,
 				495C8412217C035200978E6D /* BikewayTests.swift in Sources */,
+				495EFF90218A826A00FE5955 /* MapViewFunctionsTests.swift in Sources */,
 				49145C8C217A91D800197D95 /* CoordinatesTests.swift in Sources */,
+				495EFF92218A936600FE5955 /* UIViewFunctionsTests.swift in Sources */,
 				491C6912203F4E6C00C79C53 /* TestingSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

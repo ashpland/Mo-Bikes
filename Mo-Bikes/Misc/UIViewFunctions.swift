@@ -31,25 +31,25 @@ func roundCorners(_ radius: CGFloat) -> (inout UIView) -> Void {
     return { $0.layer &> set(\.cornerRadius, to: radius); return }
 }
 
-func addBorder(_ color: CGColor, _ width: CGFloat) -> (inout UIView) -> Void {
+func addBorder(_ style: (color: CGColor, width: CGFloat)) -> (inout UIView) -> Void {
     return {
         $0.layer
-            &> set(\.borderColor, to: color)
-            <> set(\.borderWidth, to: width)
+            &> set(\.borderColor, to: style.color)
+            <> set(\.borderWidth, to: style.width)
     }
-}
-
-func addBorder(_ style: (color: CGColor, width: CGFloat)) -> (inout UIView) -> Void {
-    return addBorder(style.color, style.width)
 }
 
 func inRadians(_ degrees: CGFloat) -> CGFloat {
     return degrees / 180 * CGFloat.pi
 }
 
-func setRotate(_ radians: CGFloat) -> (UIView) -> Void {
+func setRotate(_ radians: CGFloat) -> (inout UIView) -> Void {
     return { view in
-        let current = CGFloat(atan2f(Float(view.transform.b), Float(view.transform.a)))
-        view.transform = view.transform.rotated(by: radians - current)
+        view.transform = view.transform.rotated(by: radians - currentRotation(of: view))
     }
+}
+
+/// Returns current rotation of view in radians
+func currentRotation(of view: UIView) -> CGFloat {
+    return CGFloat(atan2f(Float(view.transform.b), Float(view.transform.a)))
 }

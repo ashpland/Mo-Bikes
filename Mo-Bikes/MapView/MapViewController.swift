@@ -199,7 +199,7 @@ class MapViewController: UIViewController {
     private func setTrayState(_ trayState: TrayState) {
         trayViewBottomConstraint.constant = trayState.constant
         trayBottomView.alpha = trayState.alpha
-        menuButton |> setRotate(trayState.rotation |> inRadians)
+        menuButton &> setRotate(trayState.rotation |> inRadians)
     }
 
     private func handleSupplementAnnotations(for sender: MoButton) {

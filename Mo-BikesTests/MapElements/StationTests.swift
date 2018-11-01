@@ -11,8 +11,8 @@ import XCTest
 
 class StationModelTests: XCTestCase {
 
-    let testStationData1 = generateStationData("Test Station 1")
-    let testStationData2 = generateStationData("Test Station 2")
+    let testStationData1 = generateStationData(named: "Test Station 1")
+    let testStationData2 = generateStationData(named: "Test Station 2")
 
     func testDecodeStationData() {
         let testJSON = generateStationJSON(testStationData1)
@@ -47,8 +47,8 @@ class StationModelTests: XCTestCase {
 
 class StationViewTests: XCTestCase {
 
-    let stationNormal = Station(generateStationData("Normal", (bikes: 9, free: 1)))
-    let stationLow =    Station(generateStationData("Normal", (bikes: 1, free: 9)))
+    let stationNormal = Station(generateStationData(named: "Normal", (bikes: 9, free: 1)))
+    let stationLow =    Station(generateStationData(named: "Normal", (bikes: 1, free: 9)))
 
     func makeStationView(from station: Station) -> StationView {
         let view = StationView(annotation: station, reuseIdentifier: "ID")
