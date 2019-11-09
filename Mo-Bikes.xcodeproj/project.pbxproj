@@ -388,7 +388,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
@@ -401,7 +401,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mo-Bikes/Pods-Mo-Bikes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B7FEFF50FC0C10C833339F5D /* [CP] Check Pods Manifest.lock */ = {

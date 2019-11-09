@@ -5,8 +5,8 @@ target "Mo-Bikes" do
   use_frameworks!
 
   pod 'OHHTTPStubs/Swift'
-  pod 'Alamofire',  '4.7'
-  pod 'AEXML',      '4.3.3'
+  pod 'Alamofire'
+  pod 'AEXML'
 
   target "Mo-BikesTests" do
       inherit! :search_paths
