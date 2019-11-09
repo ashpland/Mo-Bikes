@@ -70,7 +70,7 @@ class FakeMapView: MKMapView {
 
     override func removeAnnotations(_ annotations: [MKAnnotation]) {
         for annotation in annotations {
-            if let index = annotations.index(where: { $0.coordinate == annotation.coordinate }) {
+            if let index = annotations.firstIndex(where: { $0.coordinate == annotation.coordinate }) {
                 annotationHolder.remove(at: index)
             }
         }
